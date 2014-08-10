@@ -19,6 +19,9 @@
 		05BD9C5919951E7F003F7A1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C4119951E7F003F7A1A /* UIKit.framework */; };
 		05BD9C6119951E7F003F7A1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05BD9C5F19951E7F003F7A1A /* InfoPlist.strings */; };
 		05BD9C6319951E7F003F7A1A /* Ballwelt2_0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BD9C6219951E7F003F7A1A /* Ballwelt2_0Tests.m */; };
+		05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BD9C6E19951EAA003F7A1A /* RFMGameViewController.m */; };
+		05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BD9C6F19951EAA003F7A1A /* RFMGameViewController.xib */; };
+		05BD9C7519951F1F003F7A1A /* RFMBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BD9C7419951F1F003F7A1A /* RFMBallView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		05BD9C3A19951E7F003F7A1A /* Ballwelt2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballwelt2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BD9C3D19951E7F003F7A1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +52,11 @@
 		05BD9C5E19951E7F003F7A1A /* Ballwelt2.0Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ballwelt2.0Tests-Info.plist"; sourceTree = "<group>"; };
 		05BD9C6019951E7F003F7A1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05BD9C6219951E7F003F7A1A /* Ballwelt2_0Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ballwelt2_0Tests.m; sourceTree = "<group>"; };
+		05BD9C6D19951EAA003F7A1A /* RFMGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMGameViewController.h; sourceTree = "<group>"; };
+		05BD9C6E19951EAA003F7A1A /* RFMGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMGameViewController.m; sourceTree = "<group>"; };
+		05BD9C6F19951EAA003F7A1A /* RFMGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMGameViewController.xib; sourceTree = "<group>"; };
+		05BD9C7319951F1F003F7A1A /* RFMBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMBallView.h; sourceTree = "<group>"; };
+		05BD9C7419951F1F003F7A1A /* RFMBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMBallView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +118,10 @@
 			children = (
 				05BD9C4C19951E7F003F7A1A /* RFMAppDelegate.h */,
 				05BD9C4D19951E7F003F7A1A /* RFMAppDelegate.m */,
+				05BD9C7219951F10003F7A1A /* Views */,
+				05BD9C6C19951E88003F7A1A /* Controllers */,
 				05BD9C4F19951E7F003F7A1A /* Images.xcassets */,
+				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
 				05BD9C4419951E7F003F7A1A /* Supporting Files */,
 			);
 			path = Ballwelt2.0;
@@ -142,6 +154,25 @@
 				05BD9C5F19951E7F003F7A1A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		05BD9C6C19951E88003F7A1A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				05BD9C6D19951EAA003F7A1A /* RFMGameViewController.h */,
+				05BD9C6E19951EAA003F7A1A /* RFMGameViewController.m */,
+				05BD9C6F19951EAA003F7A1A /* RFMGameViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		05BD9C7219951F10003F7A1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				05BD9C7319951F1F003F7A1A /* RFMBallView.h */,
+				05BD9C7419951F1F003F7A1A /* RFMBallView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
 				05BD9C4819951E7F003F7A1A /* InfoPlist.strings in Resources */,
 				05BD9C5019951E7F003F7A1A /* Images.xcassets in Resources */,
 			);
@@ -240,7 +272,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05BD9C7519951F1F003F7A1A /* RFMBallView.m in Sources */,
 				05BD9C4E19951E7F003F7A1A /* RFMAppDelegate.m in Sources */,
+				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +472,7 @@
 				05BD9C6819951E7F003F7A1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05BD9C6919951E7F003F7A1A /* Build configuration list for PBXNativeTarget "Ballwelt2.0Tests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +481,7 @@
 				05BD9C6B19951E7F003F7A1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

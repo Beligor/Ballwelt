@@ -7,6 +7,7 @@
 //
 
 #import "RFMAppDelegate.h"
+#import "RFMGameViewController.h"
 
 @implementation RFMAppDelegate
 
@@ -14,6 +15,12 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    RFMGameViewController *gameVC = [[RFMGameViewController alloc] init];
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:gameVC];
+    
+    self.window.rootViewController = navVC;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
