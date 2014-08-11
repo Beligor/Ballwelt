@@ -16,12 +16,23 @@
 @property (nonatomic) CGFloat speed;
 @property (nonatomic) NSInteger direction;
 
-
+/*
 -(id)initWithposition:(CGPoint)aPosition
                radius:(NSInteger) aRadius
           filledColor:(UIColor *) aColor
                 speed:(CGFloat) aSpeed
             direction:(NSInteger) aDirection;
+*/
+-(id)initWithRandomPositioninViewWithWidth:(NSInteger) aWidth
+                                    Height:(NSInteger) anHeight
+                                  MinSpeed:(NSInteger) aMinSpeed
+                                  maxSpeed:(NSInteger) aMaxSpeed
+                                 minRadius:(NSInteger) aMinRadius
+                                 maxRadius:(NSInteger) aMaxRadius;
 
--(void) setupBall;
+
+-(void) reducesBallSizeUntilReachThisRadius:(NSInteger) minRadius;
+-(void) increaseSpeedWithThisIncrement:(CGFloat) speedIncrement
+                                 until:(CGFloat) maxSpeed;
+-(void) destroyWithFadeOut;
 @end

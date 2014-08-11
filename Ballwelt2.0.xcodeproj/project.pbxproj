@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053BCDF11998B0A200E2631E /* RFMTimeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDF01998B0A200E2631E /* RFMTimeBar.m */; };
 		05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3D19951E7F003F7A1A /* Foundation.framework */; };
 		05BD9C4019951E7F003F7A1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */; };
 		05BD9C4219951E7F003F7A1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C4119951E7F003F7A1A /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		053BCDEF1998B0A200E2631E /* RFMTimeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTimeBar.h; sourceTree = "<group>"; };
+		053BCDF01998B0A200E2631E /* RFMTimeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTimeBar.m; sourceTree = "<group>"; };
 		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		05BD9C3A19951E7F003F7A1A /* Ballwelt2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballwelt2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BD9C3D19951E7F003F7A1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -171,6 +174,8 @@
 			children = (
 				05BD9C7319951F1F003F7A1A /* RFMBallView.h */,
 				05BD9C7419951F1F003F7A1A /* RFMBallView.m */,
+				053BCDEF1998B0A200E2631E /* RFMTimeBar.h */,
+				053BCDF01998B0A200E2631E /* RFMTimeBar.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				05BD9C7519951F1F003F7A1A /* RFMBallView.m in Sources */,
 				05BD9C4E19951E7F003F7A1A /* RFMAppDelegate.m in Sources */,
 				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
+				053BCDF11998B0A200E2631E /* RFMTimeBar.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

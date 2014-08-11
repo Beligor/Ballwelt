@@ -8,6 +8,7 @@
 
 #import "RFMGameViewController.h"
 #import "RFMBallView.h"
+#import "RFMTimeBar.h"
 
 @interface RFMGameViewController ()
 @property (nonatomic, strong) NSMutableArray *arrayOfBalls;
@@ -17,7 +18,8 @@
 
 @property (nonatomic) CGFloat speedIncrement;
 @property (nonatomic) CGFloat maxSpeed;
-//@property (nonatomic) CGFloat minSpeed;
+@property (nonatomic) CGFloat minSpeed;
+
 @end
 
 @implementation RFMGameViewController
@@ -33,13 +35,23 @@
 {
     [super viewWillAppear:animated];
     
+    /*
+    RFMTimeBar *bar = [[RFMTimeBar alloc] initWithTotalTime:10
+                                                      width:self.view.frame.size.width
+                                                     height:15
+                                                   barColor:[UIColor redColor]];
+    
+    [self.view addSubview:bar];
+    */
     self.minRadius = 20;
     self.maxRadius = 30;
     
-    self.speedIncrement = 1.2;
-    self.maxSpeed = 300;
+    self.speedIncrement = 2;
+    self.minSpeed = 100;
+    self.maxSpeed = 150;
     
     self.arrayOfBalls = [[NSMutableArray alloc] init];
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                target:self
                                                                                action:@selector(addBallToView:)];
@@ -58,11 +70,11 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.navigationItem.leftBarButtonItems = @[slowButton, freezeButton, destroyButton];
     self.title = [NSString stringWithFormat:@"0"];
-    // Timer prueba movimiento
     
+    // Timer prueba movimiento
     [NSTimer scheduledTimerWithTimeInterval:1.0/RATE_PER_SECOND
                                      target:self
-                                   selector:@selector(moveBalls:)
+                                   selector:@selector(moveBall)
                                    userInfo:nil
                                     repeats:YES];
 }
@@ -89,7 +101,7 @@
 - (void)destroyAllBalls:(id)sender {
     self.usedPowerUp = YES;
     for (RFMBallView *each in self.playGroundView.subviews) {
-        [self destroyBallWithFadeOut:each];
+        [self removeBall:each];
     }
     self.usedPowerUp = NO;
 }
@@ -97,18 +109,25 @@
 #pragma mark - Actions
 -(void) addBallToView:(id) sender
 {
+    /*
     NSInteger radius = [self randomNumberFrom: self.minRadius
                                            To: self.maxRadius];
     
-    RFMBallView *ball = [[RFMBallView alloc] initWithposition:[self randomPositionWithRadius:radius]
+    
+     RFMBallView *ball = [[RFMBallView alloc] initWithposition:[self randomPositionWithRadius:radius]
                                                        radius:radius
                                                   filledColor:[self randomColor]
                                                         speed:[self randomNumberFrom:50
                                                                                   To:150]
                                                     direction:[self randomDirection]];
-    [ball setupBall];
-    
-    // add gesture recognizer
+    */
+    RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
+                                                                            Height:self.playGroundView.frame.size.height
+                                                                          MinSpeed:self.minSpeed
+                                                                          maxSpeed:self.maxSpeed
+                                                                         minRadius:self.minRadius
+                                                                         maxRadius:self.maxRadius];
+     // add gesture recognizer
     UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                              action:@selector(didBallTouch:)];
     [oneTap setNumberOfTapsRequired:1];
@@ -116,14 +135,11 @@
     
     [self.arrayOfBalls addObject:ball];
     [self.playGroundView addSubview:ball];
-    
-    //self.title = [NSString stringWithFormat:@"%lu", (unsigned long)[self.arrayOfBalls count]];
 }
 
 #pragma mark - Operations with balls
--(void) moveBalls:(id) sender
-{
-    
+-(void) moveBall
+{    
     for (RFMBallView *each in self.playGroundView.subviews) {
         if ([self.arrayOfBalls count] > 0 && [self.arrayOfBalls objectAtIndex:0] == each) {
             each.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -164,10 +180,12 @@
                             each.direction = collisionAngleForCollisionedBall;
                             collisionedBall.direction = collisionAngleForBall;
 
-                            [self reduceSizeOfCrashedBall:each];
+                            [each reducesBallSizeUntilReachThisRadius:self.minRadius];
                             
-                            [self increaseSpeedfor:each];
-                            [self increaseSpeedfor:collisionedBall];
+                            [each increaseSpeedWithThisIncrement:self.speedIncrement
+                                                           until:self.maxSpeed];
+                            [collisionedBall increaseSpeedWithThisIncrement:self.speedIncrement
+                                                                      until:self.maxSpeed];
                         }
                         
                     }
@@ -199,47 +217,11 @@
     
 }
 
-
-
--(void) reduceSizeOfCrashedBall:(RFMBallView *) aBall
+-(void) removeBall:(RFMBallView *) aBall
 {
-    aBall.radius -= aBall.radius * 0.05;
-    
-    if (aBall.radius < self.minRadius) {
-        aBall.radius = self.minRadius;
-    }
-    
-    [UIView animateWithDuration:0.1 animations:^{
-        [aBall setFrame:CGRectMake(aBall.center.x, aBall.center.y, aBall.radius * 2, aBall.radius * 2)];
-    } completion:^(BOOL finished) {
-        [aBall.layer setCornerRadius:aBall.radius];
-    }];
-}
-
--(void) increaseSpeedfor:(RFMBallView *) aBall
-{
-    CGFloat newSpeed;
-    newSpeed = aBall.speed * self.speedIncrement;
-    
-    if (newSpeed > self.maxSpeed) {
-        aBall.speed = self.maxSpeed;
-    }else{
-        aBall.speed = newSpeed;
-    }
-}
-
-
--(void) destroyBallWithFadeOut:(id) aBall
-{
-    RFMBallView *ballToDestroy = aBall;
-    [UIView animateWithDuration:.5 animations:^{
-        [ballToDestroy setAlpha:0];
-        [ballToDestroy setFrame:CGRectMake(ballToDestroy.center.x, ballToDestroy.center.y, 0, 0)];
-        [self.arrayOfBalls removeObject: ballToDestroy];
-        [self sumPoint:ballToDestroy.radius];
-    } completion:^(BOOL finished) {
-        [ballToDestroy removeFromSuperview];
-    }];
+    [aBall destroyWithFadeOut];
+    [self.arrayOfBalls removeObject: aBall];
+    [self sumPoint:aBall.radius];
 }
 
 -(void) sumPoint:(NSInteger) points
@@ -256,14 +238,14 @@
 #pragma mark - Balls Touch Handler
 -(void) didBallTouch:(UITapGestureRecognizer *) sender
 {
-    //RFMBallView *tappedBall = sender.view;
     if ([self.arrayOfBalls objectAtIndex:0] == sender.view) {
-        [self destroyBallWithFadeOut: sender.view];
+        [self removeBall:[self.arrayOfBalls objectAtIndex:0]];
     }
-         
 }
 
+/*
 #pragma mark - Utils
+
 -(UIColor *) randomColor
 {
     CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
@@ -272,11 +254,7 @@
     UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
     return color;
 }
-/*
--(NSInteger)randomPositionMinorThan:(NSInteger)maxValue
-{
-    return (arc4random() % maxValue);
-}*/
+
 
 -(NSInteger)randomNumberFrom:(NSInteger)minValue To:(NSInteger)maxValue
 {
@@ -305,5 +283,5 @@
     }
     return CGPointMake(x, y);
 }
-
+*/
 @end
