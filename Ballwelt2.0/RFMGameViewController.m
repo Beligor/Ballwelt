@@ -15,7 +15,8 @@
 @property (nonatomic) NSInteger minRadius;
 @property (nonatomic) NSInteger maxRadius;
 
-//@property (nonatomic) CGFloat maxSpeed;
+@property (nonatomic) CGFloat speedIncrement;
+@property (nonatomic) CGFloat maxSpeed;
 //@property (nonatomic) CGFloat minSpeed;
 @end
 
@@ -32,8 +33,11 @@
 {
     [super viewWillAppear:animated];
     
-    self.minRadius = 5;
-    self.maxRadius = 50;
+    self.minRadius = 20;
+    self.maxRadius = 30;
+    
+    self.speedIncrement = 1.2;
+    self.maxSpeed = 300;
     
     self.arrayOfBalls = [[NSMutableArray alloc] init];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
@@ -55,6 +59,7 @@
     self.navigationItem.leftBarButtonItems = @[slowButton, freezeButton, destroyButton];
     self.title = [NSString stringWithFormat:@"0"];
     // Timer prueba movimiento
+    
     [NSTimer scheduledTimerWithTimeInterval:1.0/RATE_PER_SECOND
                                      target:self
                                    selector:@selector(moveBalls:)
@@ -92,7 +97,7 @@
 #pragma mark - Actions
 -(void) addBallToView:(id) sender
 {
-    NSInteger radius = [self randomNumberFrom: 45
+    NSInteger radius = [self randomNumberFrom: self.minRadius
                                            To: self.maxRadius];
     
     RFMBallView *ball = [[RFMBallView alloc] initWithposition:[self randomPositionWithRadius:radius]
@@ -136,8 +141,8 @@
             CGFloat directionInRadiants = each.direction * M_PI/-180;
             
             // Calculates the next position for this time fraction
-            CGFloat nextMovementInX = each.center.x + nextMove * cos(directionInRadiants);
-            CGFloat nextMovementInY = each.center.y + nextMove * sin(directionInRadiants);
+            CGFloat nextMoveInX = each.center.x + nextMove * cos(directionInRadiants);
+            CGFloat nextMoveInY = each.center.y + nextMove * sin(directionInRadiants);
             
             
             // Check if crash each other
@@ -146,26 +151,23 @@
                 for (RFMBallView *collisionedBall in self.playGroundView.subviews){
                     if (each != collisionedBall) {
                         //calulca la distancia que hay entre los centros de los dos circulos];
-                        CGFloat distX = nextMovementInX - collisionedBall.center.x;
-                        CGFloat distY = nextMovementInY - collisionedBall.center.y;
+                        CGFloat distX = nextMoveInX - collisionedBall.center.x;
+                        CGFloat distY = nextMoveInY - collisionedBall.center.y;
                         CGFloat distanceBetweenBalls =sqrt(distX*distX + distY*distY);
                         //si la distancia en el proximo movimiento es menor o igual a la suma de los dos radios es que chocarán
                         if (distanceBetweenBalls <= (collisionedBall.radius + each.radius)) {
                             //Angulo de colision en la bola actual
-                            CGFloat collisionAngleBall =(atan2(collisionedBall.center.y - nextMovementInY, collisionedBall.center.x -nextMovementInX) * -180/M_PI);
+                            CGFloat collisionAngleForBall =(atan2(collisionedBall.center.y - nextMoveInY, collisionedBall.center.x -nextMoveInX) * -180/M_PI);
                             //Angulo de colision en bolaColision
-                            CGFloat collisionAngleCollisionedBall =(atan2(nextMovementInY - collisionedBall.center.y, nextMovementInX - collisionedBall.center.x) * -180/M_PI);
+                            CGFloat collisionAngleForCollisionedBall =(atan2(nextMoveInY - collisionedBall.center.y, nextMoveInX - collisionedBall.center.x) * -180/M_PI);
                             
-                            each.direction = collisionAngleCollisionedBall;
-                            collisionedBall.direction = collisionAngleBall;
-                            
-                            
-                           // collisionedBall.radius -= collisionedBall.radius * 0.05;
-//                            [self reduceSizeOfCrashedBall:collisionedBall];
-                            
-                            
-                            
+                            each.direction = collisionAngleForCollisionedBall;
+                            collisionedBall.direction = collisionAngleForBall;
+
                             [self reduceSizeOfCrashedBall:each];
+                            
+                            [self increaseSpeedfor:each];
+                            [self increaseSpeedfor:collisionedBall];
                         }
                         
                     }
@@ -173,83 +175,25 @@
                 
             }
             
-
-            /*
-             
-             NSInteger i;
-             for (i=0; i<maximo; i++) {
-             bola *bolaColision;
-             bolaColision = [appDelegate.arrayBolas objectAtIndex:i];
-             
-             if (self != bolaColision) {
-             //calulca la distancia que hay entre los centros de los dos circulos];
-             CGFloat distX = proximaPosicion.x-bolaColision.center.x;
-             CGFloat distY = proximaPosicion.y-bolaColision.center.y;
-             CGFloat distancia =sqrt(distX*distX + distY*distY);
-             
-             //si la distancia en el proximo movimiento es menor o igual a la suma de los dos radios es que chocarán
-             if (distancia <= (bolaColision.radio+self.radio)) {
-             //### se multiplica *-180/M_PI para pasar a grados, el signo negativo es para tener el angulo +90 en el cuadrante superior
-             //Angulo de colision en la bola actual
-             CGFloat anguloChoqueBolaActual =(atan2(bolaColision.center.y-proximaPosicion.y, bolaColision.center.x-proximaPosicion.x)*-180/M_PI);
-             //Angulo de colision en bolaColision
-             CGFloat anguloChoqueBolaColision =(atan2(proximaPosicion.y-bolaColision.center.y, proximaPosicion.x-bolaColision.center.x)*-180/M_PI);
-             
-             self.direccion = anguloChoqueBolaColision;
-             bolaColision.direccion= anguloChoqueBolaActual;
-             
-             
-             _radio -=_radio*0.05;
-             if (_radio<20) {
-             _radio=20;
-             }
-             
-             [UIView animateWithDuration:0.1 animations:^{
-             [self setFrame:CGRectMake(self.center.x, self.center.y, _radio*2, _radio*2)];
-             } completion:^(BOOL finished) {
-             [self.layer setCornerRadius:_radio];
-             //[etiqueta setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-             }];
-             
-             bolaColision.haColosionado=YES;
-             
-             //incrementa la velocidad de cada bola implicada en el choque hasta un maximo de 200pixels/segundo
-             if (!_velocidadLimitada && !bolaColision.velocidadLimitada) {
-             _velocidad=_velocidad*appDelegate.aumentoVelocidad;
-             if (_velocidad>150) {
-             _velocidad=150;
-             }
-             bolaColision.velocidad =bolaColision.velocidad*appDelegate.aumentoVelocidad;
-             if (bolaColision.velocidad>150) {
-             bolaColision.velocidad =150;
-             }
-             }
-             }
-             }
-             }
-             }
-             
-             
-             */
-            
             // Check if ball position is inside the screen bounds
-            if (nextMovementInX + each.radius > each.superview.frame.size.width) {
-                nextMovementInX = each.superview.frame.size.width - each.radius;
+            if (nextMoveInX + each.radius > each.superview.frame.size.width) {
+                nextMoveInX = each.superview.frame.size.width - each.radius;
                 each.direction = 180 - each.direction;
-            }else if (nextMovementInX - each.radius < 0){
-                nextMovementInX = each.radius;
+            }else if (nextMoveInX - each.radius < 0){
+                nextMoveInX = each.radius;
                 each.direction = (each.direction - 180) * -1;
             }
             
-            if (nextMovementInY + each.radius > each.superview.frame.size.height) {
-                nextMovementInY = each.superview.frame.size.height - each.radius;
+            if (nextMoveInY + each.radius > each.superview.frame.size.height) {
+                nextMoveInY = each.superview.frame.size.height - each.radius;
                 each.direction *= -1;
-            }else if (nextMovementInY - each.radius <0){
-                nextMovementInY = each.radius;
+            }else if (nextMoveInY - each.radius <0){
+                nextMoveInY = each.radius;
                 each.direction *=-1;
             }
             
-            [each setCenter:CGPointMake(nextMovementInX, nextMovementInY)];
+            
+            [each setCenter:CGPointMake(nextMoveInX, nextMoveInY)];
         }
     }
     
@@ -271,6 +215,19 @@
         [aBall.layer setCornerRadius:aBall.radius];
     }];
 }
+
+-(void) increaseSpeedfor:(RFMBallView *) aBall
+{
+    CGFloat newSpeed;
+    newSpeed = aBall.speed * self.speedIncrement;
+    
+    if (newSpeed > self.maxSpeed) {
+        aBall.speed = self.maxSpeed;
+    }else{
+        aBall.speed = newSpeed;
+    }
+}
+
 
 -(void) destroyBallWithFadeOut:(id) aBall
 {
