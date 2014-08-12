@@ -10,26 +10,7 @@
 
 @implementation RFMBallView
 
-
 #pragma mark - Init
--(id)initWithposition:(CGPoint)aPosition
-               radius:(NSInteger) aRadius
-          filledColor:(UIColor *) aColor
-                speed:(CGFloat) aSpeed
-            direction:(NSInteger) aDirection
-{
-    if (self = [super initWithFrame:CGRectMake(0, 0, aRadius * 2, aRadius * 2)])
-    {
-        _position = aPosition;
-        _radius = aRadius;
-        _color = aColor;
-        _speed = aSpeed;
-        _direction = aDirection;
-        [self setupBall];
-    }
-    return self;
-}
-
 -(id)initWithRandomPositioninViewWithWidth:(NSInteger) aWidth
                                     Height:(NSInteger) anHeight
                                   MinSpeed:(NSInteger) aMinSpeed
@@ -50,14 +31,6 @@
     }
     return self;
 }
-
-
-#pragma mark - View Lifecycle
--(void)dealloc
-{
-    NSLog(@"destruida");
-}
-
 
 #pragma mark - Setup Ball
 -(void) setupBall
@@ -153,6 +126,7 @@
     }else if (y + self.radius >= height){
         y = height - self.radius;
     }
+    
     return CGPointMake(x, y);
 }
 

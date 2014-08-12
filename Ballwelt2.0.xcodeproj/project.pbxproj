@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		053BCDF11998B0A200E2631E /* RFMTimeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDF01998B0A200E2631E /* RFMTimeBar.m */; };
+		053BCDF11998B0A200E2631E /* RFMTimeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDF01998B0A200E2631E /* RFMTimeBarView.m */; };
+		053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDF61999305500E2631E /* RFMGameTimeBarView.m */; };
+		053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDF9199930F000E2631E /* RFMNewBallTimeBarView.m */; };
+		053BCDFE1999586B00E2631E /* RFMSystemSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDFD1999586B00E2631E /* RFMSystemSounds.m */; };
+		053BCE0219995C4700E2631E /* wrongBall.wav in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE0119995C4700E2631E /* wrongBall.wav */; };
+		053BCE041999663D00E2631E /* rightBall.wav in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE031999663D00E2631E /* rightBall.wav */; };
+		053BCE091999807D00E2631E /* RFMPauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCE071999807D00E2631E /* RFMPauseViewController.m */; };
+		053BCE0A1999807D00E2631E /* RFMPauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE081999807D00E2631E /* RFMPauseViewController.xib */; };
 		05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3D19951E7F003F7A1A /* Foundation.framework */; };
 		05BD9C4019951E7F003F7A1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */; };
 		05BD9C4219951E7F003F7A1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C4119951E7F003F7A1A /* UIKit.framework */; };
@@ -36,8 +43,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		053BCDEF1998B0A200E2631E /* RFMTimeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTimeBar.h; sourceTree = "<group>"; };
-		053BCDF01998B0A200E2631E /* RFMTimeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTimeBar.m; sourceTree = "<group>"; };
+		053BCDEF1998B0A200E2631E /* RFMTimeBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTimeBarView.h; sourceTree = "<group>"; };
+		053BCDF01998B0A200E2631E /* RFMTimeBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTimeBarView.m; sourceTree = "<group>"; };
+		053BCDF51999305500E2631E /* RFMGameTimeBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMGameTimeBarView.h; sourceTree = "<group>"; };
+		053BCDF61999305500E2631E /* RFMGameTimeBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMGameTimeBarView.m; sourceTree = "<group>"; };
+		053BCDF8199930F000E2631E /* RFMNewBallTimeBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMNewBallTimeBarView.h; sourceTree = "<group>"; };
+		053BCDF9199930F000E2631E /* RFMNewBallTimeBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMNewBallTimeBarView.m; sourceTree = "<group>"; };
+		053BCDFC1999586B00E2631E /* RFMSystemSounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMSystemSounds.h; sourceTree = "<group>"; };
+		053BCDFD1999586B00E2631E /* RFMSystemSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMSystemSounds.m; sourceTree = "<group>"; };
+		053BCE0119995C4700E2631E /* wrongBall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrongBall.wav; sourceTree = "<group>"; };
+		053BCE031999663D00E2631E /* rightBall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rightBall.wav; sourceTree = "<group>"; };
+		053BCE061999807D00E2631E /* RFMPauseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPauseViewController.h; sourceTree = "<group>"; };
+		053BCE071999807D00E2631E /* RFMPauseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPauseViewController.m; sourceTree = "<group>"; };
+		053BCE081999807D00E2631E /* RFMPauseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMPauseViewController.xib; sourceTree = "<group>"; };
 		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		05BD9C3A19951E7F003F7A1A /* Ballwelt2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballwelt2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BD9C3D19951E7F003F7A1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,6 +104,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		053BCDFB199937A800E2631E /* Time Bars */ = {
+			isa = PBXGroup;
+			children = (
+				053BCDEF1998B0A200E2631E /* RFMTimeBarView.h */,
+				053BCDF01998B0A200E2631E /* RFMTimeBarView.m */,
+				053BCDF51999305500E2631E /* RFMGameTimeBarView.h */,
+				053BCDF61999305500E2631E /* RFMGameTimeBarView.m */,
+				053BCDF8199930F000E2631E /* RFMNewBallTimeBarView.h */,
+				053BCDF9199930F000E2631E /* RFMNewBallTimeBarView.m */,
+			);
+			name = "Time Bars";
+			sourceTree = "<group>";
+		};
+		053BCE051999804800E2631E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				053BCE031999663D00E2631E /* rightBall.wav */,
+				053BCE0119995C4700E2631E /* wrongBall.wav */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		05BD9C3119951E7F003F7A1A = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +161,9 @@
 			children = (
 				05BD9C4C19951E7F003F7A1A /* RFMAppDelegate.h */,
 				05BD9C4D19951E7F003F7A1A /* RFMAppDelegate.m */,
+				053BCDFC1999586B00E2631E /* RFMSystemSounds.h */,
+				053BCDFD1999586B00E2631E /* RFMSystemSounds.m */,
+				053BCE051999804800E2631E /* Resources */,
 				05BD9C7219951F10003F7A1A /* Views */,
 				05BD9C6C19951E88003F7A1A /* Controllers */,
 				05BD9C4F19951E7F003F7A1A /* Images.xcassets */,
@@ -165,6 +208,9 @@
 				05BD9C6D19951EAA003F7A1A /* RFMGameViewController.h */,
 				05BD9C6E19951EAA003F7A1A /* RFMGameViewController.m */,
 				05BD9C6F19951EAA003F7A1A /* RFMGameViewController.xib */,
+				053BCE061999807D00E2631E /* RFMPauseViewController.h */,
+				053BCE071999807D00E2631E /* RFMPauseViewController.m */,
+				053BCE081999807D00E2631E /* RFMPauseViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -174,8 +220,7 @@
 			children = (
 				05BD9C7319951F1F003F7A1A /* RFMBallView.h */,
 				05BD9C7419951F1F003F7A1A /* RFMBallView.m */,
-				053BCDEF1998B0A200E2631E /* RFMTimeBar.h */,
-				053BCDF01998B0A200E2631E /* RFMTimeBar.m */,
+				053BCDFB199937A800E2631E /* Time Bars */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -257,8 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
+				053BCE0219995C4700E2631E /* wrongBall.wav in Resources */,
+				053BCE041999663D00E2631E /* rightBall.wav in Resources */,
 				05BD9C4819951E7F003F7A1A /* InfoPlist.strings in Resources */,
 				05BD9C5019951E7F003F7A1A /* Images.xcassets in Resources */,
+				053BCE0A1999807D00E2631E /* RFMPauseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +327,13 @@
 			files = (
 				05BD9C7519951F1F003F7A1A /* RFMBallView.m in Sources */,
 				05BD9C4E19951E7F003F7A1A /* RFMAppDelegate.m in Sources */,
+				053BCDFE1999586B00E2631E /* RFMSystemSounds.m in Sources */,
+				053BCE091999807D00E2631E /* RFMPauseViewController.m in Sources */,
 				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
-				053BCDF11998B0A200E2631E /* RFMTimeBar.m in Sources */,
+				053BCDF11998B0A200E2631E /* RFMTimeBarView.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
+				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
+				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

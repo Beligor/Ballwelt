@@ -9,6 +9,7 @@
 #import "RFMAppDelegate.h"
 #import "RFMGameViewController.h"
 
+
 @implementation RFMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -16,7 +17,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     RFMGameViewController *gameVC = [[RFMGameViewController alloc] init];
-    
+
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:gameVC];
     
     self.window.rootViewController = navVC;

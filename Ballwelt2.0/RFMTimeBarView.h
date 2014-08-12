@@ -8,17 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFMTimeBar : UIView
+@interface RFMTimeBarView : UIView
 
-@property (nonatomic) NSInteger totalTime;
+@property (nonatomic) CGFloat totalTime;
 @property (nonatomic) NSInteger width;
 @property (nonatomic) NSInteger height;
+@property (nonatomic) CGPoint position;
 @property (nonatomic, strong) UIColor *barcolor;
+
+@property (nonatomic) CGFloat timeLeft;
+@property (nonatomic, strong) UIView *timeBar;
+@property (nonatomic) BOOL canCreateNewBalls;
+@property (nonatomic) BOOL paused;
+
 
 -(id) initWithTotalTime:(NSInteger) aTotalTime
                   width:(NSInteger) aWidth
                  height:(NSInteger) aHeight
+               position:(CGPoint) aPosition
                barColor:(UIColor *) aBarColor;
 
+-(void)syncrhonizeTimeLeftWithBarWidth;
 
 @end

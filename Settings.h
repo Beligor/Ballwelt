@@ -7,3 +7,5 @@
 //
 
 #define RATE_PER_SECOND 60
+#define SPEED_LIMIT 300
+#define MIN_RADIUS 20
