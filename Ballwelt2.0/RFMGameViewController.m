@@ -14,6 +14,8 @@
 #import "RFMSystemSounds.h"
 
 @interface RFMGameViewController ()
+@property (nonatomic, strong) RFMGameTimeBarView *gameBar;
+@property (nonatomic, strong) RFMNewBallTimeBarView *ballBar;
 @property (nonatomic, strong) NSMutableArray *arrayOfBalls;
 @property (nonatomic, strong) NSTimer *gameTimer;
 
@@ -30,8 +32,7 @@
 @property (nonatomic) CGFloat minSpeed;
 @property (nonatomic) NSInteger numberOfGameOverBalls;
 
-@property (nonatomic, strong) RFMGameTimeBarView *gameBar;
-@property (nonatomic, strong) RFMNewBallTimeBarView *ballBar;
+
 @end
 
 @implementation RFMGameViewController
@@ -55,16 +56,16 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+#warning add a count down
     if (!self.paused) {
-        [super viewWillAppear:animated];
-        
         
         [self configureGame];
         
         [self configurarNavigationController];
         
         
-        self.gameBar = [[RFMGameTimeBarView alloc] initWithTotalTime:5
+        self.gameBar = [[RFMGameTimeBarView alloc] initWithTotalTime:20
                                                                width:self.controlPanelView.frame.size.width
                                                               height:20
                                                             position:CGPointMake(0, 0)
@@ -76,7 +77,7 @@
                                                                position:CGPointMake(0,self.gameBar.frame.size.height-2)
                                                                barColor:Rgb2UIColor(244, 109, 35)];
         UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                 action:@selector(pauseMenu)];
+                                                                                 action:@selector(makeAPause)];
         [oneTap setNumberOfTapsRequired:1];
         [self.gameBar addGestureRecognizer:oneTap];
         
@@ -90,7 +91,7 @@
         [self.controlPanelView addSubview:self.ballBar];
         
         // Add N balls at the beginin
-        for (int i =0; i<25; i++) {
+        for (int i =0; i<5; i++) {
             [self addBallToView];
         }
         
@@ -104,9 +105,11 @@
     
 }
 
--(void)dealloc{
+-(void)dealloc
+{
     NSLog(@"RFMGameViewController dealloc");
 }
+
 #pragma mark - Provisional
 -(void)configurarNavigationController
 {
@@ -129,7 +132,8 @@
     UIBarButtonItem *destroyButton = [[UIBarButtonItem alloc] initWithTitle:@"Destroy"
                                                                       style:UIBarButtonItemStyleDone
                                                                      target:self
-                                                                     action:@selector(destroyAllBalls:)];
+                                                                     action:@selector(destroyBallsWithAnimation)];
+    
     self.navigationItem.rightBarButtonItem = addButton;
     self.navigationItem.leftBarButtonItems = @[slowButton, freezeButton, destroyButton, speedButton];
 }
@@ -137,12 +141,12 @@
 #pragma mark - Game utils
 -(void)configureGame
 {
-    self.minRadius = 20;
-    self.maxRadius = 30;
+    self.minRadius = 40;
+    self.maxRadius = 50;
     
-    self.speedIncrement = 1.3;
-    self.minSpeed = 100;
-    self.maxSpeed = 150;
+    self.speedIncrement = 1.2;
+    self.minSpeed = 70;
+    self.maxSpeed = 100;
     
     self.level = 1;
     
@@ -168,7 +172,13 @@
     [self.ballBar syncrhonizeTimeLeftWithBarWidth];
     [self moveBall];
 }
-
+#warning mejorar este metodo
+// se usa para obligar a las bolas a ser destruidas con animación al pulsar el power up de destruir
+// intentar mejorar el metodo con la animación para que este no sea necesario
+-(void)destroyBallsWithAnimation
+{
+    [self destroyAllBallsAnimated:YES];
+}
 
 
 #pragma mark - Actions
@@ -214,8 +224,8 @@
     self.maxSpeed = self.maxSpeed + 10;
     self.minSpeed = self.minSpeed + 10;
     
-    self.maxRadius = self.maxRadius - 2;
-    self.minRadius = self.minRadius - 2;
+    self.maxRadius = self.maxRadius - self.maxRadius * 0.05;
+    self.minRadius = self.minRadius - self.minRadius * 0.05;
    
     
     if (self.maxSpeed >= SPEED_LIMIT ) {
@@ -234,6 +244,40 @@
     }
 }
 
+#pragma mark - Pause & Game Over Menu
+-(void)showMenuNoForPauseYesForGameOver:(BOOL)isGameOver
+{
+    [self.gameTimer invalidate];
+    
+    RFMPauseViewController *pauseVC = [[RFMPauseViewController alloc] initWithBackGround: [self screenCapture]
+                                                                                 isGameOver:isGameOver];
+    pauseVC.delegate = self;
+    
+    if (isGameOver) {
+        // Destroy this viewController before show menu
+        self.view = nil;
+    }else{
+        self.paused = YES;
+    }
+    [self presentViewController:pauseVC
+                       animated:NO
+                     completion:nil];
+}
+#warning change this method
+-(void)makeAPause
+{
+    [self showMenuNoForPauseYesForGameOver:NO];
+}
+
+-(UIImage *)screenCapture
+{
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *screenCapture = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return screenCapture;
+}
+
 -(void)gameOver
 {
     self.numberOfGameOverBalls = self.numberOfGameOverBalls + 1;
@@ -241,7 +285,8 @@
         [self addBallToView];
     }else{
         [self.gameTimer invalidate];
-        [self gameOverMenu];
+        //        sleep(1);
+        [self showMenuNoForPauseYesForGameOver:YES];
     }
 }
 
@@ -346,46 +391,6 @@
             }
         }
     }
-    
-
-}
-
-#pragma mark - Pause/Game Over
--(void)pauseMenu
-{
-    [self showMenuForGameOver:NO];
-}
-
--(void)gameOverMenu
-{
-    [self showMenuForGameOver:YES];
-}
-
--(void)showMenuForGameOver:(BOOL)isGameOverMenu
-{
-    [self.gameTimer invalidate];
-
-    RFMPauseViewController *pauseVC = [[RFMPauseViewController alloc] initWithBackGround: [self screenCapture]
-                                                                              isGameOver:isGameOverMenu];
-    
-    if (isGameOverMenu) {
-        // Destroy this viewController before show menu
-        self.view = nil;
-    }else{
-        self.paused = YES;
-    }
-    [self presentViewController:pauseVC
-                       animated:NO
-                     completion:nil];
-}
-
--(UIImage *)screenCapture
-{
-    UIGraphicsBeginImageContext(self.view.bounds.size);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *screenCapture = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return screenCapture;
 }
 
 #pragma mark - Powerups
@@ -396,6 +401,7 @@
 - (void)slowDownBalls:(id)sender {
     for (RFMBallView *each in self.playGroundView.subviews) {
         each.speed = each.speed - each.speed/3 * 2;
+        each.canIncreaseSpeed = NO;
     }
 }
 - (void)freezeBalls:(id)sender {
@@ -404,10 +410,14 @@
     }
 }
 
-- (void)destroyAllBalls:(id)sender {
+- (void)destroyAllBallsAnimated:(BOOL)animated{
     self.usedPowerUp = YES;
     for (RFMBallView *each in self.playGroundView.subviews) {
-        [self removeBall:each];
+        if (animated) {
+            [self removeBall:each];
+        }else{
+            [each removeFromSuperview];
+        }
     }
     self.usedPowerUp = NO;
 }
@@ -418,7 +428,7 @@
 {
     
     if (self.ballBar.canCreateNewBalls) {
-        for (int i = 0; i<self.level; i++) {
+        for (int i = 0; i<self.level+1; i++) {
             [self addBallToView];
         }
     }else{
@@ -454,4 +464,23 @@
                                                      repeats:YES];
 }
 
+// RFMPauseViewControllerDelegate
+-(void)restartGame
+{
+    [self destroyAllBallsAnimated:NO];
+    self.arrayOfBalls = nil;
+    [self.gameBar removeFromSuperview];
+    self.gameBar = nil;
+    [self.ballBar removeFromSuperview];
+    self.ballBar = nil;
+    self.paused = NO;
+}
+
+-(void)exitGame{
+    self.view = nil;
+    [self dismissViewControllerAnimated:NO
+                             completion:nil];
+    [self dismissViewControllerAnimated:NO
+                             completion:nil];
+}
 @end

@@ -15,14 +15,8 @@
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic) CGFloat speed;
 @property (nonatomic) NSInteger direction;
+@property (nonatomic) BOOL canIncreaseSpeed;
 
-/*
--(id)initWithposition:(CGPoint)aPosition
-               radius:(NSInteger) aRadius
-          filledColor:(UIColor *) aColor
-                speed:(CGFloat) aSpeed
-            direction:(NSInteger) aDirection;
-*/
 -(id)initWithRandomPositioninViewWithWidth:(NSInteger) aWidth
                                     Height:(NSInteger) anHeight
                                   MinSpeed:(NSInteger) aMinSpeed

@@ -8,20 +8,21 @@
 
 #import "RFMPauseViewController.h"
 
-@interface RFMPauseViewController ()
 
+@interface RFMPauseViewController ()
+@property (nonatomic) BOOL isGameOver;
 @end
 
 @implementation RFMPauseViewController
 
 #pragma mark - Init
 -(id)initWithBackGround:(UIImage *) aScreenCapture
-             isGameOver:(BOOL)isGameOver
+             isGameOver:(BOOL) isAGameOver
 {
     if (self = [self initWithNibName:nil
                               bundle:nil]) {
         _image = aScreenCapture;
-        _isGameOver = isGameOver;
+        _isGameOver = isAGameOver;
     }
     return self;
 }
@@ -31,31 +32,42 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:self.image]];
+    self.menuSquare.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGroundPlayScreen"]];
+    
+    [self.menuSquare.layer setCornerRadius:self.menuSquare.frame.size.height/4];
+    [self.menuSquare.layer setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.menuSquare.layer setBorderWidth:1.0];
+    [self.menuSquare.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.menuSquare.layer setShadowOffset:CGSizeMake(5.0f, 5.0f)];
+    [self.menuSquare.layer setShadowOpacity:1.0f];
+    [self.menuSquare.layer setShadowRadius:5.0f];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.backGround.image = self.image;
+    
     // Create Queue
     dispatch_queue_t processImage = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-
     // block to process in background
     dispatch_async(processImage, ^{
         [self applyBlurEffect];
         // execute in Main Queue
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.backGround.image = self.image;
+            self.blurredImage.image = self.image;
+            [self showBlur];
         });
         
     });
-    [self showMenu];
+    //[self showMenu];
 }
 
+#warning delete this method
 -(void)dealloc{
     NSLog(@"RFMPauseViewController dealloc");
 }
-
+/*
 #pragma mark - Menu
 -(void)showMenu
 {
@@ -63,11 +75,12 @@
         [self.button setTitle:@"Game Over"
                      forState:UIControlStateNormal];
     }else{
-        [self.button setTitle:@"Pause"
+        [self.button setTitle:@"Continue"
                      forState:UIControlStateNormal];
     }
-}
 
+  }
+*/
 
 #pragma mark - Blur effect
 -(void)applyBlurEffect
@@ -98,24 +111,53 @@
     CGImageRelease(res);
 }
 
+- (void)showBlur
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.blurredImage setAlpha: 1.0];
+        [self.menuSquare setAlpha:0.7];
+//        [cuadroPuntuacion setAlpha:0.7];
+    }];
+}
+
 #pragma mark - Actions
-- (IBAction)button:(id)sender {
-    UIButton *btn = sender;
-    
-    
-    if ([btn.titleLabel.text isEqual: @"Game Over"]) {
-        // Game Over
-        [self dismissViewControllerAnimated:NO
-                                 completion:nil];
-    }else{
-        // Pause
-        [self dismissViewControllerAnimated:NO
-                                 completion:nil];
-    }
-    
-    
-    
-    
+- (IBAction)continuBtn:(id)sender
+{
+    [self dismissViewControllerAnimated:NO
+                             completion:nil];
+}
+
+- (IBAction)restartBtn:(id)sender {
+    [self.delegate restartGame];
+    [self dismissViewControllerAnimated:NO
+                             completion:nil];
+}
+
+- (IBAction)exitBtn:(id)sender {
+    [self.delegate exitGame];
+    /*
+    [self dismissViewControllerAnimated:NO
+                             completion:nil];*/
+}
+
+#pragma mark - iAd Delegate Methods
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    [UIView beginAnimations:nil
+                    context:nil];
+    [UIView setAnimationDuration:1];
+    [banner setAlpha:1];
+    [UIView commitAnimations];
+}
+
+- (void)bannerView:(ADBannerView *)banner
+didFailToReceiveAdWithError:(NSError *)error
+{
+    [UIView beginAnimations:nil
+                    context:nil];
+    [UIView setAnimationDuration:1];
+    [banner setAlpha:0];
+    [UIView commitAnimations];
 }
 
 

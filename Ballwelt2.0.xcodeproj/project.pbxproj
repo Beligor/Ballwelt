@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05370116199A993C0000B655 /* RFMMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05370114199A993C0000B655 /* RFMMainMenuViewController.m */; };
+		05370117199A993C0000B655 /* RFMMainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05370115199A993C0000B655 /* RFMMainMenuViewController.xib */; };
+		0537011A199AAC730000B655 /* Ballwelt.png in Resources */ = {isa = PBXBuildFile; fileRef = 05370119199AAC730000B655 /* Ballwelt.png */; };
+		0537011E199ADEDA0000B655 /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0537011C199ADED90000B655 /* facebook_logo.png */; };
+		0537011F199ADEDA0000B655 /* twitter_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0537011D199ADED90000B655 /* twitter_logo.png */; };
+		05370122199AF5C20000B655 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05370120199AEC950000B655 /* iAd.framework */; };
 		053BCDF11998B0A200E2631E /* RFMTimeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDF01998B0A200E2631E /* RFMTimeBarView.m */; };
 		053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDF61999305500E2631E /* RFMGameTimeBarView.m */; };
 		053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCDF9199930F000E2631E /* RFMNewBallTimeBarView.m */; };
@@ -15,6 +21,7 @@
 		053BCE041999663D00E2631E /* rightBall.wav in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE031999663D00E2631E /* rightBall.wav */; };
 		053BCE091999807D00E2631E /* RFMPauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCE071999807D00E2631E /* RFMPauseViewController.m */; };
 		053BCE0A1999807D00E2631E /* RFMPauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE081999807D00E2631E /* RFMPauseViewController.xib */; };
+		056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566239F199BCDD80020B35C /* backGroundPlayScreen.png */; };
 		05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3D19951E7F003F7A1A /* Foundation.framework */; };
 		05BD9C4019951E7F003F7A1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */; };
 		05BD9C4219951E7F003F7A1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C4119951E7F003F7A1A /* UIKit.framework */; };
@@ -43,6 +50,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05370113199A993C0000B655 /* RFMMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMMainMenuViewController.h; sourceTree = "<group>"; };
+		05370114199A993C0000B655 /* RFMMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMMainMenuViewController.m; sourceTree = "<group>"; };
+		05370115199A993C0000B655 /* RFMMainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMMainMenuViewController.xib; sourceTree = "<group>"; };
+		05370119199AAC730000B655 /* Ballwelt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ballwelt.png; sourceTree = "<group>"; };
+		0537011C199ADED90000B655 /* facebook_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_logo.png; sourceTree = "<group>"; };
+		0537011D199ADED90000B655 /* twitter_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_logo.png; sourceTree = "<group>"; };
+		05370120199AEC950000B655 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		053BCDEF1998B0A200E2631E /* RFMTimeBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTimeBarView.h; sourceTree = "<group>"; };
 		053BCDF01998B0A200E2631E /* RFMTimeBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTimeBarView.m; sourceTree = "<group>"; };
 		053BCDF51999305500E2631E /* RFMGameTimeBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMGameTimeBarView.h; sourceTree = "<group>"; };
@@ -56,6 +70,7 @@
 		053BCE061999807D00E2631E /* RFMPauseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPauseViewController.h; sourceTree = "<group>"; };
 		053BCE071999807D00E2631E /* RFMPauseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPauseViewController.m; sourceTree = "<group>"; };
 		053BCE081999807D00E2631E /* RFMPauseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMPauseViewController.xib; sourceTree = "<group>"; };
+		0566239F199BCDD80020B35C /* backGroundPlayScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundPlayScreen.png; sourceTree = "<group>"; };
 		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		05BD9C3A19951E7F003F7A1A /* Ballwelt2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballwelt2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BD9C3D19951E7F003F7A1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05370122199AF5C20000B655 /* iAd.framework in Frameworks */,
 				05BD9C4019951E7F003F7A1A /* CoreGraphics.framework in Frameworks */,
 				05BD9C4219951E7F003F7A1A /* UIKit.framework in Frameworks */,
 				05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */,
@@ -104,6 +120,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05370118199AAC3E0000B655 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				0537011B199ADEC00000B655 /* Social Networks Icons */,
+				05370119199AAC730000B655 /* Ballwelt.png */,
+				0566239F199BCDD80020B35C /* backGroundPlayScreen.png */,
+			);
+			path = Artwork;
+			sourceTree = "<group>";
+		};
+		0537011B199ADEC00000B655 /* Social Networks Icons */ = {
+			isa = PBXGroup;
+			children = (
+				0537011C199ADED90000B655 /* facebook_logo.png */,
+				0537011D199ADED90000B655 /* twitter_logo.png */,
+			);
+			name = "Social Networks Icons";
+			sourceTree = "<group>";
+		};
 		053BCDFB199937A800E2631E /* Time Bars */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +157,7 @@
 			children = (
 				053BCE031999663D00E2631E /* rightBall.wav */,
 				053BCE0119995C4700E2631E /* wrongBall.wav */,
+				05370118199AAC3E0000B655 /* Artwork */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -148,6 +184,7 @@
 		05BD9C3C19951E7F003F7A1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05370120199AEC950000B655 /* iAd.framework */,
 				05BD9C3D19951E7F003F7A1A /* Foundation.framework */,
 				05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */,
 				05BD9C4119951E7F003F7A1A /* UIKit.framework */,
@@ -159,15 +196,15 @@
 		05BD9C4319951E7F003F7A1A /* Ballwelt2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				053BCE051999804800E2631E /* Resources */,
 				05BD9C4C19951E7F003F7A1A /* RFMAppDelegate.h */,
 				05BD9C4D19951E7F003F7A1A /* RFMAppDelegate.m */,
 				053BCDFC1999586B00E2631E /* RFMSystemSounds.h */,
 				053BCDFD1999586B00E2631E /* RFMSystemSounds.m */,
-				053BCE051999804800E2631E /* Resources */,
+				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
 				05BD9C7219951F10003F7A1A /* Views */,
 				05BD9C6C19951E88003F7A1A /* Controllers */,
 				05BD9C4F19951E7F003F7A1A /* Images.xcassets */,
-				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
 				05BD9C4419951E7F003F7A1A /* Supporting Files */,
 			);
 			path = Ballwelt2.0;
@@ -211,6 +248,9 @@
 				053BCE061999807D00E2631E /* RFMPauseViewController.h */,
 				053BCE071999807D00E2631E /* RFMPauseViewController.m */,
 				053BCE081999807D00E2631E /* RFMPauseViewController.xib */,
+				05370113199A993C0000B655 /* RFMMainMenuViewController.h */,
+				05370114199A993C0000B655 /* RFMMainMenuViewController.m */,
+				05370115199A993C0000B655 /* RFMMainMenuViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -301,11 +341,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05370117199A993C0000B655 /* RFMMainMenuViewController.xib in Resources */,
+				0537011E199ADEDA0000B655 /* facebook_logo.png in Resources */,
+				0537011F199ADEDA0000B655 /* twitter_logo.png in Resources */,
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
 				053BCE0219995C4700E2631E /* wrongBall.wav in Resources */,
 				053BCE041999663D00E2631E /* rightBall.wav in Resources */,
 				05BD9C4819951E7F003F7A1A /* InfoPlist.strings in Resources */,
 				05BD9C5019951E7F003F7A1A /* Images.xcassets in Resources */,
+				056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */,
+				0537011A199AAC730000B655 /* Ballwelt.png in Resources */,
 				053BCE0A1999807D00E2631E /* RFMPauseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +376,7 @@
 				053BCE091999807D00E2631E /* RFMPauseViewController.m in Sources */,
 				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
 				053BCDF11998B0A200E2631E /* RFMTimeBarView.m in Sources */,
+				05370116199A993C0000B655 /* RFMMainMenuViewController.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
 				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,

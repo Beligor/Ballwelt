@@ -27,6 +27,7 @@
         _speed = [self randomNumberFrom:aMinSpeed
                                      To:aMaxSpeed];
         _direction = [self randomDirection];
+        _canIncreaseSpeed = YES;
         [self setupBall];
     }
     return self;
@@ -48,14 +49,17 @@
 -(void) increaseSpeedWithThisIncrement:(CGFloat) speedIncrement
                                  until:(CGFloat) maxSpeed
 {
-    CGFloat newSpeed;
-    newSpeed = self.speed * speedIncrement;
-    
-    if (newSpeed > maxSpeed) {
-        self.speed = maxSpeed;
-    }else{
-        self.speed = newSpeed;
+    if (self.canIncreaseSpeed) {
+        CGFloat newSpeed;
+        newSpeed = self.speed * speedIncrement;
+        
+        if (newSpeed > maxSpeed) {
+            self.speed = maxSpeed;
+        }else{
+            self.speed = newSpeed;
+        }
     }
+    
 }
 
 -(void) reducesBallSizeUntilReachThisRadius:(NSInteger) minRadius

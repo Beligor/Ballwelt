@@ -7,17 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
-@interface RFMPauseViewController : UIViewController
+@protocol RFMPauseViewControllerDelegate <NSObject>
+-(void)restartGame;
+-(void)exitGame;
+@end
 
-@property (weak, nonatomic) IBOutlet UIImageView *backGround;
+@interface RFMPauseViewController : UIViewController<ADBannerViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *blurredImage;
+@property (weak, nonatomic) IBOutlet UIButton *continueBtn;
+@property (weak, nonatomic) IBOutlet UIView *menuSquare;
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic) BOOL isGameOver;
-@property (weak, nonatomic) IBOutlet UIButton *button;
+@property (nonatomic, weak) id<RFMPauseViewControllerDelegate> delegate;
+
 
 -(id)initWithBackGround:(UIImage *) aScreenCapture
-             isGameOver:(BOOL) isGameOver;
-- (IBAction)button:(id)sender;
+             isGameOver:(BOOL) isAGameOver;
+
+
+- (IBAction)continuBtn:(id)sender;
+- (IBAction)restartBtn:(id)sender;
+- (IBAction)exitBtn:(id)sender;
 
 
 @end

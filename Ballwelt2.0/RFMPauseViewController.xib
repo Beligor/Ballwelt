@@ -6,8 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMPauseViewController">
             <connections>
-                <outlet property="backGround" destination="Lxk-G7-4eQ" id="5ou-tQ-SpG"/>
-                <outlet property="button" destination="nBF-sU-blR" id="UML-1y-fr6"/>
+                <outlet property="blurredImage" destination="Lxk-G7-4eQ" id="LnD-jO-h7O"/>
+                <outlet property="continueBtn" destination="nBF-sU-blR" id="mM1-Qp-gSX"/>
+                <outlet property="menuSquare" destination="DjJ-DJ-ZD8" id="tQG-hG-XEV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,22 +17,87 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-G7-4eQ">
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-G7-4eQ" userLabel="Image View - blur background">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-sU-blR">
-                    <rect key="frame" x="130" y="218" width="67" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Continuar">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="AlM-eX-Xla">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Fuq-Oa-RPM"/>
+                    </constraints>
                     <connections>
-                        <action selector="button:" destination="-1" eventType="touchUpInside" id="Z6e-lZ-fmu"/>
+                        <outlet property="delegate" destination="-1" id="Mrj-P6-jek"/>
                     </connections>
-                </button>
+                </adBannerView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjJ-DJ-ZD8" userLabel="View - Square Menu">
+                    <rect key="frame" x="55" y="142" width="210" height="284"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-sU-blR">
+                            <rect key="frame" x="62" y="20" width="86" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="Continuar">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="continuBtn:" destination="-1" eventType="touchUpInside" id="JJ4-OP-Loy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="hod-OP-HsP">
+                            <rect key="frame" x="67" y="124" width="76" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="Reiniciar">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="restartBtn:" destination="-1" eventType="touchUpInside" id="gyx-kk-39t"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="5yh-t6-HcL">
+                            <rect key="frame" x="-9" y="228" width="228" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="pito pito pito pito pito pito">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="exitBtn:" destination="-1" eventType="touchUpInside" id="Ic4-Gm-AVg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.02169921121" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="nBF-sU-blR" secondAttribute="centerX" id="5h5-nl-xKm"/>
+                        <constraint firstAttribute="centerY" secondItem="hod-OP-HsP" secondAttribute="centerY" id="Azq-Zx-Ccl"/>
+                        <constraint firstItem="nBF-sU-blR" firstAttribute="top" secondItem="DjJ-DJ-ZD8" secondAttribute="top" constant="20" id="oFd-Ty-k7J"/>
+                        <constraint firstAttribute="centerX" secondItem="5yh-t6-HcL" secondAttribute="centerX" id="sCt-ph-G1a"/>
+                        <constraint firstAttribute="centerX" secondItem="hod-OP-HsP" secondAttribute="centerX" id="wHH-Rs-2b2"/>
+                        <constraint firstAttribute="bottom" secondItem="5yh-t6-HcL" secondAttribute="bottom" constant="20" id="xDY-9T-lg5"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="top" secondItem="AlM-eX-Xla" secondAttribute="bottom" constant="92" id="4Os-Sg-7d5"/>
+                <constraint firstItem="AlM-eX-Xla" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="B5g-Gm-n8z"/>
+                <constraint firstAttribute="trailing" secondItem="AlM-eX-Xla" secondAttribute="trailing" id="Dpa-6m-OnS"/>
+                <constraint firstItem="AlM-eX-Xla" firstAttribute="leading" secondItem="Lxk-G7-4eQ" secondAttribute="leading" id="I9p-rH-tAz"/>
+                <constraint firstItem="Lxk-G7-4eQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Kmp-yB-rh4"/>
+                <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="TIz-Ix-2HE"/>
+                <constraint firstItem="AlM-eX-Xla" firstAttribute="top" secondItem="Lxk-G7-4eQ" secondAttribute="top" id="Wvu-qa-SoI"/>
+                <constraint firstItem="Lxk-G7-4eQ" firstAttribute="centerY" secondItem="DjJ-DJ-ZD8" secondAttribute="centerY" id="ZLC-pm-O00"/>
+                <constraint firstAttribute="bottom" secondItem="Lxk-G7-4eQ" secondAttribute="bottom" id="lKm-QI-7Pq"/>
+                <constraint firstItem="AlM-eX-Xla" firstAttribute="trailing" secondItem="Lxk-G7-4eQ" secondAttribute="trailing" id="oAS-DQ-q0J"/>
+                <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="centerX" secondItem="AlM-eX-Xla" secondAttribute="centerX" id="taz-1a-IUt"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

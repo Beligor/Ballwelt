@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RFMNewBallTimeBarView.h"
 #import "RFMGameTimeBarView.h"
+#import "RFMPauseViewController.h"
 
-@interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate>
+@interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate, RFMPauseViewControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIView *playGroundView;
 @property (weak, nonatomic) IBOutlet UIView *controlPanelView;
 @property (nonatomic) BOOL paused;
