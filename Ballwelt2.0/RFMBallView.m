@@ -45,6 +45,44 @@
 }
 
 #pragma mark - Actions
+-(CGPoint)moveBall
+{
+    // speed is expressed in points/seconds
+    // RATE_PER_SECOND is the N fraction of a second
+    // for each fraction of time, we need to know how many points move at this time
+    CGFloat distanceToMove = self.speed/RATE_PER_SECOND;
+    
+    // To convert degrees in radiants, it has to be multiplied with Pi/180. The -180 is to have 90º in the superior quadrant.
+    CGFloat directionInRadiants = self.direction * M_PI/-180;
+    
+    // Calculates the next position for this time fraction
+    CGPoint nextMove;
+    nextMove.x = self.center.x + distanceToMove * cos(directionInRadiants);
+    nextMove.y = self.center.y + distanceToMove * sin(directionInRadiants);
+    return nextMove;
+}
+
+-(void)checkIfInNextMoveReachLimitOfScreen:(CGPoint) nextMove
+{
+    if (nextMove.x + self.radius > self.superview.frame.size.width) {
+        nextMove.x = self.superview.frame.size.width - self.radius;
+        self.direction = 180 - self.direction;
+    }else if (nextMove.x - self.radius < 0){
+        nextMove.x = self.radius;
+        self.direction = (self.direction - 180) * -1;
+    }
+    
+    if (nextMove.y + self.radius > self.superview.frame.size.height) {
+        nextMove.y = self.superview.frame.size.height - self.radius;
+        self.direction *= -1;
+    }else if (nextMove.y - self.radius <0){
+        nextMove.y = self.radius;
+        self.direction *=-1;
+    }
+    
+    
+    [self setCenter:CGPointMake(nextMove.x, nextMove.y)];
+}
 
 -(void) increaseSpeedWithThisIncrement:(CGFloat) speedIncrement
                                  until:(CGFloat) maxSpeed

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "RFMNewBallTimeBarView.h"
 #import "RFMGameTimeBarView.h"
-#import "RFMPauseViewController.h"
+#import "RFMPauseMenuViewController.h"
 
-@interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate, RFMPauseViewControllerDelegate>
+@interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate, RFMPauseMenuViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *playGroundView;
 @property (weak, nonatomic) IBOutlet UIView *controlPanelView;

@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 
-@protocol RFMPauseViewControllerDelegate <NSObject>
--(void)restartGame;
--(void)exitGame;
+@protocol RFMPauseMenuViewControllerDelegate <NSObject>
+-(void)pauseMenuWillRestartGame;
+-(void)pauseMenuWillExitGame;
 @end
 
-@interface RFMPauseViewController : UIViewController<ADBannerViewDelegate>
+@interface RFMPauseMenuViewController : UIViewController<ADBannerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *blurredImage;
 @property (weak, nonatomic) IBOutlet UIButton *continueBtn;
@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *scoreSquare;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLbl;
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic, weak) id<RFMPauseViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<RFMPauseMenuViewControllerDelegate> delegate;
 
 
 -(id)initWithBackGround:(UIImage *) aScreenCapture

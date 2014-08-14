@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Rafa Ferrero. All rights reserved.
 //
 
-#import "RFMPauseViewController.h"
+#import "RFMPauseMenuViewController.h"
 
 
-@interface RFMPauseViewController ()
+@interface RFMPauseMenuViewController ()
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) NSInteger score;
 @end
 
-@implementation RFMPauseViewController
+@implementation RFMPauseMenuViewController
 
 #pragma mark - Init
 -(id)initWithBackGround:(UIImage *) aScreenCapture
@@ -88,7 +88,7 @@
     [self.scoreSquare.layer setShadowOpacity:1.0f];
     [self.scoreSquare.layer setShadowRadius:5.0f];
     
-    self.scoreLbl.text = [NSString stringWithFormat:@"%d",self.score];
+    self.scoreLbl.text = [NSString stringWithFormat:@"%ld",(long)self.score];
     
     if (self.isGameOver) {
         // Hide "Resume" option
@@ -157,12 +157,12 @@
                                      completion:nil];
             break;
         case 1: // Restart
-            [self.delegate restartGame];
+            [self.delegate pauseMenuWillRestartGame];
             [self dismissViewControllerAnimated:NO
                                      completion:nil];
             break;
         case 2: // Exit
-            [self.delegate exitGame];
+            [self.delegate pauseMenuWillExitGame];
             break;
             
         default:

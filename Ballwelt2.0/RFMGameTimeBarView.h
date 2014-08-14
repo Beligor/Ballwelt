@@ -10,7 +10,7 @@
 @class RFMGameTimeBarView;
 
 @protocol RFMGameTimeBarViewDelegate <NSObject>
--(void)timeIsUp;
+-(void)timerBarWillEndGame;
 @end
 
 @interface RFMGameTimeBarView : RFMTimeBarView

@@ -12,7 +12,7 @@
 
 -(void)timeOver
 {
-    [self.delegate timeIsUp];
+    [self.delegate timerBarWillEndGame];
 }
 
 -(void) addExtraTime

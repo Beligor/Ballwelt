@@ -25,6 +25,9 @@
                                  maxRadius:(NSInteger) aMaxRadius;
 
 
+-(CGPoint) moveBall;
+-(void)checkIfInNextMoveReachLimitOfScreen:(CGPoint) nextMove;
+
 -(void) reducesBallSizeUntilReachThisRadius:(NSInteger) minRadius;
 -(void) increaseSpeedWithThisIncrement:(CGFloat) speedIncrement
                                  until:(CGFloat) maxSpeed;

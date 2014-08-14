@@ -10,7 +10,7 @@
 @class RFMNewBallTimeBarView;
 
 @protocol RFMNewBallTimeBarViewDelegate <NSObject>
--(void)addNewBall;
+-(void)timerBarWilladdNewBall;
 @end
 
 @interface RFMNewBallTimeBarView : RFMTimeBarView

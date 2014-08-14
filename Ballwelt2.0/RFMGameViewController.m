@@ -7,32 +7,19 @@
 //
 
 #import "RFMGameViewController.h"
+#import "RFMGameModel.h"
 #import "RFMBallView.h"
 #import "RFMGameTimeBarView.h"
 #import "RFMNewBallTimeBarView.h"
-#import "RFMPauseViewController.h"
+#import "RFMPauseMenuViewController.h"
 #import "RFMSystemSounds.h"
 
 @interface RFMGameViewController ()
 @property (nonatomic, strong) RFMGameTimeBarView *gameBar;
 @property (nonatomic, strong) RFMNewBallTimeBarView *ballBar;
-@property (nonatomic, strong) NSMutableArray *arrayOfBalls;
+@property (nonatomic, strong) RFMGameModel *model;
 @property (nonatomic, strong) NSTimer *gameTimer;
-
 @property (nonatomic) BOOL usedPowerUp;
-
-@property (nonatomic) NSInteger currentScore;
-@property (nonatomic) NSInteger level;
-
-@property (nonatomic) NSInteger minRadius;
-@property (nonatomic) NSInteger maxRadius;
-
-@property (nonatomic) CGFloat speedIncrement;
-@property (nonatomic) CGFloat maxSpeed;
-@property (nonatomic) CGFloat minSpeed;
-@property (nonatomic) NSInteger numberOfGameOverBalls;
-
-
 @end
 
 @implementation RFMGameViewController
@@ -141,21 +128,9 @@
 #pragma mark - Game utils
 -(void)configureGame
 {
-    self.minRadius = 40;
-    self.maxRadius = 50;
+    self.model = [[RFMGameModel alloc] init];
     
-    self.speedIncrement = 1.2;
-    self.minSpeed = 70;
-    self.maxSpeed = 100;
-    
-    self.level = 1;
-    
-    self.numberOfGameOverBalls = 0;
-    
-    self.currentScore = 0;
-    self.title = [NSString stringWithFormat:@"0"];
-    
-    self.arrayOfBalls = [[NSMutableArray alloc] init];
+    self.title = [NSString stringWithFormat:@"0"];    
 }
 
 -(void)setUpTimer
@@ -188,60 +163,60 @@
 
     RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
                                                                             Height:self.playGroundView.frame.size.height
-                                                                          MinSpeed:self.minSpeed
-                                                                          maxSpeed:self.maxSpeed
-                                                                         minRadius:self.minRadius
-                                                                         maxRadius:self.maxRadius];
+                                                                          MinSpeed:self.model.minSpeed
+                                                                          maxSpeed:self.model.maxSpeed
+                                                                         minRadius:self.model.minRadius
+                                                                         maxRadius:self.model.maxRadius];
      // add gesture recognizer
     UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                              action:@selector(didBallTouch:)];
     [oneTap setNumberOfTapsRequired:1];
     [ball addGestureRecognizer:oneTap];
     
-    [self.arrayOfBalls addObject:ball];
+    [self.model.arrayOfBalls addObject:ball];
     [self.playGroundView addSubview:ball];
 }
 
 -(void)sumPoints:(NSInteger) points
 {
     if (self.usedPowerUp == NO) {
-        self.currentScore = [self.title intValue];
+        self.model.score = [self.title intValue];
         
-        self.currentScore = self.currentScore + points * self.level;
-        self.title = [NSString stringWithFormat:@"%ld", (long)self.currentScore];
+        self.model.score = self.model.score + points * self.model.level;
+        self.title = [NSString stringWithFormat:@"%ld", (long)self.model.score];
     }
     
 }
 
 -(void)levelUp
 {
-    self.ballBar.totalTime = 2 * self.level;
+    self.ballBar.totalTime = 2 * self.model.level;
     self.ballBar.timeLeft  = self.ballBar.totalTime;
     self.ballBar.canCreateNewBalls = NO;
     
     self.gameBar.paused = YES;
     
-    self.level = self.level + 1;
-    self.maxSpeed = self.maxSpeed + 10;
-    self.minSpeed = self.minSpeed + 10;
+    self.model.level = self.model.level + 1;
+    self.model.maxSpeed = self.model.maxSpeed + 10;
+    self.model.minSpeed = self.model.minSpeed + 10;
     
-    self.maxRadius = self.maxRadius - self.maxRadius * 0.05;
-    self.minRadius = self.minRadius - self.minRadius * 0.05;
+    self.model.maxRadius = self.model.maxRadius - self.model.maxRadius * 0.05;
+    self.model.minRadius = self.model.minRadius - self.model.minRadius * 0.05;
    
     
-    if (self.maxSpeed >= SPEED_LIMIT ) {
-        self.maxSpeed = SPEED_LIMIT;
+    if (self.model.maxSpeed >= SPEED_LIMIT ) {
+        self.model.maxSpeed = SPEED_LIMIT;
     }
-    if (self.minSpeed >= SPEED_LIMIT ) {
-        self.minSpeed = SPEED_LIMIT - 1;
-    }
-    
-    if (self.maxRadius <= MIN_RADIUS) {
-        self.maxRadius = MIN_RADIUS +1;
+    if (self.model.minSpeed >= SPEED_LIMIT ) {
+        self.model.minSpeed = SPEED_LIMIT - 1;
     }
     
-    if (self.minRadius <= MIN_RADIUS) {
-        self.minRadius = MIN_RADIUS;
+    if (self.model.maxRadius <= MIN_RADIUS) {
+        self.model.maxRadius = MIN_RADIUS +1;
+    }
+    
+    if (self.model.minRadius <= MIN_RADIUS) {
+        self.model.minRadius = MIN_RADIUS;
     }
 }
 
@@ -250,9 +225,9 @@
 {
     [self.gameTimer invalidate];
     
-    RFMPauseViewController *pauseVC = [[RFMPauseViewController alloc] initWithBackGround: [self screenCapture]
+    RFMPauseMenuViewController *pauseVC = [[RFMPauseMenuViewController alloc] initWithBackGround: [self screenCapture]
                                                                               isGameOver:isGameOver
-                                                                                   score:self.currentScore];
+                                                                                   score:self.model.score];
     pauseVC.delegate = self;
     
     if (isGameOver) {
@@ -282,8 +257,8 @@
 
 -(void)gameOver
 {
-    self.numberOfGameOverBalls = self.numberOfGameOverBalls + 1;
-    if (self.numberOfGameOverBalls < 150) {
+    self.model.numberOfGameOverBalls = self.model.numberOfGameOverBalls + 1;
+    if (self.model.numberOfGameOverBalls < 150) {
         [self addBallToView];
     }else{
         [self.gameTimer invalidate];
@@ -296,76 +271,48 @@
 -(void)moveBall
 {    
     for (RFMBallView *each in self.playGroundView.subviews) {
-        if ([self.arrayOfBalls count] > 0 && [self.arrayOfBalls objectAtIndex:0] == each) {
+        if ([self.model.arrayOfBalls count] > 0 && [self.model.arrayOfBalls objectAtIndex:0] == each) {
             each.layer.borderColor = [UIColor whiteColor].CGColor;
             [self.playGroundView bringSubviewToFront:each];
         }
         
         if (each.speed != 0 ) {
-            // speed is expressed in points/seconds
-            // RATE_PER_SECOND is the N fraction of a second
-            // for each fraction of time, we need to know how many points move at this time
-            CGFloat nextMove = each.speed/RATE_PER_SECOND;
             
-            // To convert degrees in radiants, it has to be multiplied with Pi/180. The -180 is to have 90º in the superior quadrant.
-            CGFloat directionInRadiants = each.direction * M_PI/-180;
-            
-            // Calculates the next position for this time fraction
-            CGFloat nextMoveInX = each.center.x + nextMove * cos(directionInRadiants);
-            CGFloat nextMoveInY = each.center.y + nextMove * sin(directionInRadiants);
-            
+            CGPoint nextMove = [each moveBall];
             
             // Check if crash each other
-            if ([self.arrayOfBalls count] > 1 ) {
+            if ([self.model.arrayOfBalls count] > 1 ) {
                 for (RFMBallView *collisionedBall in self.playGroundView.subviews){
                     if (each != collisionedBall) {
                         // Calculate distance between these two balls
-                        CGFloat distX = nextMoveInX - collisionedBall.center.x;
-                        CGFloat distY = nextMoveInY - collisionedBall.center.y;
+                        CGFloat distX = nextMove.x - collisionedBall.center.x;
+                        CGFloat distY = nextMove.y - collisionedBall.center.y;
                         CGFloat distanceBetweenBalls =sqrt(distX*distX + distY*distY);
                         
                         // It's a collision if the distance between the two centers is minor than the sum of the two radius
                         if (distanceBetweenBalls <= (collisionedBall.radius + each.radius)) {
                             // Calculate the angle collision
-                            CGFloat collisionAngleForBall =(atan2(collisionedBall.center.y - nextMoveInY, collisionedBall.center.x -nextMoveInX) * -180/M_PI);
-                            CGFloat collisionAngleForCollisionedBall =(atan2(nextMoveInY - collisionedBall.center.y, nextMoveInX - collisionedBall.center.x) * -180/M_PI);
+                            CGFloat collisionAngleForBall =(atan2(collisionedBall.center.y - nextMove.y, collisionedBall.center.x - nextMove.x) * -180/M_PI);
+                            CGFloat collisionAngleForCollisionedBall =(atan2(nextMove.y - collisionedBall.center.y, nextMove.y - collisionedBall.center.x) * -180/M_PI);
                             
                             // Change direction, reduce size and increase speed
                             each.direction = collisionAngleForCollisionedBall;
                             collisionedBall.direction = collisionAngleForBall;
 
-                            [each reducesBallSizeUntilReachThisRadius:self.minRadius];
+                            [each reducesBallSizeUntilReachThisRadius:self.model.minRadius];
                             
-                            [each increaseSpeedWithThisIncrement:self.speedIncrement
-                                                           until:self.maxSpeed];
-                            [collisionedBall increaseSpeedWithThisIncrement:self.speedIncrement
-                                                                      until:self.maxSpeed];
+                            [each increaseSpeedWithThisIncrement:self.model.speedIncrement
+                                                           until:self.model.maxSpeed];
+                            [collisionedBall increaseSpeedWithThisIncrement:self.model.speedIncrement
+                                                                      until:self.model.maxSpeed];
                         }
                         
                     }
                 }
                 
-            }
-            
+            }            
             // Check if ball position is inside the screen bounds
-            if (nextMoveInX + each.radius > each.superview.frame.size.width) {
-                nextMoveInX = each.superview.frame.size.width - each.radius;
-                each.direction = 180 - each.direction;
-            }else if (nextMoveInX - each.radius < 0){
-                nextMoveInX = each.radius;
-                each.direction = (each.direction - 180) * -1;
-            }
-            
-            if (nextMoveInY + each.radius > each.superview.frame.size.height) {
-                nextMoveInY = each.superview.frame.size.height - each.radius;
-                each.direction *= -1;
-            }else if (nextMoveInY - each.radius <0){
-                nextMoveInY = each.radius;
-                each.direction *=-1;
-            }
-            
-            
-            [each setCenter:CGPointMake(nextMoveInX, nextMoveInY)];
+            [each checkIfInNextMoveReachLimitOfScreen:nextMove];
         }
     }
     
@@ -374,7 +321,7 @@
 -(void)removeBall:(RFMBallView *) aBall
 {
     [aBall destroyWithFadeOut];
-    [self.arrayOfBalls removeObject: aBall];
+    [self.model.arrayOfBalls removeObject: aBall];
     [self sumPoints:aBall.radius];
 }
 
@@ -383,9 +330,9 @@
 {
     if ([self.gameTimer isValid]) {
         if (sender.state == UIGestureRecognizerStateRecognized) {
-            if ([self.arrayOfBalls objectAtIndex:0] == sender.view) {
+            if ([self.model.arrayOfBalls objectAtIndex:0] == sender.view) {
                 // If the touched Ball is highlighted then
-                [self removeBall:[self.arrayOfBalls objectAtIndex:0]];
+                [self removeBall:[self.model.arrayOfBalls objectAtIndex:0]];
                 [self.gameBar addExtraTime];
                 [[RFMSystemSounds shareSystemSounds] correctBall];
             }else{
@@ -397,7 +344,7 @@
 
 #pragma mark - Powerups
 - (void)speedUpBalls:(id)sender {
-    self.maxSpeed += 50;
+    self.model.maxSpeed += 50;
 }
 
 - (void)slowDownBalls:(id)sender {
@@ -426,11 +373,11 @@
 
 #pragma mark - delegates
 // RFMNewBallTimeBarViewDelegate
--(void)addNewBall
+-(void)timerBarWilladdNewBall
 {
     
     if (self.ballBar.canCreateNewBalls) {
-        for (int i = 0; i<self.level+1; i++) {
+        for (int i = 0; i<self.model.level+1; i++) {
             [self addBallToView];
         }
     }else{
@@ -449,10 +396,10 @@
 }
 
 // RFMGameTimeBarViewDelegate
--(void)timeIsUp
+-(void)timerBarWillEndGame
 {
-    self.minRadius = 30;
-    self.maxRadius = 60;
+    self.model.minRadius = 30;
+    self.model.maxRadius = 60;
     
     [self.gameTimer invalidate];
     for (RFMBallView *each in self.playGroundView.subviews) {
@@ -467,10 +414,10 @@
 }
 
 // RFMPauseViewControllerDelegate
--(void)restartGame
+-(void)pauseMenuWillRestartGame
 {
     [self destroyAllBallsAnimated:NO];
-    self.arrayOfBalls = nil;
+    self.model.arrayOfBalls = nil;
     [self.gameBar removeFromSuperview];
     self.gameBar = nil;
     [self.ballBar removeFromSuperview];
@@ -478,7 +425,8 @@
     self.paused = NO;
 }
 
--(void)exitGame{
+-(void)pauseMenuWillExitGame
+{
     self.view = nil;
     [self dismissViewControllerAnimated:NO
                              completion:nil];
