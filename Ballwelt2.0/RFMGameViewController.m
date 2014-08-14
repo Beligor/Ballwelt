@@ -30,6 +30,7 @@
     if (self = [super initWithNibName:nil
                                bundle:nil]) {
         _paused = NO;
+        _usedPowerUp = NO;
     }
     return self;
 }
@@ -140,6 +141,7 @@
     [self.ballBar syncrhonizeTimeLeftWithBarWidth];
     [self moveBall];
 }
+
 #warning mejorar este metodo
 // se usa para obligar a las bolas a ser destruidas con animación al pulsar el power up de destruir
 // intentar mejorar el metodo con la animación para que este no sea necesario
@@ -153,13 +155,14 @@
 -(void)addBallToView
 {
 #warning check if ball can appear at this point
-    RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
-                                                                            Height:self.playGroundView.frame.size.height
-                                                                          MinSpeed:self.model.minSpeed
-                                                                          maxSpeed:self.model.maxSpeed
-                                                                         minRadius:self.model.minRadius
-                                                                         maxRadius:self.model.maxRadius];
-     // add gesture recognizer
+//    if ([self.model.arrayOfBalls count] <= self.model.level * 10) {
+        RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
+                                                                                Height:self.playGroundView.frame.size.height
+                                                                              MinSpeed:self.model.minSpeed
+                                                                              maxSpeed:self.model.maxSpeed
+                                                                             minRadius:self.model.minRadius
+                                                                             maxRadius:self.model.maxRadius];
+    // add gesture recognizer
     UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                              action:@selector(didBallTouch:)];
     [oneTap setNumberOfTapsRequired:1];
@@ -167,6 +170,8 @@
     
     [self.model.arrayOfBalls addObject:ball];
     [self.playGroundView addSubview:ball];
+//    }
+    
 }
 
 -(void)sumPoints:(NSInteger) points
@@ -182,34 +187,13 @@
 
 -(void)levelUp
 {
+    self.gameBar.paused = YES;
+    
     self.ballBar.totalTime = 2 * self.model.level;
     self.ballBar.timeLeft  = self.ballBar.totalTime;
     self.ballBar.canCreateNewBalls = NO;
     
-    self.gameBar.paused = YES;
-    
-    self.model.level = self.model.level + 1;
-    self.model.maxSpeed = self.model.maxSpeed + 10;
-    self.model.minSpeed = self.model.minSpeed + 10;
-    
-    self.model.maxRadius = self.model.maxRadius - self.model.maxRadius * 0.05;
-    self.model.minRadius = self.model.minRadius - self.model.minRadius * 0.05;
-   
-    
-    if (self.model.maxSpeed >= SPEED_LIMIT ) {
-        self.model.maxSpeed = SPEED_LIMIT;
-    }
-    if (self.model.minSpeed >= SPEED_LIMIT ) {
-        self.model.minSpeed = SPEED_LIMIT - 1;
-    }
-    
-    if (self.model.maxRadius <= MIN_RADIUS) {
-        self.model.maxRadius = MIN_RADIUS +1;
-    }
-    
-    if (self.model.minRadius <= MIN_RADIUS) {
-        self.model.minRadius = MIN_RADIUS;
-    }
+    [self.model levelUpChangesRadiusAndSpeed];
 }
 
 #pragma mark - Pause & Game Over Menu
@@ -232,6 +216,7 @@
                        animated:NO
                      completion:nil];
 }
+
 #warning change this method
 -(void)makeAPause
 {
@@ -273,22 +258,18 @@
             CGPoint nextMove = [each moveToNextPoint];
             
             if (each.haveToReduceRadius) {
-                [each reducesBallSizeUntilReachThisRadius:self.model.minRadius];
+                [each reduceBallSizeUntilReachThisRadius:self.model.minRadius
+                                           withThisRatio:self.model.reduceRadiusRatio];
                 each.haveToReduceRadius = NO;
-            }
-            
+            }            
             
             // Check if crash each other
             if ([self.model.arrayOfBalls count] > 1 ) {
                 for (RFMBallView *collisionedBall in self.playGroundView.subviews){
                     if (each != collisionedBall) {
-                        // Calculate distance between these two balls
-                        CGFloat distX = nextMove.x - collisionedBall.center.x;
-                        CGFloat distY = nextMove.y - collisionedBall.center.y;
-                        CGFloat distanceBetweenBalls =sqrt(distX*distX + distY*distY);
-                        
-                        // It's a collision if the distance between the two centers is minor than the sum of the two radius
-                        if (distanceBetweenBalls <= (collisionedBall.radius + each.radius)) {
+                        if ([self checkForCollisionAtThisPoint:nextMove
+                                                       between:each
+                                                           and:collisionedBall]) {
                             
                             collisionedBall.haveToReduceRadius = YES;
                             each.haveToReduceRadius = YES;
@@ -301,10 +282,11 @@
                             each.direction = collisionAngleForCollisionedBall;
                             collisionedBall.direction = collisionAngleForBall;
                             
-                            [each increaseSpeedWithThisIncrement:self.model.speedIncrement
-                                                           until:self.model.maxSpeed];
-                            [collisionedBall increaseSpeedWithThisIncrement:self.model.speedIncrement
-                                                                      until:self.model.maxSpeed];
+                            [each increaseSpeedUntilReachThisSpeed:self.model.maxSpeed
+                                                     WithThisRatio:self.model.speedIncrement];
+                            
+                            [collisionedBall increaseSpeedUntilReachThisSpeed:self.model.maxSpeed
+                                                                WithThisRatio:self.model.speedIncrement];
                         }
                         
                     }
@@ -317,6 +299,22 @@
     }
     
 }
+
+-(BOOL)checkForCollisionAtThisPoint:(CGPoint) nextMove
+                            between:(RFMBallView *) aBall
+                            and:(RFMBallView *) anotherBall
+{
+    // Calculate distance between these two balls
+    CGFloat distX = nextMove.x - anotherBall.center.x;
+    CGFloat distY = nextMove.y - anotherBall.center.y;
+    CGFloat distanceBetweenBalls =sqrt(distX*distX + distY*distY);
+    if (distanceBetweenBalls <= (anotherBall.radius + aBall.radius)){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 
 -(void)removeBall:(RFMBallView *) aBall
 {
@@ -377,7 +375,7 @@
 {
     
     if (self.ballBar.canCreateNewBalls) {
-        for (int i = 0; i<self.model.level+1; i++) {
+        for (int i = 0; i<self.model.level; i++) {
             [self addBallToView];
         }
     }else{

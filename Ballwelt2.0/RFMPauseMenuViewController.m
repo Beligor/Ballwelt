@@ -103,7 +103,7 @@
 
 -(void)checkIfIsANewRecord
 {
-#warning check this shit!
+#warning check for a new record
 }
 
 

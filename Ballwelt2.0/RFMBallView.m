@@ -84,8 +84,8 @@
     [self setCenter:CGPointMake(nextMove.x, nextMove.y)];
 }
 
--(void) increaseSpeedWithThisIncrement:(CGFloat) speedIncrement
-                                 until:(CGFloat) maxSpeed
+-(void) increaseSpeedUntilReachThisSpeed:(CGFloat) maxSpeed
+                           WithThisRatio:(CGFloat) speedIncrement
 {
     if (self.canIncreaseSpeed) {
         CGFloat newSpeed;
@@ -99,9 +99,10 @@
     }
 }
 
--(void) reducesBallSizeUntilReachThisRadius:(NSInteger) minRadius
+-(void) reduceBallSizeUntilReachThisRadius:(NSInteger) minRadius
+                             withThisRatio:(CGFloat) ratio
 {
-    self.radius -= self.radius * 0.05;
+    self.radius = self.radius / ratio;
     
     if (self.radius < minRadius) {
         self.radius = minRadius;
