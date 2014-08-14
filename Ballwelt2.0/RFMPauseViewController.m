@@ -11,6 +11,7 @@
 
 @interface RFMPauseViewController ()
 @property (nonatomic) BOOL isGameOver;
+@property (nonatomic) NSInteger score;
 @end
 
 @implementation RFMPauseViewController
@@ -18,11 +19,13 @@
 #pragma mark - Init
 -(id)initWithBackGround:(UIImage *) aScreenCapture
              isGameOver:(BOOL) isAGameOver
+                  score:(NSInteger) aScore
 {
     if (self = [self initWithNibName:nil
                               bundle:nil]) {
         _image = aScreenCapture;
         _isGameOver = isAGameOver;
+        _score = aScore;
     }
     return self;
 }
@@ -32,22 +35,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:self.image]];
-    self.menuSquare.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGroundPlayScreen"]];
-    
-    [self.menuSquare.layer setCornerRadius:self.menuSquare.frame.size.height/4];
-    [self.menuSquare.layer setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.menuSquare.layer setBorderWidth:1.0];
-    [self.menuSquare.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.menuSquare.layer setShadowOffset:CGSizeMake(5.0f, 5.0f)];
-    [self.menuSquare.layer setShadowOpacity:1.0f];
-    [self.menuSquare.layer setShadowRadius:5.0f];
+    [self composeMenu];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [self applyBlurEffect];
+    self.blurredImage.image = self.image;
+    [self showBlur];
+    /*
     // Create Queue
     dispatch_queue_t processImage = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     // block to process in background
@@ -61,26 +58,55 @@
         
     });
     //[self showMenu];
+     */
 }
-
 #warning delete this method
 -(void)dealloc{
     NSLog(@"RFMPauseViewController dealloc");
 }
-/*
-#pragma mark - Menu
--(void)showMenu
-{
-    if (self.isGameOver) {
-        [self.button setTitle:@"Game Over"
-                     forState:UIControlStateNormal];
-    }else{
-        [self.button setTitle:@"Continue"
-                     forState:UIControlStateNormal];
-    }
 
-  }
-*/
+#pragma mark - Utils
+-(void)composeMenu
+{
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:self.image]];
+    
+    self.menuSquare.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGroundPlayScreen"]];
+    [self.menuSquare.layer setCornerRadius:self.menuSquare.frame.size.height/4];
+    [self.menuSquare.layer setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.menuSquare.layer setBorderWidth:1.0];
+    [self.menuSquare.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.menuSquare.layer setShadowOffset:CGSizeMake(5.0f, 5.0f)];
+    [self.menuSquare.layer setShadowOpacity:1.0f];
+    [self.menuSquare.layer setShadowRadius:5.0f];
+    
+    self.scoreSquare.backgroundColor = self.menuSquare.backgroundColor;
+    [self.scoreSquare.layer setCornerRadius:self.scoreSquare.frame.size.height/4];
+    [self.scoreSquare.layer setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.scoreSquare.layer setBorderWidth:1.0];
+    [self.scoreSquare.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.scoreSquare.layer setShadowOffset:CGSizeMake(5.0f, 5.0f)];
+    [self.scoreSquare.layer setShadowOpacity:1.0f];
+    [self.scoreSquare.layer setShadowRadius:5.0f];
+    
+    self.scoreLbl.text = [NSString stringWithFormat:@"%d",self.score];
+    
+    if (self.isGameOver) {
+        // Hide "Resume" option
+        self.continueBtn.hidden = YES;
+        // Show Score
+        
+        // If score is a new record show the label
+    }else{
+        
+    }
+}
+
+-(void)checkIfIsANewRecord
+{
+#warning check this shit!
+}
+
+
 
 #pragma mark - Blur effect
 -(void)applyBlurEffect
@@ -114,30 +140,34 @@
 - (void)showBlur
 {
     [UIView animateWithDuration:0.3 animations:^{
-        [self.blurredImage setAlpha: 1.0];
-        [self.menuSquare setAlpha:0.7];
-//        [cuadroPuntuacion setAlpha:0.7];
+        self.blurredImage.alpha = 1.0;
+        self.menuSquare.alpha = 0.7;
+        self.scoreSquare.alpha = 0.7;
     }];
 }
 
 #pragma mark - Actions
-- (IBAction)continuBtn:(id)sender
+-(void)selectedOption:(id)sender
 {
-    [self dismissViewControllerAnimated:NO
-                             completion:nil];
-}
-
-- (IBAction)restartBtn:(id)sender {
-    [self.delegate restartGame];
-    [self dismissViewControllerAnimated:NO
-                             completion:nil];
-}
-
-- (IBAction)exitBtn:(id)sender {
-    [self.delegate exitGame];
-    /*
-    [self dismissViewControllerAnimated:NO
-                             completion:nil];*/
+    UIButton *btn = sender;
+    
+    switch (btn.tag) {
+        case 0: // Resume
+            [self dismissViewControllerAnimated:NO
+                                     completion:nil];
+            break;
+        case 1: // Restart
+            [self.delegate restartGame];
+            [self dismissViewControllerAnimated:NO
+                                     completion:nil];
+            break;
+        case 2: // Exit
+            [self.delegate exitGame];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - iAd Delegate Methods

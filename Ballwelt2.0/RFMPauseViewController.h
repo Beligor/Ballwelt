@@ -18,18 +18,22 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *blurredImage;
 @property (weak, nonatomic) IBOutlet UIButton *continueBtn;
+@property (weak, nonatomic) IBOutlet UIButton *restartBtn;
+@property (weak, nonatomic) IBOutlet UIButton *extiBtn;
+
 @property (weak, nonatomic) IBOutlet UIView *menuSquare;
+@property (weak, nonatomic) IBOutlet UIView *scoreSquare;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLbl;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, weak) id<RFMPauseViewControllerDelegate> delegate;
 
 
 -(id)initWithBackGround:(UIImage *) aScreenCapture
-             isGameOver:(BOOL) isAGameOver;
+             isGameOver:(BOOL) isAGameOver
+                  score:(NSInteger) aScore;
 
+-(IBAction)selectedOption:(id)sender;
 
-- (IBAction)continuBtn:(id)sender;
-- (IBAction)restartBtn:(id)sender;
-- (IBAction)exitBtn:(id)sender;
 
 
 @end

@@ -9,7 +9,6 @@
 #import "RFMAppDelegate.h"
 #import "RFMGameViewController.h"
 #import "RFMMainMenuViewController.h"
-
 @implementation RFMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,7 +18,6 @@
     // RFMGameViewController *gameVC = [[RFMGameViewController alloc] init];
 
     //UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:gameVC];
-    
     RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
     
     self.window.rootViewController = menuVC;

@@ -152,6 +152,7 @@
     
     self.numberOfGameOverBalls = 0;
     
+    self.currentScore = 0;
     self.title = [NSString stringWithFormat:@"0"];
     
     self.arrayOfBalls = [[NSMutableArray alloc] init];
@@ -250,7 +251,8 @@
     [self.gameTimer invalidate];
     
     RFMPauseViewController *pauseVC = [[RFMPauseViewController alloc] initWithBackGround: [self screenCapture]
-                                                                                 isGameOver:isGameOver];
+                                                                              isGameOver:isGameOver
+                                                                                   score:self.currentScore];
     pauseVC.delegate = self;
     
     if (isGameOver) {

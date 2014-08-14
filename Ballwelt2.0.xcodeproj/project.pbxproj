@@ -22,6 +22,7 @@
 		053BCE091999807D00E2631E /* RFMPauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCE071999807D00E2631E /* RFMPauseViewController.m */; };
 		053BCE0A1999807D00E2631E /* RFMPauseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE081999807D00E2631E /* RFMPauseViewController.xib */; };
 		056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566239F199BCDD80020B35C /* backGroundPlayScreen.png */; };
+		05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B42199CC45700ACED98 /* RFMGameModel.m */; };
 		05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3D19951E7F003F7A1A /* Foundation.framework */; };
 		05BD9C4019951E7F003F7A1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */; };
 		05BD9C4219951E7F003F7A1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C4119951E7F003F7A1A /* UIKit.framework */; };
@@ -71,6 +72,8 @@
 		053BCE071999807D00E2631E /* RFMPauseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPauseViewController.m; sourceTree = "<group>"; };
 		053BCE081999807D00E2631E /* RFMPauseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMPauseViewController.xib; sourceTree = "<group>"; };
 		0566239F199BCDD80020B35C /* backGroundPlayScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundPlayScreen.png; sourceTree = "<group>"; };
+		05AA5B41199CC45700ACED98 /* RFMGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMGameModel.h; sourceTree = "<group>"; };
+		05AA5B42199CC45700ACED98 /* RFMGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMGameModel.m; sourceTree = "<group>"; };
 		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		05BD9C3A19951E7F003F7A1A /* Ballwelt2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballwelt2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BD9C3D19951E7F003F7A1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -162,6 +165,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		05AA5B40199CC44200ACED98 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				05AA5B41199CC45700ACED98 /* RFMGameModel.h */,
+				05AA5B42199CC45700ACED98 /* RFMGameModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		05BD9C3119951E7F003F7A1A = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +214,7 @@
 				053BCDFC1999586B00E2631E /* RFMSystemSounds.h */,
 				053BCDFD1999586B00E2631E /* RFMSystemSounds.m */,
 				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
+				05AA5B40199CC44200ACED98 /* Models */,
 				05BD9C7219951F10003F7A1A /* Views */,
 				05BD9C6C19951E88003F7A1A /* Controllers */,
 				05BD9C4F19951E7F003F7A1A /* Images.xcassets */,
@@ -377,6 +390,7 @@
 				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
 				053BCDF11998B0A200E2631E /* RFMTimeBarView.m in Sources */,
 				05370116199A993C0000B655 /* RFMMainMenuViewController.m in Sources */,
+				05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
 				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,
