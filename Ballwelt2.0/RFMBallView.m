@@ -28,6 +28,7 @@
                                      To:aMaxSpeed];
         _direction = [self randomDirection];
         _canIncreaseSpeed = YES;
+        _haveToReduceRadius = NO;
         [self setupBall];
     }
     return self;
@@ -45,7 +46,7 @@
 }
 
 #pragma mark - Actions
--(CGPoint)moveBall
+-(CGPoint)moveToNextPoint
 {
     // speed is expressed in points/seconds
     // RATE_PER_SECOND is the N fraction of a second
@@ -78,8 +79,7 @@
     }else if (nextMove.y - self.radius <0){
         nextMove.y = self.radius;
         self.direction *=-1;
-    }
-    
+    }    
     
     [self setCenter:CGPointMake(nextMove.x, nextMove.y)];
 }
@@ -97,7 +97,6 @@
             self.speed = newSpeed;
         }
     }
-    
 }
 
 -(void) reducesBallSizeUntilReachThisRadius:(NSInteger) minRadius

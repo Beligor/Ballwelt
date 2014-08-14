@@ -16,6 +16,7 @@
 @property (nonatomic) CGFloat speed;
 @property (nonatomic) NSInteger direction;
 @property (nonatomic) BOOL canIncreaseSpeed;
+@property (nonatomic) BOOL haveToReduceRadius;
 
 -(id)initWithRandomPositioninViewWithWidth:(NSInteger) aWidth
                                     Height:(NSInteger) anHeight
@@ -25,7 +26,7 @@
                                  maxRadius:(NSInteger) aMaxRadius;
 
 
--(CGPoint) moveBall;
+-(CGPoint) moveToNextPoint;
 -(void)checkIfInNextMoveReachLimitOfScreen:(CGPoint) nextMove;
 
 -(void) reducesBallSizeUntilReachThisRadius:(NSInteger) minRadius;

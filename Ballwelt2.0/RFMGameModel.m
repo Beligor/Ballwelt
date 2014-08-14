@@ -16,7 +16,7 @@
         _arrayOfBalls = [[NSMutableArray alloc] init];
         _score = 0;
         _level = 1;
-        _minRadius = 40;
+        _minRadius = 10;
         _maxRadius = 50;
         _speedIncrement = 1.2;
         _minSpeed = 70;

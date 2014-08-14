@@ -79,7 +79,7 @@
 {
     for (RFMBallView *each in self.ballsBackgroundView.subviews) {
         
-        [each checkIfInNextMoveReachLimitOfScreen:[each moveBall]];
+        [each checkIfInNextMoveReachLimitOfScreen:[each moveToNextPoint]];
     }
     
 }

@@ -68,7 +68,6 @@
         [oneTap setNumberOfTapsRequired:1];
         [self.gameBar addGestureRecognizer:oneTap];
         
-        
         // Delegates
         self.gameBar.delegate = self;
         self.ballBar.delegate = self;
@@ -82,19 +81,12 @@
             [self addBallToView];
         }
         
-        
         // Start game timer
         [self setUpTimer];
     }else{
         self.paused = NO;
         [self setUpTimer];
     }
-    
-}
-
--(void)dealloc
-{
-    NSLog(@"RFMGameViewController dealloc");
 }
 
 #pragma mark - Provisional
@@ -160,7 +152,7 @@
 #pragma mark - Actions
 -(void)addBallToView
 {
-
+#warning check if ball can appear at this point
     RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
                                                                             Height:self.playGroundView.frame.size.height
                                                                           MinSpeed:self.model.minSpeed
@@ -277,8 +269,14 @@
         }
         
         if (each.speed != 0 ) {
+
+            CGPoint nextMove = [each moveToNextPoint];
             
-            CGPoint nextMove = [each moveBall];
+            if (each.haveToReduceRadius) {
+                [each reducesBallSizeUntilReachThisRadius:self.model.minRadius];
+                each.haveToReduceRadius = NO;
+            }
+            
             
             // Check if crash each other
             if ([self.model.arrayOfBalls count] > 1 ) {
@@ -291,15 +289,17 @@
                         
                         // It's a collision if the distance between the two centers is minor than the sum of the two radius
                         if (distanceBetweenBalls <= (collisionedBall.radius + each.radius)) {
+                            
+                            collisionedBall.haveToReduceRadius = YES;
+                            each.haveToReduceRadius = YES;
+                            
                             // Calculate the angle collision
                             CGFloat collisionAngleForBall =(atan2(collisionedBall.center.y - nextMove.y, collisionedBall.center.x - nextMove.x) * -180/M_PI);
                             CGFloat collisionAngleForCollisionedBall =(atan2(nextMove.y - collisionedBall.center.y, nextMove.y - collisionedBall.center.x) * -180/M_PI);
                             
-                            // Change direction, reduce size and increase speed
+                            // Change direction and increase speed
                             each.direction = collisionAngleForCollisionedBall;
                             collisionedBall.direction = collisionAngleForBall;
-
-                            [each reducesBallSizeUntilReachThisRadius:self.model.minRadius];
                             
                             [each increaseSpeedWithThisIncrement:self.model.speedIncrement
                                                            until:self.model.maxSpeed];
