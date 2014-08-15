@@ -1,4 +1,4 @@
-//
+ //
 //  RFMGameViewController.m
 //  Ballwelt2.0
 //
@@ -9,17 +9,14 @@
 #import "RFMGameViewController.h"
 #import "RFMGameModel.h"
 #import "RFMBallView.h"
-#import "RFMGameTimeBarView.h"
-#import "RFMNewBallTimeBarView.h"
 #import "RFMPauseMenuViewController.h"
 #import "RFMSystemSounds.h"
 
 @interface RFMGameViewController ()
-@property (nonatomic, strong) RFMGameTimeBarView *gameBar;
-@property (nonatomic, strong) RFMNewBallTimeBarView *ballBar;
 @property (nonatomic, strong) RFMGameModel *model;
 @property (nonatomic, strong) NSTimer *gameTimer;
 @property (nonatomic) BOOL usedPowerUp;
+@property (nonatomic) NSInteger currentScore;
 @end
 
 @implementation RFMGameViewController
@@ -36,12 +33,6 @@
 }
 
 #pragma mark - View Lifecycle
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -51,43 +42,25 @@
         [self configureGame];
         
         [self configurarNavigationController];
-        
-        
-        self.gameBar = [[RFMGameTimeBarView alloc] initWithTotalTime:20
-                                                               width:self.controlPanelView.frame.size.width
-                                                              height:20
-                                                            position:CGPointMake(0, 0)
-                                                            barColor:Rgb2UIColor(113, 172, 55)];
-        
-        self.ballBar = [[RFMNewBallTimeBarView alloc] initWithTotalTime:2
-                                                                  width:self.gameBar.frame.size.width
-                                                                 height:6
-                                                               position:CGPointMake(0,self.gameBar.frame.size.height-2)
-                                                               barColor:Rgb2UIColor(244, 109, 35)];
-        UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+
+         UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(makeAPause)];
         [oneTap setNumberOfTapsRequired:1];
-        [self.gameBar addGestureRecognizer:oneTap];
+        [self.gameTimeBar addGestureRecognizer:oneTap];
         
-        // Delegates
-        self.gameBar.delegate = self;
-        self.ballBar.delegate = self;
-        
-        // Add to view
-        [self.controlPanelView addSubview:self.gameBar];
-        [self.controlPanelView addSubview:self.ballBar];
+        // Set Delegates
+        self.gameTimeBar.delegate = self;
+        self.ballTimeBar.delegate = self;
         
         // Add N balls at the beginin
         for (int i =0; i<5; i++) {
             [self addBallToView];
         }
-        
-        // Start game timer
-        [self setUpTimer];
     }else{
         self.paused = NO;
-        [self setUpTimer];
     }
+    // Start game timer
+    [self setUpTimer];
 }
 
 #pragma mark - Provisional
@@ -121,9 +94,17 @@
 #pragma mark - Game utils
 -(void)configureGame
 {
-    self.model = [[RFMGameModel alloc] init];
+    self.currentScore = 0;
     
-    self.title = [NSString stringWithFormat:@"0"];    
+    self.model = [[RFMGameModel alloc] init];
+
+    
+    [self.gameTimeBar setupBarWithTotalTime:10
+                                      color:Rgb2UIColor(113, 172, 55)];
+    [self.ballTimeBar setupBarWithTotalTime:2
+                                      color:Rgb2UIColor(244, 109, 35)];
+    
+    self.scoreAnimatedLabel.text = [NSString stringWithFormat:@"0"];
 }
 
 -(void)setUpTimer
@@ -137,8 +118,14 @@
 
 -(void)syncMovement
 {
-    [self.gameBar syncrhonizeTimeLeftWithBarWidth];
-    [self.ballBar syncrhonizeTimeLeftWithBarWidth];
+    [self.gameTimeBar syncrhonizeTimeLeftWithBarWidth];
+    [self.ballTimeBar syncrhonizeTimeLeftWithBarWidth];
+    
+    self.currentScore = [self.scoreAnimatedLabel animateFromThisScore:self.currentScore
+                                                              toReach:self.model.score
+                                                       withMultiplier:self.model.level];
+    self.scoreAnimatedLabel.text = [NSString stringWithFormat:@"%ld", (long)self.currentScore];
+    
     [self moveBall];
 }
 
@@ -154,7 +141,7 @@
 #pragma mark - Actions
 -(void)addBallToView
 {
-#warning check if ball can appear at this point
+#warning put a limit of Balls in each level
 //    if ([self.model.arrayOfBalls count] <= self.model.level * 10) {
         RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
                                                                                 Height:self.playGroundView.frame.size.height
@@ -176,22 +163,21 @@
 
 -(void)sumPoints:(NSInteger) points
 {
-    if (self.usedPowerUp == NO) {
-        self.model.score = [self.title intValue];
-        
+//    if (self.usedPowerUp == NO) {
         self.model.score = self.model.score + points * self.model.level;
-        self.title = [NSString stringWithFormat:@"%ld", (long)self.model.score];
-    }
+//        self.scoreAnimatedLabel.text = [NSString stringWithFormat:@"%ld", (long)self.model.score];
+//    }
     
 }
 
 -(void)levelUp
 {
-    self.gameBar.paused = YES;
+    self.gameTimeBar.paused = YES;
+
+    self.ballTimeBar.totalTime = 2 * self.model.level;
+    self.ballTimeBar.timeLeft = self.ballTimeBar.totalTime;
+    self.ballTimeBar.canCreateNewBalls = NO;
     
-    self.ballBar.totalTime = 2 * self.model.level;
-    self.ballBar.timeLeft  = self.ballBar.totalTime;
-    self.ballBar.canCreateNewBalls = NO;
     
     [self.model levelUpChangesRadiusAndSpeed];
 }
@@ -239,7 +225,6 @@
         [self addBallToView];
     }else{
         [self.gameTimer invalidate];
-        //        sleep(1);
         [self showMenuNoForPauseYesForGameOver:YES];
     }
 }
@@ -257,7 +242,7 @@
 
             CGPoint nextMove = [each moveToNextPoint];
             
-            if (each.haveToReduceRadius) {
+            if (each.haveToReduceRadius && each.radius > self.model.minRadius) {
                 [each reduceBallSizeUntilReachThisRadius:self.model.minRadius
                                            withThisRatio:self.model.reduceRadiusRatio];
                 each.haveToReduceRadius = NO;
@@ -267,9 +252,12 @@
             if ([self.model.arrayOfBalls count] > 1 ) {
                 for (RFMBallView *collisionedBall in self.playGroundView.subviews){
                     if (each != collisionedBall) {
-                        if ([self checkForCollisionAtThisPoint:nextMove
-                                                       between:each
-                                                           and:collisionedBall]) {
+                        
+                        // Calculate distance between these two balls
+                        CGFloat distX = nextMove.x - collisionedBall.center.x;
+                        CGFloat distY = nextMove.y - collisionedBall.center.y;
+                        CGFloat distanceBetweenBalls =sqrt(distX*distX + distY*distY);
+                        if (distanceBetweenBalls <= (collisionedBall.radius + each.radius)){
                             
                             collisionedBall.haveToReduceRadius = YES;
                             each.haveToReduceRadius = YES;
@@ -300,22 +288,6 @@
     
 }
 
--(BOOL)checkForCollisionAtThisPoint:(CGPoint) nextMove
-                            between:(RFMBallView *) aBall
-                            and:(RFMBallView *) anotherBall
-{
-    // Calculate distance between these two balls
-    CGFloat distX = nextMove.x - anotherBall.center.x;
-    CGFloat distY = nextMove.y - anotherBall.center.y;
-    CGFloat distanceBetweenBalls =sqrt(distX*distX + distY*distY);
-    if (distanceBetweenBalls <= (anotherBall.radius + aBall.radius)){
-        return YES;
-    }else{
-        return NO;
-    }
-}
-
-
 -(void)removeBall:(RFMBallView *) aBall
 {
     [aBall destroyWithFadeOut];
@@ -331,7 +303,7 @@
             if ([self.model.arrayOfBalls objectAtIndex:0] == sender.view) {
                 // If the touched Ball is highlighted then
                 [self removeBall:[self.model.arrayOfBalls objectAtIndex:0]];
-                [self.gameBar addExtraTime];
+                [self.gameTimeBar addExtraTime];
                 [[RFMSystemSounds shareSystemSounds] correctBall];
             }else{
                 [[RFMSystemSounds shareSystemSounds] wrongBall];
@@ -373,37 +345,40 @@
 // RFMNewBallTimeBarViewDelegate
 -(void)timerBarWilladdNewBall
 {
-    
-    if (self.ballBar.canCreateNewBalls) {
+    if (self.ballTimeBar.canCreateNewBalls) {
         for (int i = 0; i<self.model.level; i++) {
             [self addBallToView];
         }
     }else{
-        self.ballBar.canCreateNewBalls = YES;
-        self.gameBar.paused = NO;
+        self.ballTimeBar.canCreateNewBalls = YES;
+        self.gameTimeBar.paused = NO;
     }
-    
-    self.ballBar.totalTime = (float)self.ballBar.totalTime - 0.1;
+#warning la reducción está a 0.2 lo normal es a 0.1
+    self.ballTimeBar.totalTime = (float)self.ballTimeBar.totalTime - 0.2;
 
-    if (self.ballBar.totalTime <= 1) {
+    if (self.ballTimeBar.totalTime <= 1) {
         [self levelUp];
-        [self.ballBar changeToPauseColor];
+        [self.ballTimeBar changeToPauseColor];
     }else{
-        [self.ballBar changeToNormalColor];
+        [self.ballTimeBar changeToNormalColor];
     }
 }
 
 // RFMGameTimeBarViewDelegate
 -(void)timerBarWillEndGame
 {
-    self.model.minRadius = 30;
-    self.model.maxRadius = 60;
-    
     [self.gameTimer invalidate];
+    self.model.minRadius = 20;
+    self.model.maxRadius = 70;
+
     for (RFMBallView *each in self.playGroundView.subviews) {
         each.userInteractionEnabled = NO;
+
     }
-    self.gameBar.userInteractionEnabled = NO;
+    self.gameTimeBar.userInteractionEnabled = NO;
+
+    
+    // Configure timer to call method that show Game Over animation
     self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
                                                       target:self
                                                     selector:@selector(gameOver)
@@ -416,10 +391,6 @@
 {
     [self destroyAllBallsAnimated:NO];
     self.model.arrayOfBalls = nil;
-    [self.gameBar removeFromSuperview];
-    self.gameBar = nil;
-    [self.ballBar removeFromSuperview];
-    self.ballBar = nil;
     self.paused = NO;
 }
 

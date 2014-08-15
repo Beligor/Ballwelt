@@ -12,8 +12,8 @@
 
 
 -(void)timeOver{
-    self.timeLeft = self.totalTime;
     [self.delegate timerBarWilladdNewBall];
+    self.timeLeft = self.totalTime;
 }
 
 -(void)changeToPauseColor

@@ -6,8 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMGameViewController">
             <connections>
+                <outlet property="ballTimeBar" destination="WHa-vW-UnD" id="N7X-QR-dO8"/>
                 <outlet property="controlPanelView" destination="t1d-s0-njG" id="eaR-4b-ZM1"/>
+                <outlet property="gameTimeBar" destination="dWO-Kr-Sb7" id="KjM-f1-ILJ"/>
                 <outlet property="playGroundView" destination="ZAJ-0T-uTd" id="3zL-LP-IdF"/>
+                <outlet property="scoreAnimatedLabel" destination="Dzt-8p-LXb" id="LfG-mG-Bc5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,6 +27,25 @@
                 <view contentMode="scaleToFill" id="t1d-s0-njG" userLabel="View - Control Panel">
                     <rect key="frame" x="0.0" y="74" width="320" height="117"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="dWO-Kr-Sb7" customClass="RFMGameTimeBarView">
+                            <rect key="frame" x="29" y="0.0" width="283" height="29"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0038814999630000001" green="1" blue="0.083202936860000007" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="WHa-vW-UnD" customClass="RFMNewBallTimeBarView">
+                            <rect key="frame" x="81" y="30" width="179" height="13"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dzt-8p-LXb" customClass="RFMAnimatedLabel">
+                            <rect key="frame" x="0.0" y="76" width="320" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>

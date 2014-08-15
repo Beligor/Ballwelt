@@ -9,15 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface RFMTimeBarView : UIView
-
-@property (nonatomic) CGFloat totalTime;
-@property (nonatomic) NSInteger width;
-@property (nonatomic) NSInteger height;
-@property (nonatomic) CGPoint position;
+@property (nonatomic, strong) UIView *timeBar;
 @property (nonatomic, strong) UIColor *barcolor;
 
+@property (nonatomic) CGFloat totalTime;
 @property (nonatomic) CGFloat timeLeft;
-@property (nonatomic, strong) UIView *timeBar;
+
 @property (nonatomic) BOOL canCreateNewBalls;
 @property (nonatomic) BOOL paused;
 
@@ -29,5 +26,7 @@
                barColor:(UIColor *) aBarColor;
 
 -(void)syncrhonizeTimeLeftWithBarWidth;
-
+// Is needed to call this method when add from IB 
+-(void)setupBarWithTotalTime:(NSInteger) aTotalTime
+                       color:(UIColor *) aColor;
 @end

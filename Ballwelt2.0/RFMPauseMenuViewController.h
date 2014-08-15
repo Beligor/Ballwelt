@@ -24,7 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIView *menuSquare;
 @property (weak, nonatomic) IBOutlet UIView *scoreSquare;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLbl;
-@property (nonatomic, strong) UIImage *image;
+
+
+
 @property (nonatomic, weak) id<RFMPauseMenuViewControllerDelegate> delegate;
 
 

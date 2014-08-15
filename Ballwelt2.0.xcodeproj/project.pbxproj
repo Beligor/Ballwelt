@@ -23,6 +23,7 @@
 		053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */; };
 		056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566239F199BCDD80020B35C /* backGroundPlayScreen.png */; };
 		05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B42199CC45700ACED98 /* RFMGameModel.m */; };
+		05AA5B46199D990F00ACED98 /* RFMAnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */; };
 		05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3D19951E7F003F7A1A /* Foundation.framework */; };
 		05BD9C4019951E7F003F7A1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */; };
 		05BD9C4219951E7F003F7A1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C4119951E7F003F7A1A /* UIKit.framework */; };
@@ -74,6 +75,8 @@
 		0566239F199BCDD80020B35C /* backGroundPlayScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundPlayScreen.png; sourceTree = "<group>"; };
 		05AA5B41199CC45700ACED98 /* RFMGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMGameModel.h; sourceTree = "<group>"; };
 		05AA5B42199CC45700ACED98 /* RFMGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMGameModel.m; sourceTree = "<group>"; };
+		05AA5B44199D990F00ACED98 /* RFMAnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMAnimatedLabel.h; sourceTree = "<group>"; };
+		05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMAnimatedLabel.m; sourceTree = "<group>"; };
 		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		05BD9C3A19951E7F003F7A1A /* Ballwelt2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballwelt2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BD9C3D19951E7F003F7A1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -273,6 +276,8 @@
 			children = (
 				05BD9C7319951F1F003F7A1A /* RFMBallView.h */,
 				05BD9C7419951F1F003F7A1A /* RFMBallView.m */,
+				05AA5B44199D990F00ACED98 /* RFMAnimatedLabel.h */,
+				05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */,
 				053BCDFB199937A800E2631E /* Time Bars */,
 			);
 			name = Views;
@@ -384,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05BD9C7519951F1F003F7A1A /* RFMBallView.m in Sources */,
+				05AA5B46199D990F00ACED98 /* RFMAnimatedLabel.m in Sources */,
 				05BD9C4E19951E7F003F7A1A /* RFMAppDelegate.m in Sources */,
 				053BCDFE1999586B00E2631E /* RFMSystemSounds.m in Sources */,
 				053BCE091999807D00E2631E /* RFMPauseMenuViewController.m in Sources */,

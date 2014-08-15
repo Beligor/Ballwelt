@@ -17,11 +17,9 @@
 
 -(void) addExtraTime
 {
-
+    self.timeLeft = self.timeLeft + 1;
     if (self.timeLeft >= self.totalTime) {
         self.timeLeft = self.totalTime;
-    }else{
-        self.timeLeft = self.timeLeft + 1;
-    }    
+    }
 }
 @end

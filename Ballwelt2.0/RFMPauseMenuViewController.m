@@ -10,6 +10,7 @@
 
 
 @interface RFMPauseMenuViewController ()
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic) BOOL isGameOver;
 @property (nonatomic) NSInteger score;
 @end
@@ -41,10 +42,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self applyBlurEffect];
-    self.blurredImage.image = self.image;
-    [self showBlur];
-    /*
     // Create Queue
     dispatch_queue_t processImage = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     // block to process in background
@@ -57,12 +54,6 @@
         });
         
     });
-    //[self showMenu];
-     */
-}
-#warning delete this method
--(void)dealloc{
-    NSLog(@"RFMPauseViewController dealloc");
 }
 
 #pragma mark - Utils
@@ -91,6 +82,7 @@
     self.scoreLbl.text = [NSString stringWithFormat:@"%ld",(long)self.score];
     
     if (self.isGameOver) {
+#warning complete this method
         // Hide "Resume" option
         self.continueBtn.hidden = YES;
         // Show Score
@@ -100,13 +92,6 @@
         
     }
 }
-
--(void)checkIfIsANewRecord
-{
-#warning check for a new record
-}
-
-
 
 #pragma mark - Blur effect
 -(void)applyBlurEffect

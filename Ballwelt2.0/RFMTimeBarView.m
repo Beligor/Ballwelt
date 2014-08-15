@@ -10,13 +10,24 @@
 @interface RFMTimeBarView()
 
 @property (nonatomic) CGFloat timeFraction;
-
-
+@property (nonatomic) NSInteger width;
+@property (nonatomic) NSInteger height;
+@property (nonatomic) CGPoint position;
 @end
 
 @implementation RFMTimeBarView
 
 #pragma mark - Init
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]){
+        _timeFraction = 1/(float)RATE_PER_SECOND;
+        _canCreateNewBalls = YES;
+        _paused = NO;
+    }
+    return self;
+}
+
 -(id) initWithTotalTime:(NSInteger) aTotalTime
                   width:(NSInteger) aWidth
                  height:(NSInteger) aHeight
@@ -36,8 +47,19 @@
 }
 
 #pragma mark - Setup
+-(void)setupBarWithTotalTime:(NSInteger) aTotalTime
+                       color:(UIColor *)aColor
+{
+    _totalTime = aTotalTime;
+    _timeLeft = aTotalTime;
+    _barcolor = aColor;
+    [self setUpTimeBar];
+}
+
 -(void)setUpTimeBar
 {
+    [self.timeBar removeFromSuperview];
+    self.timeBar = nil;
     self.backgroundColor = [UIColor clearColor];
     [self.layer setBorderColor:[[UIColor blackColor]CGColor]];
     [self.layer setBorderWidth:2];
@@ -53,7 +75,7 @@
 {
     
         if (self.timeLeft > 0) {
-            CGFloat newBarLength= self.timeLeft * (self.frame.size.width/self.totalTime);
+            CGFloat newBarLength = self.timeLeft * (self.frame.size.width/self.totalTime);
             [self.timeBar setFrame:CGRectMake(0, 0, newBarLength, self.timeBar.frame.size.height)];
             [self roundCorners];
             
@@ -79,6 +101,7 @@
     self.timeBar.layer.mask = maskLayer;
 }
 
+#pragma mark - Call delegates in subclass
 -(void)timeOver{
     // Write this method in subclass
 }
