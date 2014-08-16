@@ -16,11 +16,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     // RFMGameViewController *gameVC = [[RFMGameViewController alloc] init];
-
-    //UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:gameVC];
     RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
+    navVC.navigationBar.hidden = YES;
     
-    self.window.rootViewController = menuVC;
+    self.window.rootViewController = navVC;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

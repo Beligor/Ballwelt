@@ -11,6 +11,7 @@
 
 @protocol RFMGameTimeBarViewDelegate <NSObject>
 -(void)timerBarWillEndGame;
+-(void)timeBarDidTouched;
 @end
 
 @interface RFMGameTimeBarView : RFMTimeBarView

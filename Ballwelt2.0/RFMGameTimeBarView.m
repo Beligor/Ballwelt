@@ -22,4 +22,9 @@
         self.timeLeft = self.totalTime;
     }
 }
+
+-(void)didTouched
+{
+    [self.delegate timeBarDidTouched];
+}
 @end

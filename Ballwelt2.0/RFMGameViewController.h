@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "RFMNewBallTimeBarView.h"
 #import "RFMGameTimeBarView.h"
-#import "RFMAnimatedLabel.h"
 #import "RFMPauseMenuViewController.h"
+#import "RFMAnimatedLabel.h"
+#import "RFMPowerupBallView.h"
 
 @interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate, RFMPauseMenuViewControllerDelegate>
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet RFMGameTimeBarView *gameTimeBar;
 @property (weak, nonatomic) IBOutlet RFMNewBallTimeBarView *ballTimeBar;
 @property (weak, nonatomic) IBOutlet RFMAnimatedLabel *scoreAnimatedLabel;
+@property (weak, nonatomic) IBOutlet RFMPowerupBallView *powerUpView;
 
 
 

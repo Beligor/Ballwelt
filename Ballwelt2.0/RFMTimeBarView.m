@@ -58,14 +58,21 @@
 
 -(void)setUpTimeBar
 {
+    
     [self.timeBar removeFromSuperview];
     self.timeBar = nil;
+    
     self.backgroundColor = [UIColor clearColor];
     [self.layer setBorderColor:[[UIColor blackColor]CGColor]];
     [self.layer setBorderWidth:2];
     
     self.timeBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     self.timeBar.backgroundColor = self.barcolor;
+    
+    UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                             action:@selector(didTouched)];
+    [oneTap setNumberOfTapsRequired:1];
+    [self addGestureRecognizer:oneTap];
     
     [self addSubview:self.timeBar];
 }
@@ -102,8 +109,10 @@
 }
 
 #pragma mark - Call delegates in subclass
+// Write this methods in subclass
 -(void)timeOver{
-    // Write this method in subclass
+}
+-(void)didTouched{    
 }
 
 @end

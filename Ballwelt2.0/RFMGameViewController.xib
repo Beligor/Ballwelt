@@ -10,6 +10,7 @@
                 <outlet property="controlPanelView" destination="t1d-s0-njG" id="eaR-4b-ZM1"/>
                 <outlet property="gameTimeBar" destination="dWO-Kr-Sb7" id="KjM-f1-ILJ"/>
                 <outlet property="playGroundView" destination="ZAJ-0T-uTd" id="3zL-LP-IdF"/>
+                <outlet property="powerUpView" destination="7oG-Ce-Wmg" id="QnU-La-Ivm"/>
                 <outlet property="scoreAnimatedLabel" destination="Dzt-8p-LXb" id="LfG-mG-Bc5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,13 +20,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="ZAJ-0T-uTd" userLabel="View - Play Ground">
+                <view contentMode="scaleToFill" id="BxO-hc-d0r">
+                    <rect key="frame" x="102" y="91" width="160" height="284"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view alpha="0.5" contentMode="scaleToFill" id="ZAJ-0T-uTd" userLabel="View - Play Ground">
                     <rect key="frame" x="0.0" y="264" width="320" height="304"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.02169921121" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="t1d-s0-njG" userLabel="View - Control Panel">
-                    <rect key="frame" x="0.0" y="74" width="320" height="117"/>
+                    <rect key="frame" x="0.0" y="20" width="320" height="117"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="dWO-Kr-Sb7" customClass="RFMGameTimeBarView">
@@ -36,15 +42,20 @@
                         <view contentMode="scaleToFill" id="WHa-vW-UnD" customClass="RFMNewBallTimeBarView">
                             <rect key="frame" x="81" y="30" width="179" height="13"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dzt-8p-LXb" customClass="RFMAnimatedLabel">
-                            <rect key="frame" x="0.0" y="76" width="320" height="21"/>
+                            <rect key="frame" x="139" y="76" width="181" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" id="7oG-Ce-Wmg" customClass="RFMPowerupBallView">
+                            <rect key="frame" x="61" y="51" width="60" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

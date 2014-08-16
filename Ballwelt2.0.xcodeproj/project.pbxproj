@@ -22,6 +22,10 @@
 		053BCE091999807D00E2631E /* RFMPauseMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCE071999807D00E2631E /* RFMPauseMenuViewController.m */; };
 		053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */; };
 		056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566239F199BCDD80020B35C /* backGroundPlayScreen.png */; };
+		058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */; };
+		058D8EB3199E21C5006CB9B3 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB0199E21C5006CB9B3 /* power1.png */; };
+		058D8EB4199E21C5006CB9B3 /* power2.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB1199E21C5006CB9B3 /* power2.png */; };
+		058D8EB5199E21C5006CB9B3 /* power3.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB2199E21C5006CB9B3 /* power3.png */; };
 		05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B42199CC45700ACED98 /* RFMGameModel.m */; };
 		05AA5B46199D990F00ACED98 /* RFMAnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */; };
 		05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3D19951E7F003F7A1A /* Foundation.framework */; };
@@ -73,6 +77,11 @@
 		053BCE071999807D00E2631E /* RFMPauseMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPauseMenuViewController.m; sourceTree = "<group>"; };
 		053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMPauseMenuViewController.xib; sourceTree = "<group>"; };
 		0566239F199BCDD80020B35C /* backGroundPlayScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundPlayScreen.png; sourceTree = "<group>"; };
+		058D8EAD199E0775006CB9B3 /* RFMPowerupBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPowerupBallView.h; sourceTree = "<group>"; };
+		058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPowerupBallView.m; sourceTree = "<group>"; };
+		058D8EB0199E21C5006CB9B3 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
+		058D8EB1199E21C5006CB9B3 /* power2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power2.png; sourceTree = "<group>"; };
+		058D8EB2199E21C5006CB9B3 /* power3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power3.png; sourceTree = "<group>"; };
 		05AA5B41199CC45700ACED98 /* RFMGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMGameModel.h; sourceTree = "<group>"; };
 		05AA5B42199CC45700ACED98 /* RFMGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMGameModel.m; sourceTree = "<group>"; };
 		05AA5B44199D990F00ACED98 /* RFMAnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMAnimatedLabel.h; sourceTree = "<group>"; };
@@ -129,6 +138,7 @@
 		05370118199AAC3E0000B655 /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				058D8EB6199E21D5006CB9B3 /* Power ups */,
 				0537011B199ADEC00000B655 /* Social Networks Icons */,
 				05370119199AAC730000B655 /* Ballwelt.png */,
 				0566239F199BCDD80020B35C /* backGroundPlayScreen.png */,
@@ -166,6 +176,16 @@
 				05370118199AAC3E0000B655 /* Artwork */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		058D8EB6199E21D5006CB9B3 /* Power ups */ = {
+			isa = PBXGroup;
+			children = (
+				058D8EB0199E21C5006CB9B3 /* power1.png */,
+				058D8EB1199E21C5006CB9B3 /* power2.png */,
+				058D8EB2199E21C5006CB9B3 /* power3.png */,
+			);
+			name = "Power ups";
 			sourceTree = "<group>";
 		};
 		05AA5B40199CC44200ACED98 /* Models */ = {
@@ -278,6 +298,8 @@
 				05BD9C7419951F1F003F7A1A /* RFMBallView.m */,
 				05AA5B44199D990F00ACED98 /* RFMAnimatedLabel.h */,
 				05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */,
+				058D8EAD199E0775006CB9B3 /* RFMPowerupBallView.h */,
+				058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */,
 				053BCDFB199937A800E2631E /* Time Bars */,
 			);
 			name = Views;
@@ -362,14 +384,17 @@
 				05370117199A993C0000B655 /* RFMMainMenuViewController.xib in Resources */,
 				0537011E199ADEDA0000B655 /* facebook_logo.png in Resources */,
 				0537011F199ADEDA0000B655 /* twitter_logo.png in Resources */,
+				058D8EB5199E21C5006CB9B3 /* power3.png in Resources */,
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
 				053BCE0219995C4700E2631E /* wrongBall.wav in Resources */,
 				053BCE041999663D00E2631E /* rightBall.wav in Resources */,
 				05BD9C4819951E7F003F7A1A /* InfoPlist.strings in Resources */,
 				05BD9C5019951E7F003F7A1A /* Images.xcassets in Resources */,
 				056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */,
+				058D8EB4199E21C5006CB9B3 /* power2.png in Resources */,
 				0537011A199AAC730000B655 /* Ballwelt.png in Resources */,
 				053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */,
+				058D8EB3199E21C5006CB9B3 /* power1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +425,7 @@
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
 				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,
+				058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

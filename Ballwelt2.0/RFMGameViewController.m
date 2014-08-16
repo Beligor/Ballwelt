@@ -11,6 +11,7 @@
 #import "RFMBallView.h"
 #import "RFMPauseMenuViewController.h"
 #import "RFMSystemSounds.h"
+#import "RFMPowerupBallView.h"
 
 @interface RFMGameViewController ()
 @property (nonatomic, strong) RFMGameModel *model;
@@ -41,13 +42,6 @@
         
         [self configureGame];
         
-        [self configurarNavigationController];
-
-         UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                 action:@selector(makeAPause)];
-        [oneTap setNumberOfTapsRequired:1];
-        [self.gameTimeBar addGestureRecognizer:oneTap];
-        
         // Set Delegates
         self.gameTimeBar.delegate = self;
         self.ballTimeBar.delegate = self;
@@ -63,6 +57,7 @@
     [self setUpTimer];
 }
 
+/*
 #pragma mark - Provisional
 -(void)configurarNavigationController
 {
@@ -90,7 +85,7 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.navigationItem.leftBarButtonItems = @[slowButton, freezeButton, destroyButton, speedButton];
 }
-
+*/
 #pragma mark - Game utils
 -(void)configureGame
 {
@@ -98,6 +93,7 @@
     
     self.model = [[RFMGameModel alloc] init];
 
+    [self.powerUpView setupPowerup];
     
     [self.gameTimeBar setupBarWithTotalTime:10
                                       color:Rgb2UIColor(113, 172, 55)];
@@ -163,11 +159,7 @@
 
 -(void)sumPoints:(NSInteger) points
 {
-//    if (self.usedPowerUp == NO) {
         self.model.score = self.model.score + points * self.model.level;
-//        self.scoreAnimatedLabel.text = [NSString stringWithFormat:@"%ld", (long)self.model.score];
-//    }
-    
 }
 
 -(void)levelUp
@@ -193,21 +185,21 @@
     pauseVC.delegate = self;
     
     if (isGameOver) {
-        // Destroy this viewController before show menu
+        // Destroy this view before show menu
         self.view = nil;
     }else{
         self.paused = YES;
     }
-    [self presentViewController:pauseVC
-                       animated:NO
-                     completion:nil];
-}
+    [self.navigationController pushViewController:pauseVC
+                                         animated:NO];
 
-#warning change this method
--(void)makeAPause
-{
-    [self showMenuNoForPauseYesForGameOver:NO];
 }
+//
+//#warning change this method
+//-(void)makeAPause
+//{
+//    [self showMenuNoForPauseYesForGameOver:NO];
+//}
 
 -(UIImage *)screenCapture
 {
@@ -305,8 +297,10 @@
                 [self removeBall:[self.model.arrayOfBalls objectAtIndex:0]];
                 [self.gameTimeBar addExtraTime];
                 [[RFMSystemSounds shareSystemSounds] correctBall];
+                [self.powerUpView increaseFillsCircle];
             }else{
                 [[RFMSystemSounds shareSystemSounds] wrongBall];
+                [self.powerUpView restartPowerUp];
             }
         }
     }
@@ -386,6 +380,11 @@
                                                      repeats:YES];
 }
 
+-(void)timeBarDidTouched
+{
+    [self showMenuNoForPauseYesForGameOver:NO];
+}
+
 // RFMPauseViewControllerDelegate
 -(void)pauseMenuWillRestartGame
 {
@@ -396,10 +395,20 @@
 
 -(void)pauseMenuWillExitGame
 {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+
+}
+-(void) destruccion
+{
+    self.controlPanelView = nil;
+    self.playGroundView = nil;
+    self.gameTimeBar = nil;
+    self.ballTimeBar = nil;
+    self.scoreAnimatedLabel = nil;
+    self.powerUpView = nil;
+    self.model = nil;
+    self.gameTimer = nil;
     self.view = nil;
-    [self dismissViewControllerAnimated:NO
-                             completion:nil];
-    [self dismissViewControllerAnimated:NO
-                             completion:nil];
+    [self.view removeFromSuperview];
 }
 @end

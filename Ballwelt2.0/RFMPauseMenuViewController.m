@@ -138,13 +138,15 @@
     
     switch (btn.tag) {
         case 0: // Resume
-            [self dismissViewControllerAnimated:NO
-                                     completion:nil];
+            [self.navigationController popViewControllerAnimated:NO];
+//            [self dismissViewControllerAnimated:NO
+//                                     completion:nil];
             break;
         case 1: // Restart
             [self.delegate pauseMenuWillRestartGame];
-            [self dismissViewControllerAnimated:NO
-                                     completion:nil];
+            [self.navigationController popViewControllerAnimated:NO];
+//            [self dismissViewControllerAnimated:NO
+//                                     completion:nil];
             break;
         case 2: // Exit
             [self.delegate pauseMenuWillExitGame];
@@ -174,6 +176,4 @@ didFailToReceiveAdWithError:(NSError *)error
     [banner setAlpha:0];
     [UIView commitAnimations];
 }
-
-
 @end

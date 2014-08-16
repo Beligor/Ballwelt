@@ -27,7 +27,7 @@
     return shared;
 }
 
--(void) correctBall
+-(void)correctBall
 {
     [self playFileNamed:@"rightBall"
               extension:@"wav"
