@@ -10,17 +10,19 @@
 
 @implementation RFMGameTimeBarView
 
--(void)timeOver
-{
-    [self.delegate timerBarWillEndGame];
-}
-
+#pragma mark - Utils
 -(void) addExtraTime
 {
     self.timeLeft = self.timeLeft + 1;
     if (self.timeLeft >= self.totalTime) {
         self.timeLeft = self.totalTime;
     }
+}
+
+#pragma mark - Delegate
+-(void)timeOver
+{
+    [self.delegate timerBarWillEndGame];
 }
 
 -(void)didTouched

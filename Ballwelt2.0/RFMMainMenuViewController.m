@@ -45,10 +45,7 @@
     self.moveTimer = nil;
     self.view = nil;
 }
--(void)dealloc
-{
-    NSLog(@"Main menu dealloc");
-}
+
 #pragma mark - Balls Control
 -(void)addBallToView
 {
@@ -73,16 +70,9 @@
 #pragma mark - Actions
 - (IBAction)startNewGameBtn:(id)sender {
 
-    //self.view = nil;
     RFMGameViewController *newGameVC = [[RFMGameViewController alloc] init];
-    
-//    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:newGameVC];
     [self.navigationController pushViewController:newGameVC
                                          animated:NO];
-//    
-//    [self presentViewController:navVC
-//                       animated:NO
-//                     completion:nil];
 }
 
 - (IBAction)socialNetworksBtn:(id)sender {

@@ -15,7 +15,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    // RFMGameViewController *gameVC = [[RFMGameViewController alloc] init];
+
     RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
     navVC.navigationBar.hidden = YES;

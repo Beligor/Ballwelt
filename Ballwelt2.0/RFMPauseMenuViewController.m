@@ -83,7 +83,7 @@
     
     if (self.isGameOver) {
 #warning complete this method
-        // Hide "Resume" option
+        // Hide "Resume" button
         self.continueBtn.hidden = YES;
         // Show Score
         
@@ -139,17 +139,13 @@
     switch (btn.tag) {
         case 0: // Resume
             [self.navigationController popViewControllerAnimated:NO];
-//            [self dismissViewControllerAnimated:NO
-//                                     completion:nil];
             break;
         case 1: // Restart
             [self.delegate pauseMenuWillRestartGame];
             [self.navigationController popViewControllerAnimated:NO];
-//            [self dismissViewControllerAnimated:NO
-//                                     completion:nil];
             break;
         case 2: // Exit
-            [self.delegate pauseMenuWillExitGame];
+            [self.navigationController popToRootViewControllerAnimated:NO];
             break;
             
         default:

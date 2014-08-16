@@ -12,7 +12,6 @@
 
 @property (nonatomic) CGPoint position;
 @property (nonatomic) NSInteger radius;
-@property (nonatomic, strong) UIColor *color;
 @property (nonatomic) CGFloat speed;
 @property (nonatomic) NSInteger direction;
 @property (nonatomic) BOOL canIncreaseSpeed;

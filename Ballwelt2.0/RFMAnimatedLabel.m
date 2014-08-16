@@ -10,14 +10,6 @@
 
 @implementation RFMAnimatedLabel
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 -(NSInteger)animateFromThisScore:(NSInteger) initialScore
                           toReach:(NSInteger) finalScore
                    withMultiplier:(NSInteger) multiplier{
@@ -30,14 +22,5 @@
     
     return initialScore;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

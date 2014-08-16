@@ -11,7 +11,6 @@
 
 @protocol RFMPauseMenuViewControllerDelegate <NSObject>
 -(void)pauseMenuWillRestartGame;
--(void)pauseMenuWillExitGame;
 @end
 
 @interface RFMPauseMenuViewController : UIViewController<ADBannerViewDelegate>
@@ -20,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *continueBtn;
 @property (weak, nonatomic) IBOutlet UIButton *restartBtn;
 @property (weak, nonatomic) IBOutlet UIButton *extiBtn;
-
 @property (weak, nonatomic) IBOutlet UIView *menuSquare;
 @property (weak, nonatomic) IBOutlet UIView *scoreSquare;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLbl;

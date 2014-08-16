@@ -11,12 +11,10 @@
 #import "RFMBallView.h"
 #import "RFMPauseMenuViewController.h"
 #import "RFMSystemSounds.h"
-#import "RFMPowerupBallView.h"
 
 @interface RFMGameViewController ()
 @property (nonatomic, strong) RFMGameModel *model;
 @property (nonatomic, strong) NSTimer *gameTimer;
-@property (nonatomic) BOOL usedPowerUp;
 @property (nonatomic) NSInteger currentScore;
 @end
 
@@ -28,16 +26,17 @@
     if (self = [super initWithNibName:nil
                                bundle:nil]) {
         _paused = NO;
-        _usedPowerUp = NO;
     }
     return self;
 }
 
 #pragma mark - View Lifecycle
+
+#warning add a count down
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-#warning add a count down
+    self.playGroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGroundPlayScreen"]];
     if (!self.paused) {
         
         [self configureGame];
@@ -45,6 +44,7 @@
         // Set Delegates
         self.gameTimeBar.delegate = self;
         self.ballTimeBar.delegate = self;
+        self.powerUpView.delegate = self;
         
         // Add N balls at the beginin
         for (int i =0; i<5; i++) {
@@ -57,35 +57,6 @@
     [self setUpTimer];
 }
 
-/*
-#pragma mark - Provisional
--(void)configurarNavigationController
-{
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                               target:self
-                                                                               action:@selector(addBallToView)];
-    
-    UIBarButtonItem *speedButton = [[UIBarButtonItem alloc] initWithTitle:@"+Sp"
-                                                                    style:UIBarButtonItemStyleDone
-                                                                   target:self
-                                                                   action:@selector(speedUpBalls:)];
-    UIBarButtonItem *slowButton = [[UIBarButtonItem alloc] initWithTitle:@"Slow"
-                                                                   style:UIBarButtonItemStyleDone
-                                                                  target:self
-                                                                  action:@selector(slowDownBalls:)];
-    UIBarButtonItem *freezeButton = [[UIBarButtonItem alloc] initWithTitle:@"Stop"
-                                                                     style:UIBarButtonItemStyleDone
-                                                                    target:self
-                                                                    action:@selector(freezeBalls:)];
-    UIBarButtonItem *destroyButton = [[UIBarButtonItem alloc] initWithTitle:@"Destroy"
-                                                                      style:UIBarButtonItemStyleDone
-                                                                     target:self
-                                                                     action:@selector(destroyBallsWithAnimation)];
-    
-    self.navigationItem.rightBarButtonItem = addButton;
-    self.navigationItem.leftBarButtonItems = @[slowButton, freezeButton, destroyButton, speedButton];
-}
-*/
 #pragma mark - Game utils
 -(void)configureGame
 {
@@ -97,7 +68,7 @@
     
     [self.gameTimeBar setupBarWithTotalTime:10
                                       color:Rgb2UIColor(113, 172, 55)];
-    [self.ballTimeBar setupBarWithTotalTime:2
+    [self.ballTimeBar setupBarWithTotalTime:0
                                       color:Rgb2UIColor(244, 109, 35)];
     
     self.scoreAnimatedLabel.text = [NSString stringWithFormat:@"0"];
@@ -121,30 +92,22 @@
                                                               toReach:self.model.score
                                                        withMultiplier:self.model.level];
     self.scoreAnimatedLabel.text = [NSString stringWithFormat:@"%ld", (long)self.currentScore];
+    [self.powerUpView blink];
     
     [self moveBall];
 }
-
-#warning mejorar este metodo
-// se usa para obligar a las bolas a ser destruidas con animación al pulsar el power up de destruir
-// intentar mejorar el metodo con la animación para que este no sea necesario
--(void)destroyBallsWithAnimation
-{
-    [self destroyAllBallsAnimated:YES];
-}
-
 
 #pragma mark - Actions
 -(void)addBallToView
 {
 #warning put a limit of Balls in each level
 //    if ([self.model.arrayOfBalls count] <= self.model.level * 10) {
-        RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
-                                                                                Height:self.playGroundView.frame.size.height
-                                                                              MinSpeed:self.model.minSpeed
-                                                                              maxSpeed:self.model.maxSpeed
-                                                                             minRadius:self.model.minRadius
-                                                                             maxRadius:self.model.maxRadius];
+    RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
+                                                                            Height:self.playGroundView.frame.size.height
+                                                                          MinSpeed:self.model.minSpeed
+                                                                          maxSpeed:self.model.maxSpeed
+                                                                         minRadius:self.model.minRadius
+                                                                         maxRadius:self.model.maxRadius];
     // add gesture recognizer
     UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                              action:@selector(didBallTouch:)];
@@ -166,7 +129,7 @@
 {
     self.gameTimeBar.paused = YES;
 
-    self.ballTimeBar.totalTime = 2 * self.model.level;
+    self.ballTimeBar.totalTime = 1 + self.model.level;
     self.ballTimeBar.timeLeft = self.ballTimeBar.totalTime;
     self.ballTimeBar.canCreateNewBalls = NO;
     
@@ -183,23 +146,12 @@
                                                                               isGameOver:isGameOver
                                                                                    score:self.model.score];
     pauseVC.delegate = self;
-    
-    if (isGameOver) {
-        // Destroy this view before show menu
-        self.view = nil;
-    }else{
-        self.paused = YES;
-    }
+    self.paused = YES;
+
     [self.navigationController pushViewController:pauseVC
                                          animated:NO];
 
 }
-//
-//#warning change this method
-//-(void)makeAPause
-//{
-//    [self showMenuNoForPauseYesForGameOver:NO];
-//}
 
 -(UIImage *)screenCapture
 {
@@ -212,11 +164,14 @@
 
 -(void)gameOver
 {
-    self.model.numberOfGameOverBalls = self.model.numberOfGameOverBalls + 1;
-    if (self.model.numberOfGameOverBalls < 150) {
+    static NSInteger numberOfGameOverBalls = 0;
+    numberOfGameOverBalls = numberOfGameOverBalls + 1;
+//    NSLog(@"contador bolas: %d", contador);
+    if (numberOfGameOverBalls < 150) {
         [self addBallToView];
     }else{
         [self.gameTimer invalidate];
+        numberOfGameOverBalls = 0;
         [self showMenuNoForPauseYesForGameOver:YES];
     }
 }
@@ -307,24 +262,22 @@
 }
 
 #pragma mark - Powerups
-- (void)speedUpBalls:(id)sender {
-    self.model.maxSpeed += 50;
-}
-
-- (void)slowDownBalls:(id)sender {
+- (void)slowDownBalls
+{
     for (RFMBallView *each in self.playGroundView.subviews) {
-        each.speed = each.speed - each.speed/3 * 2;
+        each.speed = each.speed - each.speed / 3 * 2;
         each.canIncreaseSpeed = NO;
     }
 }
-- (void)freezeBalls:(id)sender {
+- (void)freezeBalls
+{
     for (RFMBallView *each in self.playGroundView.subviews) {
         each.speed = 0;
     }
 }
 
-- (void)destroyAllBallsAnimated:(BOOL)animated{
-    self.usedPowerUp = YES;
+- (void)destroyAllBallsAnimated:(BOOL)animated
+{
     for (RFMBallView *each in self.playGroundView.subviews) {
         if (animated) {
             [self removeBall:each];
@@ -332,7 +285,6 @@
             [each removeFromSuperview];
         }
     }
-    self.usedPowerUp = NO;
 }
 
 #pragma mark - delegates
@@ -346,9 +298,10 @@
     }else{
         self.ballTimeBar.canCreateNewBalls = YES;
         self.gameTimeBar.paused = NO;
+        [self timerBarWilladdNewBall];
     }
-#warning la reducción está a 0.2 lo normal es a 0.1
-    self.ballTimeBar.totalTime = (float)self.ballTimeBar.totalTime - 0.2;
+    
+    self.ballTimeBar.totalTime = (float)self.ballTimeBar.totalTime - 0.1;
 
     if (self.ballTimeBar.totalTime <= 1) {
         [self levelUp];
@@ -370,7 +323,6 @@
 
     }
     self.gameTimeBar.userInteractionEnabled = NO;
-
     
     // Configure timer to call method that show Game Over animation
     self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
@@ -393,22 +345,20 @@
     self.paused = NO;
 }
 
--(void)pauseMenuWillExitGame
-{
-    [self.navigationController popToRootViewControllerAnimated:NO];
-
-}
--(void) destruccion
-{
-    self.controlPanelView = nil;
-    self.playGroundView = nil;
-    self.gameTimeBar = nil;
-    self.ballTimeBar = nil;
-    self.scoreAnimatedLabel = nil;
-    self.powerUpView = nil;
-    self.model = nil;
-    self.gameTimer = nil;
-    self.view = nil;
-    [self.view removeFromSuperview];
+// RFMPowerupBallViewDelegate
+-(void)powerUpDidUsed{
+    switch (self.powerUpView.powerupNumber) {
+        case 1:
+            [self slowDownBalls];
+            break;
+        case 2:
+            [self freezeBalls];
+            break;
+        case 3:
+            [self destroyAllBallsAnimated:YES];
+            break;
+        default:
+            break;
+    }
 }
 @end

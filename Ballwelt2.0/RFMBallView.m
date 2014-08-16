@@ -8,6 +8,10 @@
 
 #import "RFMBallView.h"
 
+@interface RFMBallView()
+@property (nonatomic, strong) UIColor *color;
+@end
+
 @implementation RFMBallView
 
 #pragma mark - Init
@@ -127,11 +131,6 @@
 
 
 #pragma mark - Utils
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"<%@: Posicion X: %li Posicion Y: %li Radio: %ld Velocidad: %ld Dirección: %ld",[self class],(long)self.position.x, (long)self.position.y , (long)self.radius, (long)self.speed, (long)self.direction];
-}
-
 -(UIColor *) randomColor
 {
     CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0

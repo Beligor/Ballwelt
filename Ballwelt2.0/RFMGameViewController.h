@@ -13,7 +13,8 @@
 #import "RFMAnimatedLabel.h"
 #import "RFMPowerupBallView.h"
 
-@interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate, RFMPauseMenuViewControllerDelegate>
+
+@interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate, RFMPauseMenuViewControllerDelegate, RFMPowerupBallViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *playGroundView;
 @property (weak, nonatomic) IBOutlet UIView *controlPanelView;

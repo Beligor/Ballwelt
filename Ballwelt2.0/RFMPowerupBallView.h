@@ -8,18 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-//@protocol RFMPowerupBallViewDelegate <NSObject>
-//
-//-(void)powerUpDidUsed;
-//
-//@end
+@protocol RFMPowerupBallViewDelegate <NSObject>
+
+-(void)powerUpDidUsed;
+
+@end
 
 @interface RFMPowerupBallView : UIView
 @property (nonatomic) NSInteger powerupNumber;
-//@property (nonatomic, weak) id<RFMPowerupBallViewDelegate> delegate;
+@property (nonatomic, weak) id<RFMPowerupBallViewDelegate> delegate;
 
 -(id)initWithRadius:(NSInteger) aRadius;
 -(void) setupPowerup;
 -(void)increaseFillsCircle;
 -(void)restartPowerUp;
+- (void) blink;
 @end

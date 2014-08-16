@@ -73,7 +73,7 @@
                                                                              action:@selector(didTouched)];
     [oneTap setNumberOfTapsRequired:1];
     [self addGestureRecognizer:oneTap];
-    
+    self.userInteractionEnabled = YES;
     [self addSubview:self.timeBar];
 }
 

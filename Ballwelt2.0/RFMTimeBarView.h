@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface RFMTimeBarView : UIView
+
 @property (nonatomic, strong) UIView *timeBar;
 @property (nonatomic, strong) UIColor *barcolor;
-
 @property (nonatomic) CGFloat totalTime;
 @property (nonatomic) CGFloat timeLeft;
-
 @property (nonatomic) BOOL canCreateNewBalls;
 @property (nonatomic) BOOL paused;
 

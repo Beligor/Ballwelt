@@ -16,12 +16,11 @@
         _arrayOfBalls = [[NSMutableArray alloc] init];
         _score = 0;
         _level = 1;
-        _minRadius = 30;
+        _minRadius = 35;
         _maxRadius = 50;
         _speedIncrement = 1.2;
         _minSpeed = 70;
         _maxSpeed = 100;
-        _numberOfGameOverBalls = 0;
         _reduceRadiusRatio = 1.05;
     }
     return self;

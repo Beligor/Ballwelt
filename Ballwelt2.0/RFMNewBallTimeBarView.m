@@ -10,19 +10,20 @@
 
 @implementation RFMNewBallTimeBarView
 
-
--(void)timeOver{
-    [self.delegate timerBarWilladdNewBall];
-    self.timeLeft = self.totalTime;
-}
-
+#pragma mark - Utils
 -(void)changeToPauseColor
 {
     self.timeBar.backgroundColor = Rgb2UIColor(84, 103, 220);
 }
+
 -(void)changeToNormalColor
 {
     self.timeBar.backgroundColor = self.barcolor;
 }
 
+#pragma mark - Delegate
+-(void)timeOver{
+    [self.delegate timerBarWilladdNewBall];
+    self.timeLeft = self.totalTime;
+}
 @end

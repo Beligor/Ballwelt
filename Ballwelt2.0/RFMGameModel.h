@@ -18,7 +18,6 @@
 @property (nonatomic) CGFloat speedIncrement;
 @property (nonatomic) CGFloat maxSpeed;
 @property (nonatomic) CGFloat minSpeed;
-@property (nonatomic) NSInteger numberOfGameOverBalls;
 @property (nonatomic) CGFloat reduceRadiusRatio;
 
 -(void)levelUpChangesRadiusAndSpeed;
