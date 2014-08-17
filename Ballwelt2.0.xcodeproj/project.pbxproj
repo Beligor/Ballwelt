@@ -21,6 +21,9 @@
 		053BCE041999663D00E2631E /* rightBall.wav in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE031999663D00E2631E /* rightBall.wav */; };
 		053BCE091999807D00E2631E /* RFMPauseMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCE071999807D00E2631E /* RFMPauseMenuViewController.m */; };
 		053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */; };
+		054B94F619A0213A00741887 /* RFMContentTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B94F419A0213A00741887 /* RFMContentTutorialViewController.m */; };
+		054B94F719A0213A00741887 /* RFMContentTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 054B94F519A0213A00741887 /* RFMContentTutorialViewController.xib */; };
+		054B94FB19A0228900741887 /* RFMTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B94FA19A0228900741887 /* RFMTutorialViewController.m */; };
 		056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566239F199BCDD80020B35C /* backGroundPlayScreen.png */; };
 		058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */; };
 		058D8EB3199E21C5006CB9B3 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB0199E21C5006CB9B3 /* power1.png */; };
@@ -76,6 +79,11 @@
 		053BCE061999807D00E2631E /* RFMPauseMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPauseMenuViewController.h; sourceTree = "<group>"; };
 		053BCE071999807D00E2631E /* RFMPauseMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPauseMenuViewController.m; sourceTree = "<group>"; };
 		053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMPauseMenuViewController.xib; sourceTree = "<group>"; };
+		054B94F319A0213A00741887 /* RFMContentTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMContentTutorialViewController.h; sourceTree = "<group>"; };
+		054B94F419A0213A00741887 /* RFMContentTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMContentTutorialViewController.m; sourceTree = "<group>"; };
+		054B94F519A0213A00741887 /* RFMContentTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMContentTutorialViewController.xib; sourceTree = "<group>"; };
+		054B94F919A0228900741887 /* RFMTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialViewController.h; sourceTree = "<group>"; };
+		054B94FA19A0228900741887 /* RFMTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialViewController.m; sourceTree = "<group>"; };
 		0566239F199BCDD80020B35C /* backGroundPlayScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundPlayScreen.png; sourceTree = "<group>"; };
 		058D8EAD199E0775006CB9B3 /* RFMPowerupBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPowerupBallView.h; sourceTree = "<group>"; };
 		058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPowerupBallView.m; sourceTree = "<group>"; };
@@ -176,6 +184,18 @@
 				05370118199AAC3E0000B655 /* Artwork */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		054B94F819A021A100741887 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				054B94F319A0213A00741887 /* RFMContentTutorialViewController.h */,
+				054B94F419A0213A00741887 /* RFMContentTutorialViewController.m */,
+				054B94F519A0213A00741887 /* RFMContentTutorialViewController.xib */,
+				054B94F919A0228900741887 /* RFMTutorialViewController.h */,
+				054B94FA19A0228900741887 /* RFMTutorialViewController.m */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		058D8EB6199E21D5006CB9B3 /* Power ups */ = {
@@ -287,6 +307,7 @@
 				05370113199A993C0000B655 /* RFMMainMenuViewController.h */,
 				05370114199A993C0000B655 /* RFMMainMenuViewController.m */,
 				05370115199A993C0000B655 /* RFMMainMenuViewController.xib */,
+				054B94F819A021A100741887 /* Tutorial */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -384,6 +405,7 @@
 				05370117199A993C0000B655 /* RFMMainMenuViewController.xib in Resources */,
 				0537011E199ADEDA0000B655 /* facebook_logo.png in Resources */,
 				0537011F199ADEDA0000B655 /* twitter_logo.png in Resources */,
+				054B94F719A0213A00741887 /* RFMContentTutorialViewController.xib in Resources */,
 				058D8EB5199E21C5006CB9B3 /* power3.png in Resources */,
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
 				053BCE0219995C4700E2631E /* wrongBall.wav in Resources */,
@@ -420,11 +442,13 @@
 				053BCE091999807D00E2631E /* RFMPauseMenuViewController.m in Sources */,
 				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
 				053BCDF11998B0A200E2631E /* RFMTimeBarView.m in Sources */,
+				054B94FB19A0228900741887 /* RFMTutorialViewController.m in Sources */,
 				05370116199A993C0000B655 /* RFMMainMenuViewController.m in Sources */,
 				05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
 				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,
+				054B94F619A0213A00741887 /* RFMContentTutorialViewController.m in Sources */,
 				058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

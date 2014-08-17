@@ -8,6 +8,7 @@
 
 #import "RFMMainMenuViewController.h"
 #import "RFMGameViewController.h"
+#import "RFMTutorialViewController.h"
 #import "RFMBallView.h"
 @import Social;
 
@@ -68,6 +69,12 @@
     
 }
 #pragma mark - Actions
+- (IBAction)tutorial:(id)sender {
+    RFMTutorialViewController *tutorialVC = [[RFMTutorialViewController alloc] init];
+    [self.navigationController pushViewController:tutorialVC
+                                         animated:NO];
+}
+
 - (IBAction)startNewGameBtn:(id)sender {
 
     RFMGameViewController *newGameVC = [[RFMGameViewController alloc] init];
