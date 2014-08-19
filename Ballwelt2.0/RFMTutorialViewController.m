@@ -7,11 +7,11 @@
 //
 
 #import "RFMTutorialViewController.h"
-#import "RFMContentTutorialViewController.h"
-#import "RFMTutorialCollectionModel.h"
+#import "RFMTutorialScreenViewController.h"
+#import "RFMTutorialModel.h"
 
 @interface RFMTutorialViewController ()
-@property (nonatomic, strong) RFMTutorialCollectionModel *model;
+@property (nonatomic, strong) RFMTutorialModel *model;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic,strong) UIPageViewController *pageViewController;
 @end
@@ -21,10 +21,11 @@
 #pragma mark - View Lifecycle
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-
-    self.model = [[RFMTutorialCollectionModel alloc] init];
+    [super viewDidLoad];   
     
+    self.model = [[RFMTutorialModel alloc] init];
+    
+    // Configure Page View Controller
     NSDictionary *option = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]
                                                        forKey:UIPageViewControllerOptionSpineLocationKey];
     
@@ -33,51 +34,43 @@
                                                                            options:option];
     [self.pageViewController setDataSource:self];
     
-    RFMContentTutorialViewController *initialVC = [self viewControllerAtIndex:0];
+    // Set first VC to show
+    RFMTutorialScreenViewController *initialVC = [self viewControllerAtIndex:0];
     
     NSArray *arrayViewControllers = [NSArray arrayWithObject:initialVC];
+    
     [self.pageViewController setViewControllers:arrayViewControllers
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:YES
                                      completion:nil];
-    
-    [self.pageViewController.view setFrame: self.view.bounds];
-    [self addChildViewController:self.pageViewController];
+
     [self.view addSubview:self.pageViewController.view];
-    [self.pageViewController didMoveToParentViewController:self];
     
     
+    // Configure page control dots aspect
     self.pageControl = [[UIPageControl alloc]init];
-    [self.pageControl setCenter: CGPointMake(self.view.center.x, initialVC.view.frame.size.height - 10)];
-    [self.pageControl setNumberOfPages: self.model.tutorialScreensCount];
-    [self.pageControl setPageIndicatorTintColor:[UIColor blueColor]];
-    [self.pageControl setCurrentPageIndicatorTintColor:[UIColor redColor]];
+    self.pageControl.Center = CGPointMake(self.view.center.x, initialVC.view.frame.size.height - 10);
+    self.pageControl.NumberOfPages = self.model.tutorialScreensCount;
+    [self.pageControl setPageIndicatorTintColor:[UIColor whiteColor]];
+    [self.pageControl setCurrentPageIndicatorTintColor:Rgb2UIColor(69, 24, 46)];
 
     [self.view addSubview:self.pageControl];
 }
 
+
+
 #pragma mark - Data Source
-- (RFMContentTutorialViewController *)viewControllerAtIndex: (NSUInteger) index
-{
-    if (index > self.model.tutorialScreensCount - 1) {
-        return nil;
-    }
-    return [[RFMContentTutorialViewController alloc]initWithModel: [self.model tutorialScreenAtIndex:index]];
-}
-
-- (NSInteger) indexOfViewController:(RFMContentTutorialViewController *) viewController
-{
-    return [self.model.tutorialScreens indexOfObject:viewController.model];
-}
-
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
      viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [self indexOfViewController:(RFMContentTutorialViewController *)viewController];
-    [self.pageControl setCurrentPage: index];
+    NSUInteger index = [self indexOfViewController:(RFMTutorialScreenViewController *)viewController];
+    
+    self.pageControl.CurrentPage = index;
+    
     if (index == 0 || index == NSNotFound) {
         return nil;
     }
+    
     index--;
     return [self viewControllerAtIndex:index];
 }
@@ -85,14 +78,50 @@
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [self indexOfViewController: (RFMContentTutorialViewController *)viewController];
-    [self.pageControl setCurrentPage:index];
+    NSUInteger index = [self indexOfViewController: (RFMTutorialScreenViewController *)viewController];
+    
+    self.pageControl.CurrentPage= index;
+    
     if (index == NSNotFound) {
         return nil;
     }
-    index++;
     
+    index++;
     return [self viewControllerAtIndex:index];
 }
 
+#pragma mark - Utils
+- (RFMTutorialScreenViewController *)viewControllerAtIndex: (NSUInteger) index
+{
+    if (index > self.model.tutorialScreensCount - 1) {
+        return nil;
+    }
+    RFMTutorialScreenViewController *VC = nil;
+    VC = [[RFMTutorialScreenViewController alloc]initWithModel:[self.model tutorialScreenAtIndex:index]
+                                                    showButton:YES];
+    VC.delegate = self;
+//    if (index == self.model.tutorialScreensCount - 1) {
+//        VC = [[RFMTutorialScreenViewController alloc]initWithModel:[self.model tutorialScreenAtIndex:index]
+//                                                        showButton:YES];
+//        VC.delegate = self;
+//    }else{
+//        VC = [[RFMTutorialScreenViewController alloc]initWithModel:[self.model tutorialScreenAtIndex:index]
+//                                                        showButton:NO];
+//    }
+//    
+    return VC;
+}
+
+- (NSInteger) indexOfViewController:(RFMTutorialScreenViewController *) viewController
+{
+    return [self.model.tutorialScreens indexOfObject:viewController.model];
+}
+
+#pragma mark - Delegate
+// RFMContentTutorialViewController.h
+-(void)willCloseTutorial
+{
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+}
 @end

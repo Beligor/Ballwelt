@@ -10,7 +10,6 @@
 #import "RFMGameViewController.h"
 #import "RFMMainMenuViewController.h"
 
-#import "RFMTutorialViewController.h"
 
 @implementation RFMAppDelegate
 
@@ -19,9 +18,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-//    RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
-    RFMTutorialViewController *tutVC = [[RFMTutorialViewController alloc] init];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:tutVC];
+   RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
     navVC.navigationBar.hidden = YES;
     
     self.window.rootViewController = navVC;

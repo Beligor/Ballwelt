@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.continueBtn.titleLabel.text = NSLocalizedString(@"PAUSA_btnContinuar", nil);
     [self composeMenu];
 }
 

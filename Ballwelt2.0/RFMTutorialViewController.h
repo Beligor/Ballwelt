@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RFMTutorialScreenViewController.h"
 
-@interface RFMTutorialViewController : UIViewController<UIPageViewControllerDataSource>
-
-
-
+@interface RFMTutorialViewController : UIViewController<UIPageViewControllerDataSource, RFMContentTutorialViewControllerDelegate>
 @end

@@ -1,5 +1,5 @@
 //
-//  RFMTutorialModel.h
+//  RFMTutorialCollectionModel.h
 //  Ballwelt2.0
 //
 //  Created by Rafa Ferrero on 19/08/14.
@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@class RFMTutorialScreenModel;
 
 @interface RFMTutorialModel : NSObject
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *content;
-@property (nonatomic, strong) UIImage *image;
 
--(id) initWithTitle:(NSString *) aTitle
-            content:(NSString *) aContent
-              image:(UIImage *) anImage;
+@property (nonatomic) NSInteger tutorialScreensCount;
+@property (strong, nonatomic) NSArray *tutorialScreens;
+
+-(RFMTutorialScreenModel *) tutorialScreenAtIndex:(NSInteger) index;
 
 @end

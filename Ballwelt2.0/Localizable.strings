@@ -1,0 +1,48 @@
+/* 
+  Localizable.strings
+  Ballwelt2.0
+
+  Created by Rafa Ferrero on 19/08/14.
+  Copyright (c) 2014 Rafa Ferrero. All rights reserved.
+*/
+
+// MAIN MENU
+"MAIN_NewGame"="New Game!";
+"MAIN_Ranking"="Ranking";
+"MAIN_Tutorial"="How to Play";
+
+// PAUSE MENU
+"PAUSA_Continue" = "Resume";
+"PAUSA_Restart" = "Restart Game";
+"PAUSA_Exit" = "Back to Main Menu";
+"PAUSA_Record" = "New Record!";
+
+// RANKING
+"RANKING_Back" = "Main Menu";
+"RANKING_Title"="Top 10";
+"RANKING_Notice"="Unable to connect to Ballwelt's Server.\n Please check your Internet connection to see the Online Ranking";
+
+// ALERTVIEW NAME
+"ALERT_title" = "Enter your Name";
+
+// SOCIAL NETWORKS
+"SOCIAL_twitter" = "I'm playing #Ballwelt ";
+"SOCIAL_fb" = "Do you have what it takes to defeat me in Ballwelt?";
+
+//TUTORIAL
+"TUTORIAL_Close" = "Go back12354";
+
+"TUTORIAL_Title1" = "BALLS";
+"TUTORIAL_Title2" = "TIME";
+"TUTORIAL_Title3" = "POINTS";
+"TUTORIAL_Title4" = "POWER UP";
+"TUTORIAL_Title5" = "RANKING123456789123456";
+"TUTORIAL_Title6" = "PAUSE";
+
+//"TUTORIAL_Text1" = "Tap the balls to break them. The white one first!";
+"TUTORIAL_Text1" = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.";
+"TUTORIAL_Text2" = "You lose when the green gauge is depleted... Break balls to get extra time!";
+"TUTORIAL_Text3" = "The bigger the ball is, the more points you earn";
+"TUTORIAL_Text4" = "Take advantage by breaking balls one after another. There are 3 different Power Ups!";
+"TUTORIAL_Text5" = "If you are in the Top 10 your current position will be highlighted";
+"TUTORIAL_Text6" = "Tap the time bar to pause the game";

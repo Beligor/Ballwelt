@@ -72,8 +72,10 @@
 #pragma mark - Actions
 - (IBAction)tutorial:(id)sender {
     RFMTutorialViewController *tutorialVC = [[RFMTutorialViewController alloc] init];
-    [self.navigationController pushViewController:tutorialVC
-                                         animated:NO];
+    [self presentViewController:tutorialVC
+                       animated:YES
+                     completion:nil];
+    
 }
 
 - (IBAction)startNewGameBtn:(id)sender {
@@ -90,14 +92,12 @@
         case 1:
             // Facebook
             socialVC = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-//            [socialVC setInitialText:NSLocalizedString(@"SOCIAL_fb", @"")];
-            [socialVC setInitialText:@"Texto para Facebook"];
+            [socialVC setInitialText:NSLocalizedString(@"SOCIAL_fb", @"")];
             break;
         case 2:
             // Twitter
             socialVC = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-//            [socialVC setInitialText:NSLocalizedString(@"SOCIAL_twitter", @"")];
-            [socialVC setInitialText:@"texto para Twiteer"];
+            [socialVC setInitialText:NSLocalizedString(@"SOCIAL_twitter", @"")];
             break;
         default:
             break;

@@ -21,24 +21,25 @@
 		053BCE041999663D00E2631E /* rightBall.wav in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE031999663D00E2631E /* rightBall.wav */; };
 		053BCE091999807D00E2631E /* RFMPauseMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BCE071999807D00E2631E /* RFMPauseMenuViewController.m */; };
 		053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */; };
-		054B94F619A0213A00741887 /* RFMContentTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B94F419A0213A00741887 /* RFMContentTutorialViewController.m */; };
-		054B94F719A0213A00741887 /* RFMContentTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 054B94F519A0213A00741887 /* RFMContentTutorialViewController.xib */; };
+		054B94F619A0213A00741887 /* RFMTutorialScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B94F419A0213A00741887 /* RFMTutorialScreenViewController.m */; };
 		054B94FB19A0228900741887 /* RFMTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B94FA19A0228900741887 /* RFMTutorialViewController.m */; };
 		056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566239F199BCDD80020B35C /* backGroundPlayScreen.png */; };
-		0579E05F19A3887E0000A640 /* RFMTutorialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0579E05E19A3887E0000A640 /* RFMTutorialModel.m */; };
+		0579E05F19A3887E0000A640 /* RFMTutorialScreenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0579E05E19A3887E0000A640 /* RFMTutorialScreenModel.m */; };
 		0579E06719A392620000A640 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06119A392620000A640 /* tutorial1.png */; };
 		0579E06819A392620000A640 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06219A392620000A640 /* tutorial2.png */; };
 		0579E06919A392620000A640 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06319A392620000A640 /* tutorial3.png */; };
 		0579E06A19A392620000A640 /* tutorial4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06419A392620000A640 /* tutorial4.png */; };
 		0579E06B19A392620000A640 /* tutorial5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06519A392620000A640 /* tutorial5.png */; };
 		0579E06C19A392620000A640 /* tutorial6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06619A392620000A640 /* tutorial6.png */; };
-		0579E06F19A394710000A640 /* RFMTutorialCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0579E06E19A394710000A640 /* RFMTutorialCollectionModel.m */; };
+		0579E06F19A394710000A640 /* RFMTutorialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0579E06E19A394710000A640 /* RFMTutorialModel.m */; };
+		0579E07519A3A4E30000A640 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0579E07419A3A4E30000A640 /* Localizable.strings */; };
 		058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */; };
 		058D8EB3199E21C5006CB9B3 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB0199E21C5006CB9B3 /* power1.png */; };
 		058D8EB4199E21C5006CB9B3 /* power2.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB1199E21C5006CB9B3 /* power2.png */; };
 		058D8EB5199E21C5006CB9B3 /* power3.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB2199E21C5006CB9B3 /* power3.png */; };
 		05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B42199CC45700ACED98 /* RFMGameModel.m */; };
 		05AA5B46199D990F00ACED98 /* RFMAnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */; };
+		05B605C519A3F6E9008F6706 /* RFMTutorialScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B605C419A3F6E9008F6706 /* RFMTutorialScreenViewController.xib */; };
 		05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3D19951E7F003F7A1A /* Foundation.framework */; };
 		05BD9C4019951E7F003F7A1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */; };
 		05BD9C4219951E7F003F7A1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C4119951E7F003F7A1A /* UIKit.framework */; };
@@ -87,22 +88,22 @@
 		053BCE061999807D00E2631E /* RFMPauseMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPauseMenuViewController.h; sourceTree = "<group>"; };
 		053BCE071999807D00E2631E /* RFMPauseMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPauseMenuViewController.m; sourceTree = "<group>"; };
 		053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMPauseMenuViewController.xib; sourceTree = "<group>"; };
-		054B94F319A0213A00741887 /* RFMContentTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMContentTutorialViewController.h; sourceTree = "<group>"; };
-		054B94F419A0213A00741887 /* RFMContentTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMContentTutorialViewController.m; sourceTree = "<group>"; };
-		054B94F519A0213A00741887 /* RFMContentTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMContentTutorialViewController.xib; sourceTree = "<group>"; };
+		054B94F319A0213A00741887 /* RFMTutorialScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialScreenViewController.h; sourceTree = "<group>"; };
+		054B94F419A0213A00741887 /* RFMTutorialScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialScreenViewController.m; sourceTree = "<group>"; };
 		054B94F919A0228900741887 /* RFMTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialViewController.h; sourceTree = "<group>"; };
 		054B94FA19A0228900741887 /* RFMTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialViewController.m; sourceTree = "<group>"; };
 		0566239F199BCDD80020B35C /* backGroundPlayScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundPlayScreen.png; sourceTree = "<group>"; };
-		0579E05D19A3887E0000A640 /* RFMTutorialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialModel.h; sourceTree = "<group>"; };
-		0579E05E19A3887E0000A640 /* RFMTutorialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialModel.m; sourceTree = "<group>"; };
+		0579E05D19A3887E0000A640 /* RFMTutorialScreenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialScreenModel.h; sourceTree = "<group>"; };
+		0579E05E19A3887E0000A640 /* RFMTutorialScreenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialScreenModel.m; sourceTree = "<group>"; };
 		0579E06119A392620000A640 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1.png; sourceTree = "<group>"; };
 		0579E06219A392620000A640 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
 		0579E06319A392620000A640 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3.png; sourceTree = "<group>"; };
 		0579E06419A392620000A640 /* tutorial4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial4.png; sourceTree = "<group>"; };
 		0579E06519A392620000A640 /* tutorial5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial5.png; sourceTree = "<group>"; };
 		0579E06619A392620000A640 /* tutorial6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial6.png; sourceTree = "<group>"; };
-		0579E06D19A394710000A640 /* RFMTutorialCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialCollectionModel.h; sourceTree = "<group>"; };
-		0579E06E19A394710000A640 /* RFMTutorialCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialCollectionModel.m; sourceTree = "<group>"; };
+		0579E06D19A394710000A640 /* RFMTutorialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialModel.h; sourceTree = "<group>"; };
+		0579E06E19A394710000A640 /* RFMTutorialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialModel.m; sourceTree = "<group>"; };
+		0579E07419A3A4E30000A640 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		058D8EAD199E0775006CB9B3 /* RFMPowerupBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPowerupBallView.h; sourceTree = "<group>"; };
 		058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPowerupBallView.m; sourceTree = "<group>"; };
 		058D8EB0199E21C5006CB9B3 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		05AA5B44199D990F00ACED98 /* RFMAnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMAnimatedLabel.h; sourceTree = "<group>"; };
 		05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMAnimatedLabel.m; sourceTree = "<group>"; };
 		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
+		05B605C419A3F6E9008F6706 /* RFMTutorialScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMTutorialScreenViewController.xib; sourceTree = "<group>"; };
 		05BD9C3A19951E7F003F7A1A /* Ballwelt2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballwelt2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BD9C3D19951E7F003F7A1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -210,9 +212,9 @@
 			children = (
 				054B94F919A0228900741887 /* RFMTutorialViewController.h */,
 				054B94FA19A0228900741887 /* RFMTutorialViewController.m */,
-				054B94F319A0213A00741887 /* RFMContentTutorialViewController.h */,
-				054B94F419A0213A00741887 /* RFMContentTutorialViewController.m */,
-				054B94F519A0213A00741887 /* RFMContentTutorialViewController.xib */,
+				054B94F319A0213A00741887 /* RFMTutorialScreenViewController.h */,
+				054B94F419A0213A00741887 /* RFMTutorialScreenViewController.m */,
+				05B605C419A3F6E9008F6706 /* RFMTutorialScreenViewController.xib */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -233,10 +235,10 @@
 		0579E07019A394770000A640 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				0579E05D19A3887E0000A640 /* RFMTutorialModel.h */,
-				0579E05E19A3887E0000A640 /* RFMTutorialModel.m */,
-				0579E06D19A394710000A640 /* RFMTutorialCollectionModel.h */,
-				0579E06E19A394710000A640 /* RFMTutorialCollectionModel.m */,
+				0579E05D19A3887E0000A640 /* RFMTutorialScreenModel.h */,
+				0579E05E19A3887E0000A640 /* RFMTutorialScreenModel.m */,
+				0579E06D19A394710000A640 /* RFMTutorialModel.h */,
+				0579E06E19A394710000A640 /* RFMTutorialModel.m */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -317,6 +319,7 @@
 				05BD9C4619951E7F003F7A1A /* InfoPlist.strings */,
 				05BD9C4919951E7F003F7A1A /* main.m */,
 				05BD9C4B19951E7F003F7A1A /* Ballwelt2.0-Prefix.pch */,
+				0579E07419A3A4E30000A640 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -451,7 +454,6 @@
 				0579E06A19A392620000A640 /* tutorial4.png in Resources */,
 				0537011E199ADEDA0000B655 /* facebook_logo.png in Resources */,
 				0537011F199ADEDA0000B655 /* twitter_logo.png in Resources */,
-				054B94F719A0213A00741887 /* RFMContentTutorialViewController.xib in Resources */,
 				058D8EB5199E21C5006CB9B3 /* power3.png in Resources */,
 				0579E06719A392620000A640 /* tutorial1.png in Resources */,
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
@@ -459,7 +461,9 @@
 				053BCE041999663D00E2631E /* rightBall.wav in Resources */,
 				05BD9C4819951E7F003F7A1A /* InfoPlist.strings in Resources */,
 				05BD9C5019951E7F003F7A1A /* Images.xcassets in Resources */,
+				0579E07519A3A4E30000A640 /* Localizable.strings in Resources */,
 				056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */,
+				05B605C519A3F6E9008F6706 /* RFMTutorialScreenViewController.xib in Resources */,
 				0579E06B19A392620000A640 /* tutorial5.png in Resources */,
 				0579E06819A392620000A640 /* tutorial2.png in Resources */,
 				058D8EB4199E21C5006CB9B3 /* power2.png in Resources */,
@@ -491,16 +495,16 @@
 				053BCDFE1999586B00E2631E /* RFMSystemSounds.m in Sources */,
 				053BCE091999807D00E2631E /* RFMPauseMenuViewController.m in Sources */,
 				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
-				0579E06F19A394710000A640 /* RFMTutorialCollectionModel.m in Sources */,
+				0579E06F19A394710000A640 /* RFMTutorialModel.m in Sources */,
 				053BCDF11998B0A200E2631E /* RFMTimeBarView.m in Sources */,
-				0579E05F19A3887E0000A640 /* RFMTutorialModel.m in Sources */,
+				0579E05F19A3887E0000A640 /* RFMTutorialScreenModel.m in Sources */,
 				054B94FB19A0228900741887 /* RFMTutorialViewController.m in Sources */,
 				05370116199A993C0000B655 /* RFMMainMenuViewController.m in Sources */,
 				05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
 				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,
-				054B94F619A0213A00741887 /* RFMContentTutorialViewController.m in Sources */,
+				054B94F619A0213A00741887 /* RFMTutorialScreenViewController.m in Sources */,
 				058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
