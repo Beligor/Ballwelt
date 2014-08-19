@@ -15,7 +15,7 @@
                    withMultiplier:(NSInteger) multiplier{
     
     if (initialScore < finalScore) {
-        initialScore = initialScore + 1 * multiplier;
+        initialScore = initialScore + multiplier;
     }else{
         initialScore = finalScore;
     }

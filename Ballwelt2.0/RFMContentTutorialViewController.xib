@@ -6,8 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMContentTutorialViewController">
             <connections>
-                <outlet property="textString" destination="0ex-zh-8u0" id="JMM-hO-qBU"/>
-                <outlet property="titleString" destination="3sW-m9-LBS" id="u76-en-KRa"/>
+                <outlet property="image" destination="d0L-jK-LgH" id="RZt-HF-YBg"/>
+                <outlet property="textLabel" destination="0ex-zh-8u0" id="LmT-Pp-Anf"/>
+                <outlet property="titleLabel" destination="3sW-m9-LBS" id="zG6-x9-WrC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,6 +30,10 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0L-jK-LgH">
+                    <rect key="frame" x="40" y="220" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

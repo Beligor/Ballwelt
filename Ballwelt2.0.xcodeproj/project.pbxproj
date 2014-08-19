@@ -25,6 +25,14 @@
 		054B94F719A0213A00741887 /* RFMContentTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 054B94F519A0213A00741887 /* RFMContentTutorialViewController.xib */; };
 		054B94FB19A0228900741887 /* RFMTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B94FA19A0228900741887 /* RFMTutorialViewController.m */; };
 		056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566239F199BCDD80020B35C /* backGroundPlayScreen.png */; };
+		0579E05F19A3887E0000A640 /* RFMTutorialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0579E05E19A3887E0000A640 /* RFMTutorialModel.m */; };
+		0579E06719A392620000A640 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06119A392620000A640 /* tutorial1.png */; };
+		0579E06819A392620000A640 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06219A392620000A640 /* tutorial2.png */; };
+		0579E06919A392620000A640 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06319A392620000A640 /* tutorial3.png */; };
+		0579E06A19A392620000A640 /* tutorial4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06419A392620000A640 /* tutorial4.png */; };
+		0579E06B19A392620000A640 /* tutorial5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06519A392620000A640 /* tutorial5.png */; };
+		0579E06C19A392620000A640 /* tutorial6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06619A392620000A640 /* tutorial6.png */; };
+		0579E06F19A394710000A640 /* RFMTutorialCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0579E06E19A394710000A640 /* RFMTutorialCollectionModel.m */; };
 		058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */; };
 		058D8EB3199E21C5006CB9B3 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB0199E21C5006CB9B3 /* power1.png */; };
 		058D8EB4199E21C5006CB9B3 /* power2.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB1199E21C5006CB9B3 /* power2.png */; };
@@ -85,6 +93,16 @@
 		054B94F919A0228900741887 /* RFMTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialViewController.h; sourceTree = "<group>"; };
 		054B94FA19A0228900741887 /* RFMTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialViewController.m; sourceTree = "<group>"; };
 		0566239F199BCDD80020B35C /* backGroundPlayScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundPlayScreen.png; sourceTree = "<group>"; };
+		0579E05D19A3887E0000A640 /* RFMTutorialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialModel.h; sourceTree = "<group>"; };
+		0579E05E19A3887E0000A640 /* RFMTutorialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialModel.m; sourceTree = "<group>"; };
+		0579E06119A392620000A640 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1.png; sourceTree = "<group>"; };
+		0579E06219A392620000A640 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
+		0579E06319A392620000A640 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3.png; sourceTree = "<group>"; };
+		0579E06419A392620000A640 /* tutorial4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial4.png; sourceTree = "<group>"; };
+		0579E06519A392620000A640 /* tutorial5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial5.png; sourceTree = "<group>"; };
+		0579E06619A392620000A640 /* tutorial6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial6.png; sourceTree = "<group>"; };
+		0579E06D19A394710000A640 /* RFMTutorialCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialCollectionModel.h; sourceTree = "<group>"; };
+		0579E06E19A394710000A640 /* RFMTutorialCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialCollectionModel.m; sourceTree = "<group>"; };
 		058D8EAD199E0775006CB9B3 /* RFMPowerupBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPowerupBallView.h; sourceTree = "<group>"; };
 		058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPowerupBallView.m; sourceTree = "<group>"; };
 		058D8EB0199E21C5006CB9B3 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
@@ -146,6 +164,7 @@
 		05370118199AAC3E0000B655 /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				0579E06019A392570000A640 /* Tutorial */,
 				058D8EB6199E21D5006CB9B3 /* Power ups */,
 				0537011B199ADEC00000B655 /* Social Networks Icons */,
 				05370119199AAC730000B655 /* Ballwelt.png */,
@@ -189,11 +208,35 @@
 		054B94F819A021A100741887 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				054B94F919A0228900741887 /* RFMTutorialViewController.h */,
+				054B94FA19A0228900741887 /* RFMTutorialViewController.m */,
 				054B94F319A0213A00741887 /* RFMContentTutorialViewController.h */,
 				054B94F419A0213A00741887 /* RFMContentTutorialViewController.m */,
 				054B94F519A0213A00741887 /* RFMContentTutorialViewController.xib */,
-				054B94F919A0228900741887 /* RFMTutorialViewController.h */,
-				054B94FA19A0228900741887 /* RFMTutorialViewController.m */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		0579E06019A392570000A640 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				0579E06119A392620000A640 /* tutorial1.png */,
+				0579E06219A392620000A640 /* tutorial2.png */,
+				0579E06319A392620000A640 /* tutorial3.png */,
+				0579E06419A392620000A640 /* tutorial4.png */,
+				0579E06519A392620000A640 /* tutorial5.png */,
+				0579E06619A392620000A640 /* tutorial6.png */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		0579E07019A394770000A640 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				0579E05D19A3887E0000A640 /* RFMTutorialModel.h */,
+				0579E05E19A3887E0000A640 /* RFMTutorialModel.m */,
+				0579E06D19A394710000A640 /* RFMTutorialCollectionModel.h */,
+				0579E06E19A394710000A640 /* RFMTutorialCollectionModel.m */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -213,6 +256,7 @@
 			children = (
 				05AA5B41199CC45700ACED98 /* RFMGameModel.h */,
 				05AA5B42199CC45700ACED98 /* RFMGameModel.m */,
+				0579E07019A394770000A640 /* Tutorial */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -402,19 +446,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0579E06C19A392620000A640 /* tutorial6.png in Resources */,
 				05370117199A993C0000B655 /* RFMMainMenuViewController.xib in Resources */,
+				0579E06A19A392620000A640 /* tutorial4.png in Resources */,
 				0537011E199ADEDA0000B655 /* facebook_logo.png in Resources */,
 				0537011F199ADEDA0000B655 /* twitter_logo.png in Resources */,
 				054B94F719A0213A00741887 /* RFMContentTutorialViewController.xib in Resources */,
 				058D8EB5199E21C5006CB9B3 /* power3.png in Resources */,
+				0579E06719A392620000A640 /* tutorial1.png in Resources */,
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
 				053BCE0219995C4700E2631E /* wrongBall.wav in Resources */,
 				053BCE041999663D00E2631E /* rightBall.wav in Resources */,
 				05BD9C4819951E7F003F7A1A /* InfoPlist.strings in Resources */,
 				05BD9C5019951E7F003F7A1A /* Images.xcassets in Resources */,
 				056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */,
+				0579E06B19A392620000A640 /* tutorial5.png in Resources */,
+				0579E06819A392620000A640 /* tutorial2.png in Resources */,
 				058D8EB4199E21C5006CB9B3 /* power2.png in Resources */,
 				0537011A199AAC730000B655 /* Ballwelt.png in Resources */,
+				0579E06919A392620000A640 /* tutorial3.png in Resources */,
 				053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */,
 				058D8EB3199E21C5006CB9B3 /* power1.png in Resources */,
 			);
@@ -441,7 +491,9 @@
 				053BCDFE1999586B00E2631E /* RFMSystemSounds.m in Sources */,
 				053BCE091999807D00E2631E /* RFMPauseMenuViewController.m in Sources */,
 				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
+				0579E06F19A394710000A640 /* RFMTutorialCollectionModel.m in Sources */,
 				053BCDF11998B0A200E2631E /* RFMTimeBarView.m in Sources */,
+				0579E05F19A3887E0000A640 /* RFMTutorialModel.m in Sources */,
 				054B94FB19A0228900741887 /* RFMTutorialViewController.m in Sources */,
 				05370116199A993C0000B655 /* RFMMainMenuViewController.m in Sources */,
 				05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */,

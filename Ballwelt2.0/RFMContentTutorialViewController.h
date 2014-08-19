@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class RFMTutorialModel;
 
 @interface RFMContentTutorialViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *titleString;
-@property (weak, nonatomic) IBOutlet UILabel *textString;
-@property (strong, nonatomic) id dataObject1;
-@property (strong, nonatomic) id dataObject2;
+@property (strong, nonatomic) RFMTutorialModel *model;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+
+-(id) initWithModel:(RFMTutorialModel *) aModel;
 
 @end

@@ -25,7 +25,7 @@
                barColor:(UIColor *) aBarColor;
 
 -(void)syncrhonizeTimeLeftWithBarWidth;
-// Is needed to call this method when add from IB 
+// Is needed to call this method when is added from IB
 -(void)setupBarWithTotalTime:(NSInteger) aTotalTime
                        color:(UIColor *) aColor;
 @end

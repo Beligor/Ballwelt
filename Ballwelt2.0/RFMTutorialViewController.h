@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RFMContentTutorialViewController.h"
+
 @interface RFMTutorialViewController : UIViewController<UIPageViewControllerDataSource>
 
-@property (nonatomic,strong) UIPageViewController *pageViewController;
-@property (nonatomic, strong) NSMutableArray *arrayTitulos;
-@property (nonatomic, strong) NSMutableArray *arrayTextos;
+
 
 @end

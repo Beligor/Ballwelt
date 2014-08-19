@@ -7,20 +7,28 @@
 //
 
 #import "RFMContentTutorialViewController.h"
-
-@interface RFMContentTutorialViewController ()
-
-@end
+#import "RFMTutorialModel.h"
 
 @implementation RFMContentTutorialViewController
+
+#pragma mark - Init
+-(id) initWithModel:(RFMTutorialModel *)aModel
+{
+    if (self = [super init]) {
+        _model = aModel;
+    }
+    return self;
+}
+
 
 #pragma mark - View Lifecycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.titleString setText:self.dataObject1];
-    [self.textString setText:self.dataObject2];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGroundPlayScreen"]];
+    [self.titleLabel setText: self.model.title];
+    [self.textLabel setText: self.model.content];
+    self.image.image = self.model.image;    
 }
 
 @end

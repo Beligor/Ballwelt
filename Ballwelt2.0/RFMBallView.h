@@ -27,7 +27,6 @@
 
 -(CGPoint) moveToNextPoint;
 -(void)checkIfInNextMoveReachLimitOfScreen:(CGPoint) nextMove;
-
 -(void) reduceBallSizeUntilReachThisRadius:(NSInteger) minRadius
                              withThisRatio:(CGFloat) ratio;
 -(void) increaseSpeedUntilReachThisSpeed:(CGFloat) maxSpeed

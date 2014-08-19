@@ -8,6 +8,7 @@
 
 #import "RFMPowerupBallView.h"
 #define NUMBER_OF_LEVELS_NEEDED 10
+
 @interface RFMPowerupBallView()
 
 @property (nonatomic, strong) NSArray *icons;
@@ -32,7 +33,6 @@
     return  self;
     
 }
-
 
 #pragma mark - Setup Ball
 -(void) setupPowerup
