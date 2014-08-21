@@ -39,6 +39,8 @@
 		058D8EB5199E21C5006CB9B3 /* power3.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB2199E21C5006CB9B3 /* power3.png */; };
 		05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B42199CC45700ACED98 /* RFMGameModel.m */; };
 		05AA5B46199D990F00ACED98 /* RFMAnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */; };
+		05AAA07219A635FA00018A4D /* userData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05AAA07119A635FA00018A4D /* userData.plist */; };
+		05AAA07519A637ED00018A4D /* RFMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AAA07419A637ED00018A4D /* RFMUserModel.m */; };
 		05B605C519A3F6E9008F6706 /* RFMTutorialScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B605C419A3F6E9008F6706 /* RFMTutorialScreenViewController.xib */; };
 		05B605C919A3FD9E008F6706 /* RFMRankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B605C719A3FD9E008F6706 /* RFMRankingViewController.m */; };
 		05B605CA19A3FD9E008F6706 /* RFMRankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B605C819A3FD9E008F6706 /* RFMRankingViewController.xib */; };
@@ -119,6 +121,9 @@
 		05AA5B42199CC45700ACED98 /* RFMGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMGameModel.m; sourceTree = "<group>"; };
 		05AA5B44199D990F00ACED98 /* RFMAnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMAnimatedLabel.h; sourceTree = "<group>"; };
 		05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMAnimatedLabel.m; sourceTree = "<group>"; };
+		05AAA07119A635FA00018A4D /* userData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userData.plist; sourceTree = "<group>"; };
+		05AAA07319A637ED00018A4D /* RFMUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMUserModel.h; sourceTree = "<group>"; };
+		05AAA07419A637ED00018A4D /* RFMUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMUserModel.m; sourceTree = "<group>"; };
 		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		05B605C419A3F6E9008F6706 /* RFMTutorialScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMTutorialScreenViewController.xib; sourceTree = "<group>"; };
 		05B605C619A3FD9E008F6706 /* RFMRankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMRankingViewController.h; sourceTree = "<group>"; };
@@ -275,12 +280,22 @@
 				05AA5B41199CC45700ACED98 /* RFMGameModel.h */,
 				05AA5B42199CC45700ACED98 /* RFMGameModel.m */,
 				0579E07019A394770000A640 /* Tutorial */,
+				05AAA07619A6380700018A4D /* Ranking */,
+				05AAA07319A637ED00018A4D /* RFMUserModel.h */,
+				05AAA07419A637ED00018A4D /* RFMUserModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		05AAA07619A6380700018A4D /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
 				05B605CE19A40763008F6706 /* RFMPlayerModel.h */,
 				05B605CF19A40763008F6706 /* RFMPlayerModel.m */,
 				05B605D119A41035008F6706 /* RFMRanking.h */,
 				05B605D219A41035008F6706 /* RFMRanking.m */,
 			);
-			name = Models;
+			name = Ranking;
 			sourceTree = "<group>";
 		};
 		05BD9C3119951E7F003F7A1A = {
@@ -338,6 +353,7 @@
 		05BD9C4419951E7F003F7A1A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				05AAA07119A635FA00018A4D /* userData.plist */,
 				05BD9C4519951E7F003F7A1A /* Ballwelt2.0-Info.plist */,
 				05BD9C4619951E7F003F7A1A /* InfoPlist.strings */,
 				05BD9C4919951E7F003F7A1A /* main.m */,
@@ -368,15 +384,15 @@
 		05BD9C6C19951E88003F7A1A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05370113199A993C0000B655 /* RFMMainMenuViewController.h */,
+				05370114199A993C0000B655 /* RFMMainMenuViewController.m */,
+				05370115199A993C0000B655 /* RFMMainMenuViewController.xib */,
 				05BD9C6D19951EAA003F7A1A /* RFMGameViewController.h */,
 				05BD9C6E19951EAA003F7A1A /* RFMGameViewController.m */,
 				05BD9C6F19951EAA003F7A1A /* RFMGameViewController.xib */,
 				053BCE061999807D00E2631E /* RFMPauseMenuViewController.h */,
 				053BCE071999807D00E2631E /* RFMPauseMenuViewController.m */,
 				053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */,
-				05370113199A993C0000B655 /* RFMMainMenuViewController.h */,
-				05370114199A993C0000B655 /* RFMMainMenuViewController.m */,
-				05370115199A993C0000B655 /* RFMMainMenuViewController.xib */,
 				05B605C619A3FD9E008F6706 /* RFMRankingViewController.h */,
 				05B605C719A3FD9E008F6706 /* RFMRankingViewController.m */,
 				05B605C819A3FD9E008F6706 /* RFMRankingViewController.xib */,
@@ -480,6 +496,7 @@
 				0579E06A19A392620000A640 /* tutorial4.png in Resources */,
 				0537011E199ADEDA0000B655 /* facebook_logo.png in Resources */,
 				0537011F199ADEDA0000B655 /* twitter_logo.png in Resources */,
+				05AAA07219A635FA00018A4D /* userData.plist in Resources */,
 				058D8EB5199E21C5006CB9B3 /* power3.png in Resources */,
 				0579E06719A392620000A640 /* tutorial1.png in Resources */,
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
@@ -521,6 +538,7 @@
 				05AA5B46199D990F00ACED98 /* RFMAnimatedLabel.m in Sources */,
 				05B605D319A41035008F6706 /* RFMRanking.m in Sources */,
 				05B605D019A40763008F6706 /* RFMPlayerModel.m in Sources */,
+				05AAA07519A637ED00018A4D /* RFMUserModel.m in Sources */,
 				05BD9C4E19951E7F003F7A1A /* RFMAppDelegate.m in Sources */,
 				05B605C919A3FD9E008F6706 /* RFMRankingViewController.m in Sources */,
 				053BCDFE1999586B00E2631E /* RFMSystemSounds.m in Sources */,

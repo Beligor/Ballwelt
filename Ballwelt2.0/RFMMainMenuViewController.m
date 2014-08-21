@@ -11,11 +11,13 @@
 #import "RFMGameViewController.h"
 #import "RFMTutorialViewController.h"
 #import "RFMRankingViewController.h"
-
+#import "RFMUserModel.h"
 @import Social;
 
 @interface RFMMainMenuViewController ()
 @property (nonatomic, strong) NSTimer *moveTimer;
+@property (strong, nonatomic) RFMUserModel *userDataModel;
+
 @end
 
 @implementation RFMMainMenuViewController
@@ -25,6 +27,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.userDataModel = [[RFMUserModel alloc] init];
+    if (self.userDataModel.firstGame) {
+        NSLog(@"primera partida");
+    }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -53,8 +60,11 @@
 {
     [super viewWillDisappear:animated];
     [self stopTimer];
-    self.view = nil;
-    
+//    self.view = nil;
+    for (RFMBallView *each in self.ballsBackgroundView.subviews) {
+        
+        [each removeFromSuperview];
+    }
     // Baja en notificaciones
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
