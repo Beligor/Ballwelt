@@ -12,12 +12,12 @@
 "MAIN_Tutorial"="How to Play";
 
 // PAUSE MENU
-"PAUSA_Continue" = "Resume";
-"PAUSA_Restart" = "Restart Game";
-"PAUSA_Exit" = "Back to Main Menu";
-"PAUSA_Record" = "New Record!";
+"PAUSE_Continue" = "Resume";
+"PAUSE_Restart" = "Restart Game";
+"PAUSE_Exit" = "Back to Main Menu";
+"PAUSE_Record" = "New Record!";
 
-// RANKING
+//
 "RANKING_Back" = "Main Menu";
 "RANKING_Title"="Top 10";
 "RANKING_Notice"="Unable to connect to Ballwelt's Server.\n Please check your Internet connection to see the Online Ranking";
@@ -36,7 +36,7 @@
 "TUTORIAL_Title2" = "TIME";
 "TUTORIAL_Title3" = "POINTS";
 "TUTORIAL_Title4" = "POWER UP";
-"TUTORIAL_Title5" = "RANKING123456789123456";
+"TUTORIAL_Title5" = "RANKING";
 "TUTORIAL_Title6" = "PAUSE";
 
 //"TUTORIAL_Text1" = "Tap the balls to break them. The white one first!";

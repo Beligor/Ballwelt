@@ -7,9 +7,11 @@
 //
 
 #import "RFMMainMenuViewController.h"
+#import "RFMBallView.h"
 #import "RFMGameViewController.h"
 #import "RFMTutorialViewController.h"
-#import "RFMBallView.h"
+#import "RFMRankingViewController.h"
+
 @import Social;
 
 @interface RFMMainMenuViewController ()
@@ -32,6 +34,45 @@
     for (int i=0; i<50; i++) {
         [self addBallToView];
     }
+    
+    // Alta en notificaciones
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appDelegateNotifies:)
+                                                 name:@"pauseGame"
+                                               object:nil];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (![self.moveTimer isValid]) {
+        [self startTimer];
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self stopTimer];
+    self.view = nil;
+    
+    // Baja en notificaciones
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Notifications
+-(void)appDelegateNotifies:(NSNotification *)aNotification
+{
+    if ([self.moveTimer isValid]) {
+        [self stopTimer];
+    }else{
+        [self startTimer];
+    }
+}
+
+
+#pragma mark - Timer Utils
+-(void)startTimer
+{
     self.moveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/RATE_PER_SECOND
                                                       target:self
                                                     selector:@selector(moveBall)
@@ -39,12 +80,10 @@
                                                      repeats:YES];
 }
 
--(void)viewWillDisappear:(BOOL)animated
+-(void)stopTimer
 {
-    [super viewWillDisappear:animated];
     [self.moveTimer invalidate];
     self.moveTimer = nil;
-    self.view = nil;
 }
 
 #pragma mark - Balls Control
@@ -70,19 +109,30 @@
 }
 
 #pragma mark - Actions
-- (IBAction)tutorial:(id)sender {
-    RFMTutorialViewController *tutorialVC = [[RFMTutorialViewController alloc] init];
-    [self presentViewController:tutorialVC
-                       animated:YES
-                     completion:nil];
-    
-}
-
-- (IBAction)startNewGameBtn:(id)sender {
-
-    RFMGameViewController *newGameVC = [[RFMGameViewController alloc] init];
-    [self.navigationController pushViewController:newGameVC
-                                         animated:NO];
+-(void)chooseAnOption:(id)sender
+{
+    UIButton *btn = sender;
+    UIViewController *VC = nil;
+    switch (btn.tag) {
+        case 0:
+            VC = [[RFMGameViewController alloc] init];
+            [self.navigationController pushViewController:VC
+                                                 animated:NO];
+            break;
+        case 1:
+            VC = [[RFMTutorialViewController alloc] init];
+            [self presentViewController:VC
+                               animated:YES
+                             completion:nil];
+            break;
+        case 2:
+            VC = [[RFMRankingViewController alloc] init];
+            [self.navigationController pushViewController:VC
+                                                 animated:YES];
+            break;
+        default:
+            break;
+    }
 }
 
 - (IBAction)socialNetworksBtn:(id)sender {
@@ -105,4 +155,5 @@
     [self presentViewController:socialVC animated:YES
                      completion:nil];
 }
+
 @end

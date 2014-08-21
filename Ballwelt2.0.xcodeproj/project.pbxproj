@@ -40,6 +40,12 @@
 		05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B42199CC45700ACED98 /* RFMGameModel.m */; };
 		05AA5B46199D990F00ACED98 /* RFMAnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */; };
 		05B605C519A3F6E9008F6706 /* RFMTutorialScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B605C419A3F6E9008F6706 /* RFMTutorialScreenViewController.xib */; };
+		05B605C919A3FD9E008F6706 /* RFMRankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B605C719A3FD9E008F6706 /* RFMRankingViewController.m */; };
+		05B605CA19A3FD9E008F6706 /* RFMRankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B605C819A3FD9E008F6706 /* RFMRankingViewController.xib */; };
+		05B605D019A40763008F6706 /* RFMPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B605CF19A40763008F6706 /* RFMPlayerModel.m */; };
+		05B605D319A41035008F6706 /* RFMRanking.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B605D219A41035008F6706 /* RFMRanking.m */; };
+		05B605D719A50FE9008F6706 /* RFMRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B605D519A50FE9008F6706 /* RFMRankingTableViewCell.m */; };
+		05B605D819A50FE9008F6706 /* RFMRankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B605D619A50FE9008F6706 /* RFMRankingTableViewCell.xib */; };
 		05BD9C3E19951E7F003F7A1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3D19951E7F003F7A1A /* Foundation.framework */; };
 		05BD9C4019951E7F003F7A1A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */; };
 		05BD9C4219951E7F003F7A1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BD9C4119951E7F003F7A1A /* UIKit.framework */; };
@@ -115,6 +121,16 @@
 		05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMAnimatedLabel.m; sourceTree = "<group>"; };
 		05AAE6FB1996212C00E9ABE5 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = ../Settings.h; sourceTree = "<group>"; };
 		05B605C419A3F6E9008F6706 /* RFMTutorialScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMTutorialScreenViewController.xib; sourceTree = "<group>"; };
+		05B605C619A3FD9E008F6706 /* RFMRankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMRankingViewController.h; sourceTree = "<group>"; };
+		05B605C719A3FD9E008F6706 /* RFMRankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMRankingViewController.m; sourceTree = "<group>"; };
+		05B605C819A3FD9E008F6706 /* RFMRankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMRankingViewController.xib; sourceTree = "<group>"; };
+		05B605CE19A40763008F6706 /* RFMPlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPlayerModel.h; sourceTree = "<group>"; };
+		05B605CF19A40763008F6706 /* RFMPlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPlayerModel.m; sourceTree = "<group>"; };
+		05B605D119A41035008F6706 /* RFMRanking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMRanking.h; sourceTree = "<group>"; };
+		05B605D219A41035008F6706 /* RFMRanking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMRanking.m; sourceTree = "<group>"; };
+		05B605D419A50FE9008F6706 /* RFMRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMRankingTableViewCell.h; sourceTree = "<group>"; };
+		05B605D519A50FE9008F6706 /* RFMRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMRankingTableViewCell.m; sourceTree = "<group>"; };
+		05B605D619A50FE9008F6706 /* RFMRankingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMRankingTableViewCell.xib; sourceTree = "<group>"; };
 		05BD9C3A19951E7F003F7A1A /* Ballwelt2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballwelt2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BD9C3D19951E7F003F7A1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05BD9C3F19951E7F003F7A1A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -259,6 +275,10 @@
 				05AA5B41199CC45700ACED98 /* RFMGameModel.h */,
 				05AA5B42199CC45700ACED98 /* RFMGameModel.m */,
 				0579E07019A394770000A640 /* Tutorial */,
+				05B605CE19A40763008F6706 /* RFMPlayerModel.h */,
+				05B605CF19A40763008F6706 /* RFMPlayerModel.m */,
+				05B605D119A41035008F6706 /* RFMRanking.h */,
+				05B605D219A41035008F6706 /* RFMRanking.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -305,6 +325,9 @@
 				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
 				05AA5B40199CC44200ACED98 /* Models */,
 				05BD9C7219951F10003F7A1A /* Views */,
+				05B605D419A50FE9008F6706 /* RFMRankingTableViewCell.h */,
+				05B605D519A50FE9008F6706 /* RFMRankingTableViewCell.m */,
+				05B605D619A50FE9008F6706 /* RFMRankingTableViewCell.xib */,
 				05BD9C6C19951E88003F7A1A /* Controllers */,
 				05BD9C4F19951E7F003F7A1A /* Images.xcassets */,
 				05BD9C4419951E7F003F7A1A /* Supporting Files */,
@@ -354,6 +377,9 @@
 				05370113199A993C0000B655 /* RFMMainMenuViewController.h */,
 				05370114199A993C0000B655 /* RFMMainMenuViewController.m */,
 				05370115199A993C0000B655 /* RFMMainMenuViewController.xib */,
+				05B605C619A3FD9E008F6706 /* RFMRankingViewController.h */,
+				05B605C719A3FD9E008F6706 /* RFMRankingViewController.m */,
+				05B605C819A3FD9E008F6706 /* RFMRankingViewController.xib */,
 				054B94F819A021A100741887 /* Tutorial */,
 			);
 			name = Controllers;
@@ -463,6 +489,7 @@
 				05BD9C5019951E7F003F7A1A /* Images.xcassets in Resources */,
 				0579E07519A3A4E30000A640 /* Localizable.strings in Resources */,
 				056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */,
+				05B605D819A50FE9008F6706 /* RFMRankingTableViewCell.xib in Resources */,
 				05B605C519A3F6E9008F6706 /* RFMTutorialScreenViewController.xib in Resources */,
 				0579E06B19A392620000A640 /* tutorial5.png in Resources */,
 				0579E06819A392620000A640 /* tutorial2.png in Resources */,
@@ -470,6 +497,7 @@
 				0537011A199AAC730000B655 /* Ballwelt.png in Resources */,
 				0579E06919A392620000A640 /* tutorial3.png in Resources */,
 				053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */,
+				05B605CA19A3FD9E008F6706 /* RFMRankingViewController.xib in Resources */,
 				058D8EB3199E21C5006CB9B3 /* power1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,7 +519,10 @@
 			files = (
 				05BD9C7519951F1F003F7A1A /* RFMBallView.m in Sources */,
 				05AA5B46199D990F00ACED98 /* RFMAnimatedLabel.m in Sources */,
+				05B605D319A41035008F6706 /* RFMRanking.m in Sources */,
+				05B605D019A40763008F6706 /* RFMPlayerModel.m in Sources */,
 				05BD9C4E19951E7F003F7A1A /* RFMAppDelegate.m in Sources */,
+				05B605C919A3FD9E008F6706 /* RFMRankingViewController.m in Sources */,
 				053BCDFE1999586B00E2631E /* RFMSystemSounds.m in Sources */,
 				053BCE091999807D00E2631E /* RFMPauseMenuViewController.m in Sources */,
 				05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */,
@@ -501,6 +532,7 @@
 				054B94FB19A0228900741887 /* RFMTutorialViewController.m in Sources */,
 				05370116199A993C0000B655 /* RFMMainMenuViewController.m in Sources */,
 				05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */,
+				05B605D719A50FE9008F6706 /* RFMRankingTableViewCell.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
 				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,

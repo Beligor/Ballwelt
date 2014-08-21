@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMRankingViewController">
+            <connections>
+                <outlet property="rankingTitle" destination="BRB-aQ-K6I" id="sbk-Gu-4TL"/>
+                <outlet property="table" destination="KAC-fT-ddF" id="x88-wx-rdi"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KAC-fT-ddF">
+                    <rect key="frame" x="0.0" y="112" width="320" height="321"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="3Th-tJ-GgZ"/>
+                    </connections>
+                </tableView>
+                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="28s-EH-i3I">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ljv-fe-Sbe"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="i5M-Pr-FkT" id="nFd-zf-5Pr"/>
+                    </connections>
+                </adBannerView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="25" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="BRB-aQ-K6I">
+                    <rect key="frame" x="0.0" y="52" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.27058823529999998" green="0.094117647060000004" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ddZ-qJ-oAF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre Jugador fuera Top" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-Rr-MaV">
+                    <rect key="frame" x="57" y="441" width="206" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iak-9F-7pk">
+                    <rect key="frame" x="137" y="518" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="closeRanking:" destination="-1" eventType="touchUpInside" id="TR4-jm-Ejf"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.27058823529999998" green="0.094117647060000004" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="iak-9F-7pk" firstAttribute="top" secondItem="8aW-Rr-MaV" secondAttribute="bottom" constant="56" id="9g2-7E-hVJ"/>
+                <constraint firstItem="8aW-Rr-MaV" firstAttribute="top" secondItem="KAC-fT-ddF" secondAttribute="bottom" constant="8" id="E6j-sP-dzI"/>
+                <constraint firstAttribute="trailing" secondItem="BRB-aQ-K6I" secondAttribute="trailing" id="JfJ-sa-kaH"/>
+                <constraint firstItem="KAC-fT-ddF" firstAttribute="centerX" secondItem="8aW-Rr-MaV" secondAttribute="centerX" id="Wpe-od-vei"/>
+                <constraint firstItem="BRB-aQ-K6I" firstAttribute="trailing" secondItem="KAC-fT-ddF" secondAttribute="trailing" id="Xj4-NZ-1DA"/>
+                <constraint firstItem="28s-EH-i3I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gEV-n9-YTf"/>
+                <constraint firstItem="8aW-Rr-MaV" firstAttribute="centerX" secondItem="iak-9F-7pk" secondAttribute="centerX" id="glm-57-GvW"/>
+                <constraint firstItem="KAC-fT-ddF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iTu-KB-w3s"/>
+                <constraint firstItem="BRB-aQ-K6I" firstAttribute="top" secondItem="28s-EH-i3I" secondAttribute="bottom" constant="2" id="kUu-4j-WQY"/>
+                <constraint firstItem="BRB-aQ-K6I" firstAttribute="trailing" secondItem="28s-EH-i3I" secondAttribute="trailing" id="lgz-na-qoX"/>
+                <constraint firstItem="BRB-aQ-K6I" firstAttribute="leading" secondItem="28s-EH-i3I" secondAttribute="leading" id="oai-Qd-Bfs"/>
+                <constraint firstItem="KAC-fT-ddF" firstAttribute="leading" secondItem="BRB-aQ-K6I" secondAttribute="leading" id="tGt-KR-OKK"/>
+                <constraint firstItem="KAC-fT-ddF" firstAttribute="top" secondItem="BRB-aQ-K6I" secondAttribute="bottom" constant="10" id="wnj-i0-7MD"/>
+                <constraint firstAttribute="bottom" secondItem="iak-9F-7pk" secondAttribute="bottom" constant="20" id="yEj-cS-bdP"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

@@ -7,18 +7,40 @@
 //
 
 #import "RFMAppDelegate.h"
-#import "RFMGameViewController.h"
 #import "RFMMainMenuViewController.h"
-
-
 @implementation RFMAppDelegate
+
+#pragma mark - Appearance
+-(void)customizeAppearance
+{
+
+    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil] setBackgroundColor:Rgb2UIColor(69, 24, 46)];
+    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil] setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil].titleLabel setFont:[UIFont systemFontOfSize:35]];
+    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil].layer setBorderColor:[UIColor blackColor].CGColor];
+    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil].layer setBorderWidth:4.0];
+    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil].layer setCornerRadius:10];
+    
+}
+
+#pragma mark - Notifications
+-(void)sendNotification
+{
+    NSNotification *n = [NSNotification notificationWithName:@"pauseGame"
+                                                      object:self
+                                                    userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:n];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-
+   // [self customizeAppearance];
+    
+    
    RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
+//    RFMRankingViewController *rankVC = [[RFMRankingViewController alloc] init];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
     navVC.navigationBar.hidden = YES;
     
@@ -33,6 +55,13 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+    // Enviar notificación
+    [self sendNotification];
+//    NSNotification *n = [NSNotification notificationWithName:@"pauseGame"
+//                                                      object:self
+//                                                    userInfo:nil];
+//    [[NSNotificationCenter defaultCenter] postNotification:n];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -48,6 +77,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [self sendNotification];
+//    NSNotification *n = [NSNotification notificationWithName:@"pauseGame"
+//                                                      object:self
+//                                                    userInfo:nil];
+//    [[NSNotificationCenter defaultCenter] postNotification:n];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

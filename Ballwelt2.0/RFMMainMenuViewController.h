@@ -12,9 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *ballsBackgroundView;
 
-
-- (IBAction)startNewGameBtn:(id)sender;
-
-- (IBAction)tutorial:(id)sender;
+- (IBAction)chooseAnOption:(id)sender;
 - (IBAction)socialNetworksBtn:(id)sender;
+
 @end

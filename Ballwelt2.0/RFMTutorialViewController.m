@@ -97,18 +97,15 @@
         return nil;
     }
     RFMTutorialScreenViewController *VC = nil;
-    VC = [[RFMTutorialScreenViewController alloc]initWithModel:[self.model tutorialScreenAtIndex:index]
-                                                    showButton:YES];
-    VC.delegate = self;
-//    if (index == self.model.tutorialScreensCount - 1) {
-//        VC = [[RFMTutorialScreenViewController alloc]initWithModel:[self.model tutorialScreenAtIndex:index]
-//                                                        showButton:YES];
-//        VC.delegate = self;
-//    }else{
-//        VC = [[RFMTutorialScreenViewController alloc]initWithModel:[self.model tutorialScreenAtIndex:index]
-//                                                        showButton:NO];
-//    }
-//    
+
+    if (index == self.model.tutorialScreensCount - 1) {
+        VC = [[RFMTutorialScreenViewController alloc]initWithModel:[self.model tutorialScreenAtIndex:index]
+                                                        showButton:YES];
+        VC.delegate = self;
+    }else{
+        VC = [[RFMTutorialScreenViewController alloc]initWithModel:[self.model tutorialScreenAtIndex:index]
+                                                        showButton:NO];
+    }    
     return VC;
 }
 

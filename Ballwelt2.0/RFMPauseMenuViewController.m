@@ -35,7 +35,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.continueBtn.titleLabel.text = NSLocalizedString(@"PAUSA_btnContinuar", nil);
+    self.continueBtn.titleLabel.text = NSLocalizedString(@"PAUSE_Continue", nil);
+    self.restartBtn.titleLabel.text = NSLocalizedString(@"PAUSE_Restart", nil);
+    self.extiBtn.titleLabel.text = NSLocalizedString(@"PAUSE_Exit", nil);
     [self composeMenu];
 }
 
