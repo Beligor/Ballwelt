@@ -23,9 +23,5 @@
 @property (weak, nonatomic) IBOutlet RFMAnimatedLabel *scoreAnimatedLabel;
 @property (weak, nonatomic) IBOutlet RFMPowerupBallView *powerUpView;
 
-
-
-@property (nonatomic) BOOL paused;
-
 -(void)setUpTimer;
 @end

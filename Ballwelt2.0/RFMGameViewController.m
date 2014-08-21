@@ -16,6 +16,7 @@
 @property (nonatomic, strong) RFMGameModel *model;
 @property (nonatomic, strong) NSTimer *gameTimer;
 @property (nonatomic) NSInteger currentScore;
+@property (nonatomic) BOOL paused;
 @end
 
 @implementation RFMGameViewController
@@ -50,12 +51,32 @@
         for (int i =0; i<5; i++) {
             [self addBallToView];
         }
+        
+        // Alta en notificaciones
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(appDelegateNotifies:)
+                                                     name:@"pauseGame"
+                                                   object:nil];
     }else{
         self.paused = NO;
     }
     // Start game timer
     [self setUpTimer];
 }
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Notifications
+-(void)appDelegateNotifies:(NSNotification *)aNotification
+{
+    if (!self.paused) {
+        [self showMenuNoForPauseYesForGameOver:NO];
+    }
+}
+
 
 #pragma mark - Game utils
 -(void)configureGame
@@ -343,6 +364,9 @@
     [self destroyAllBallsAnimated:NO];
     self.model.arrayOfBalls = nil;
     self.paused = NO;
+
+    // Baja en notificaciones
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 // RFMPowerupBallViewDelegate
