@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface RFMUserModel : NSObject
+
 @property (strong, nonatomic) NSString *ID;
 @property (strong, nonatomic) NSString *nickname;
-@property (nonatomic) NSInteger maxScore;
+@property (nonatomic) NSInteger highScore;
 @property (strong, nonatomic) NSString *date;
 @property (nonatomic) BOOL recordSended;
-@property (nonatomic) BOOL firstGame;
+
 
 - (void)saveData;
-
 @end

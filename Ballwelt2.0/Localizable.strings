@@ -17,20 +17,21 @@
 "PAUSE_Exit" = "Back to Main Menu";
 "PAUSE_Record" = "New Record!";
 
-//
+//RANKING
 "RANKING_Back" = "Main Menu";
 "RANKING_Title"="Top 10";
 "RANKING_Notice"="Unable to connect to Ballwelt's Server.\n Please check your Internet connection to see the Online Ranking";
 
 // ALERTVIEW NAME
 "ALERT_title" = "Enter your Name";
+"ALERT_OkBtn" = "Ok";
 
 // SOCIAL NETWORKS
 "SOCIAL_twitter" = "I'm playing #Ballwelt ";
 "SOCIAL_fb" = "Do you have what it takes to defeat me in Ballwelt?";
 
 //TUTORIAL
-"TUTORIAL_Close" = "Go back12354";
+"TUTORIAL_Close" = "Go back";
 
 "TUTORIAL_Title1" = "BALLS";
 "TUTORIAL_Title2" = "TIME";

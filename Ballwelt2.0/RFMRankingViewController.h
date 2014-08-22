@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
+@class RFMUserModel;
 
 @interface RFMRankingViewController : UIViewController<UITableViewDataSource, ADBannerViewDelegate>
+@property (strong, nonatomic) RFMUserModel *userDataModel;
 @property (weak, nonatomic) IBOutlet UILabel *rankingTitle;
+@property (weak, nonatomic) IBOutlet UILabel *outOfRankingLabel;
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 
+-(id)initWithUserDataModel:(RFMUserModel *) anUserDataModel;
 - (IBAction)closeRanking:(id)sender;
 @end

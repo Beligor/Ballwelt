@@ -30,10 +30,9 @@
     // Assign to iVar content of dictionary
     _ID = [dataFromPlistFile objectForKey:@"ID"];
     _nickname = [dataFromPlistFile objectForKey:@"nickname"];
-    _maxScore = [[dataFromPlistFile objectForKey:@"maxScore"] intValue];
+    _highScore = [[dataFromPlistFile objectForKey:@"highScore"] intValue];
     _date = [dataFromPlistFile objectForKey:@"date"];
     _recordSended = [[dataFromPlistFile objectForKey:@"recordSended"] boolValue];
-    _firstGame = [[dataFromPlistFile objectForKey:@"firstGame"] boolValue];
 }
 
 - (NSString *)findFile
@@ -67,20 +66,12 @@
     
     NSDictionary *dataToWriteInPlistFile = @{@"ID" : self.ID,
                                              @"nickname" : self.nickname,
-                                             @"maxScore" : [NSNumber numberWithInteger:self.maxScore],
+                                             @"highScore" : [NSNumber numberWithInteger:self.highScore],
                                              @"date" : self.date,
-                                             @"recordSended" : [NSNumber numberWithBool:self.recordSended],
-                                             @"firstGame" : [NSNumber numberWithBool:self.firstGame]};
+                                             @"recordSended" : [NSNumber numberWithBool:self.recordSended]};
                                              
     [dataToWriteInPlistFile writeToFile:path
                              atomically:YES];
     
 }
-
-#pragma mark - Utils
--(NSString *)description
-{
-    return [NSString stringWithFormat:(@"/nID: %@/nName: %@/nMax: %li/nDate: %@/nSended: %d/nFirstGame: %d"), self.ID, self.nickname, (long)self.maxScore, self.date, self.recordSended, self.firstGame];
-}
-
 @end

@@ -17,7 +17,6 @@
 @interface RFMMainMenuViewController ()
 @property (nonatomic, strong) NSTimer *moveTimer;
 @property (strong, nonatomic) RFMUserModel *userDataModel;
-
 @end
 
 @implementation RFMMainMenuViewController
@@ -26,11 +25,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     self.userDataModel = [[RFMUserModel alloc] init];
-    if (self.userDataModel.firstGame) {
-        NSLog(@"primera partida");
+    
+    // First time request for a nickname and show tutorial
+    if ([self.userDataModel.nickname isEqualToString:@""]) {
+        UIAlertView *nickInput = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"ALERT_title", @"")
+                                              message:nil
+                                             delegate:self
+                                    cancelButtonTitle:nil
+                                    otherButtonTitles:NSLocalizedString(@"ALERT_OkBtn", nil), nil];
+        
+        [nickInput setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [nickInput show];
     }
+    
     
 }
 
@@ -38,11 +46,16 @@
 {
     [super viewWillAppear:animated];
     
+    // Reload model if user has a new record
+    if (!self.userDataModel.recordSended) {
+        self.userDataModel = [[RFMUserModel alloc] init];
+    }
+    
     for (int i=0; i<50; i++) {
         [self addBallToView];
     }
     
-    // Alta en notificaciones
+    // Subscribe to notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appDelegateNotifies:)
                                                  name:@"pauseGame"
@@ -65,7 +78,7 @@
         
         [each removeFromSuperview];
     }
-    // Baja en notificaciones
+    // Unsubscribe of notifications
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -125,7 +138,7 @@
     UIViewController *VC = nil;
     switch (btn.tag) {
         case 0:
-            VC = [[RFMGameViewController alloc] init];
+            VC = [[RFMGameViewController alloc] initWithUserDataModel:self.userDataModel];
             [self.navigationController pushViewController:VC
                                                  animated:NO];
             break;
@@ -136,7 +149,7 @@
                              completion:nil];
             break;
         case 2:
-            VC = [[RFMRankingViewController alloc] init];
+            VC = [[RFMRankingViewController alloc] initWithUserDataModel:self.userDataModel];
             [self.navigationController pushViewController:VC
                                                  animated:YES];
             break;
@@ -166,4 +179,38 @@
                      completion:nil];
 }
 
+#pragma mark - Nickname Alert View
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    
+    NSString *text = [[alertView textFieldAtIndex:0] text];
+    NSCharacterSet *noSpacing = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSRange range = [text rangeOfCharacterFromSet:noSpacing];
+    
+    //comprueba que el texto no supere el tamaño maximo permitido, no este en blanco y no haya espacios en blanco
+    if ([text length] <= 15 && ![text isEqualToString:@""] && (range.location == NSNotFound)) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    int numberID =  arc4random() % 999999999999999999; // Random number and name makes unique ID
+    
+    NSString *ID = [NSString stringWithFormat:@"%@%i", [[alertView textFieldAtIndex:0] text], numberID];
+    
+    self.userDataModel.ID = ID;
+    self.userDataModel.nickname = [[alertView textFieldAtIndex:0] text];
+    
+    // Save changes in Plist
+    [self.userDataModel saveData];
+    
+    // Show Tutorial
+    RFMTutorialViewController *VC = [[RFMTutorialViewController alloc] init];
+    [self presentViewController:VC
+                       animated:YES
+                     completion:nil];
+}
 @end

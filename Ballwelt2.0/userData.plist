@@ -5,14 +5,12 @@
 	<key>ID</key>
 	<string></string>
 	<key>nickname</key>
-	<string>#4/6kidV2.@W[hz</string>
-	<key>maxScore</key>
+	<string></string>
+	<key>highScore</key>
 	<integer>0</integer>
 	<key>date</key>
 	<string></string>
 	<key>recordSended</key>
-	<true/>
-	<key>firstGame</key>
 	<true/>
 </dict>
 </plist>

@@ -22,11 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *menuSquare;
 @property (weak, nonatomic) IBOutlet UIView *scoreSquare;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLbl;
-
-
-
 @property (nonatomic, weak) id<RFMPauseMenuViewControllerDelegate> delegate;
-
 
 -(id)initWithBackGround:(UIImage *) aScreenCapture
              isGameOver:(BOOL) isAGameOver

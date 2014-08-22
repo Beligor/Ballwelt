@@ -11,7 +11,6 @@
 
 @interface RFMRanking()
 @property (strong, nonatomic) RFMPlayerModel *playerModel;
-@property (strong, nonatomic) NSMutableArray *playersList;
 @property (strong, nonatomic) NSMutableDictionary *currentDic;
 @property (strong, nonatomic) NSMutableString *currentNode;
 @property (strong, nonatomic) NSString *tbl;
@@ -103,8 +102,8 @@ foundCharacters:(NSString *)string
 
 
 #pragma mark - Other
-- (id)playerAtIndex:(NSUInteger)index
+- (id)playerInPosition:(NSUInteger)aPosition
 {
-    return [self.playersList objectAtIndex:index];
+    return [self.playersList objectAtIndex:aPosition];
 }
 @end

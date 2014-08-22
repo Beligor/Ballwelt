@@ -333,16 +333,13 @@
 			isa = PBXGroup;
 			children = (
 				053BCE051999804800E2631E /* Resources */,
+				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
 				05BD9C4C19951E7F003F7A1A /* RFMAppDelegate.h */,
 				05BD9C4D19951E7F003F7A1A /* RFMAppDelegate.m */,
 				053BCDFC1999586B00E2631E /* RFMSystemSounds.h */,
 				053BCDFD1999586B00E2631E /* RFMSystemSounds.m */,
-				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
 				05AA5B40199CC44200ACED98 /* Models */,
 				05BD9C7219951F10003F7A1A /* Views */,
-				05B605D419A50FE9008F6706 /* RFMRankingTableViewCell.h */,
-				05B605D519A50FE9008F6706 /* RFMRankingTableViewCell.m */,
-				05B605D619A50FE9008F6706 /* RFMRankingTableViewCell.xib */,
 				05BD9C6C19951E88003F7A1A /* Controllers */,
 				05BD9C4F19951E7F003F7A1A /* Images.xcassets */,
 				05BD9C4419951E7F003F7A1A /* Supporting Files */,
@@ -411,6 +408,9 @@
 				058D8EAD199E0775006CB9B3 /* RFMPowerupBallView.h */,
 				058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */,
 				053BCDFB199937A800E2631E /* Time Bars */,
+				05B605D419A50FE9008F6706 /* RFMRankingTableViewCell.h */,
+				05B605D519A50FE9008F6706 /* RFMRankingTableViewCell.m */,
+				05B605D619A50FE9008F6706 /* RFMRankingTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";

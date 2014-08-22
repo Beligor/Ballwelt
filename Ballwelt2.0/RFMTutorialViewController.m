@@ -18,6 +18,15 @@
 
 @implementation RFMTutorialViewController
 
+//#pragma mark - Init
+//-(id)initWithUserDataModel: (RFMUserModel *) aDataUserModel
+//{
+//    if (self = [super init]) {
+//        _dataUserModel = aDataUserModel;
+//    }
+//    return self;
+//}
+
 #pragma mark - View Lifecycle
 - (void)viewDidLoad
 {

@@ -11,6 +11,7 @@
 #import "RFMBallView.h"
 #import "RFMPauseMenuViewController.h"
 #import "RFMSystemSounds.h"
+#import "RFMUserModel.h"
 
 @interface RFMGameViewController ()
 @property (nonatomic, strong) RFMGameModel *model;
@@ -22,11 +23,12 @@
 @implementation RFMGameViewController
 
 #pragma mark - init
--(id)init
+
+-(id)initWithUserDataModel:(RFMUserModel *) anUserDataModel
 {
-    if (self = [super initWithNibName:nil
-                               bundle:nil]) {
+    if (self = [super init]) {
         _paused = NO;
+        _userDataModel = anUserDataModel;
     }
     return self;
 }
@@ -187,19 +189,59 @@
 {
     static NSInteger numberOfGameOverBalls = 0;
     numberOfGameOverBalls = numberOfGameOverBalls + 1;
-//    NSLog(@"contador bolas: %d", contador);
+
     if (numberOfGameOverBalls < 150) {
         [self addBallToView];
     }else{
         [self.gameTimer invalidate];
         numberOfGameOverBalls = 0;
+#warning guardar puntuacion
+        if (self.currentScore > self.userDataModel.highScore) {
+            // avisar al menu pausa que muestre label "nuevo record"
+            self.userDataModel.date = [self transformDateIntoString];
+            self.userDataModel.highScore = self.currentScore;
+            self.userDataModel.recordSended = NO;
+            [self.userDataModel saveData];
+        }
         [self showMenuNoForPauseYesForGameOver:YES];
     }
 }
 
+- (NSString *)transformDateIntoString
+{
+    // Return a string with date in format yyyymmdd
+    NSDate *today = [NSDate date];
+    
+    // Separate date in components
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components: NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
+                                                                       fromDate:today];
+    
+    NSInteger year = [dateComponents year];
+    NSInteger month = [dateComponents month];
+    NSInteger day = [dateComponents day];
+    
+    NSString *monthString;
+    NSString *dayString;
+    
+    // Ensure that day and month have 2 digits
+    if (month < 10) {
+        monthString = [NSString stringWithFormat:@"0%i", (int)month];
+    }else{
+        monthString = [NSString stringWithFormat:@"%i", (int)month];
+    }
+    
+    if (day < 10) {
+        dayString = [NSString stringWithFormat:@"0%i", (int)day];
+    }else{
+        dayString = [NSString stringWithFormat:@"%i", (int)day];
+    }
+
+    return [NSString stringWithFormat:@"%i%@%@", (int)year,monthString, dayString] ;
+}
+
 #pragma mark - Operations with balls
 -(void)moveBall
-{    
+{
     for (RFMBallView *each in self.playGroundView.subviews) {
         if ([self.model.arrayOfBalls count] > 0 && [self.model.arrayOfBalls objectAtIndex:0] == each) {
             each.layer.borderColor = [UIColor whiteColor].CGColor;

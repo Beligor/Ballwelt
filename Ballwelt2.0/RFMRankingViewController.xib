@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMRankingViewController">
             <connections>
+                <outlet property="activityIndicator" destination="VSi-St-F0y" id="lFs-G3-tem"/>
+                <outlet property="errorLabel" destination="6nS-uV-9Le" id="s1w-bO-YyU"/>
+                <outlet property="outOfRankingLabel" destination="8aW-Rr-MaV" id="l1j-XC-1nR"/>
                 <outlet property="rankingTitle" destination="BRB-aQ-K6I" id="sbk-Gu-4TL"/>
                 <outlet property="table" destination="KAC-fT-ddF" id="x88-wx-rdi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -33,7 +36,7 @@
                         <constraint firstAttribute="height" constant="50" id="ljv-fe-Sbe"/>
                     </constraints>
                     <connections>
-                        <outlet property="delegate" destination="i5M-Pr-FkT" id="nFd-zf-5Pr"/>
+                        <outlet property="delegate" destination="-1" id="r5s-DI-Egz"/>
                     </connections>
                 </adBannerView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="25" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="BRB-aQ-K6I">
@@ -47,7 +50,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre Jugador fuera Top" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-Rr-MaV">
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre Jugador fuera Top" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-Rr-MaV" userLabel="Label - Player's Name (out of ranking)">
                     <rect key="frame" x="57" y="441" width="206" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -63,6 +66,18 @@
                         <action selector="closeRanking:" destination="-1" eventType="touchUpInside" id="TR4-jm-Ejf"/>
                     </connections>
                 </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VSi-St-F0y">
+                    <rect key="frame" x="142" y="254" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </activityIndicatorView>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="6nS-uV-9Le">
+                    <rect key="frame" x="0.0" y="110" width="320" height="321"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.27058823529999998" green="0.094117647060000004" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>

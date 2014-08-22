@@ -11,8 +11,7 @@
 @interface RFMRanking : NSObject<NSXMLParserDelegate>
 
 @property (nonatomic, readonly) NSUInteger playersCount;
+@property (strong, nonatomic) NSMutableArray *playersList;
 
-- (id)playerAtIndex:(NSUInteger)index;
-
-//-(NSInteger) countPlayers;
+- (id)playerInPosition:(NSUInteger)aPosition;
 @end

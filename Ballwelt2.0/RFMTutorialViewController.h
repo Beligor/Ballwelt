@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "RFMTutorialScreenViewController.h"
+#import "RFMUserModel.h"
 
 @interface RFMTutorialViewController : UIViewController<UIPageViewControllerDataSource, RFMContentTutorialViewControllerDelegate>
+//@property (strong, nonatomic) RFMUserModel *dataUserModel;
+//
+//-(id)initWithUserDataModel: (RFMUserModel *) aDataUserModel;
 @end
