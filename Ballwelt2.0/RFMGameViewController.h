@@ -11,10 +11,10 @@
 #import "RFMGameTimeBarView.h"
 #import "RFMPauseMenuViewController.h"
 #import "RFMAnimatedLabel.h"
-#import "RFMPowerupBallView.h"
+#import "RFMPowerupView.h"
 @class RFMUserModel;
 
-@interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate, RFMPauseMenuViewControllerDelegate, RFMPowerupBallViewDelegate>
+@interface RFMGameViewController : UIViewController<RFMNewBallTimeBarViewDelegate, RFMGameTimeBarViewDelegate, RFMPauseMenuViewControllerDelegate, RFMPowerupViewDelegate>
 
 
 @property (strong, nonatomic) RFMUserModel *userDataModel;
@@ -23,9 +23,11 @@
 @property (weak, nonatomic) IBOutlet RFMGameTimeBarView *gameTimeBar;
 @property (weak, nonatomic) IBOutlet RFMNewBallTimeBarView *ballTimeBar;
 @property (weak, nonatomic) IBOutlet RFMAnimatedLabel *scoreAnimatedLabel;
-@property (weak, nonatomic) IBOutlet RFMPowerupBallView *powerUpView;
+@property (weak, nonatomic) IBOutlet RFMPowerupView *powerUpView;
+@property (weak, nonatomic) IBOutlet UIView *countdownSquare;
+@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 
 
 -(id)initWithUserDataModel:(RFMUserModel *) anUserDataModel;
--(void)setUpTimer;
+//-(void)startGameTimer;
 @end

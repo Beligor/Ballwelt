@@ -27,15 +27,44 @@
     return shared;
 }
 
+-(void)menuSelect
+{
+    [self playFileNamed:@"menuSelection"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
+-(void)countdown
+{
+    [self playFileNamed:@"countdown"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
+-(void)go
+{
+    [self playFileNamed:@"go"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
 -(void)correctBall
 {
     [self playFileNamed:@"rightBall"
               extension:@"wav"
           numberOfLoops:0];
 }
+
 -(void)wrongBall
 {
     [self playFileNamed:@"wrongBall"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
+-(void)slowDown
+{
+    [self playFileNamed:@"slow2"
               extension:@"wav"
           numberOfLoops:0];
 }

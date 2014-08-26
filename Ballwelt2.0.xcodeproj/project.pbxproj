@@ -33,7 +33,7 @@
 		0579E06C19A392620000A640 /* tutorial6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06619A392620000A640 /* tutorial6.png */; };
 		0579E06F19A394710000A640 /* RFMTutorialModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0579E06E19A394710000A640 /* RFMTutorialModel.m */; };
 		0579E07519A3A4E30000A640 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0579E07419A3A4E30000A640 /* Localizable.strings */; };
-		058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */; };
+		058D8EAF199E0775006CB9B3 /* RFMPowerupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 058D8EAE199E0775006CB9B3 /* RFMPowerupView.m */; };
 		058D8EB3199E21C5006CB9B3 /* power1.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB0199E21C5006CB9B3 /* power1.png */; };
 		058D8EB4199E21C5006CB9B3 /* power2.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB1199E21C5006CB9B3 /* power2.png */; };
 		058D8EB5199E21C5006CB9B3 /* power3.png in Resources */ = {isa = PBXBuildFile; fileRef = 058D8EB2199E21C5006CB9B3 /* power3.png */; };
@@ -63,6 +63,11 @@
 		05BD9C7019951EAA003F7A1A /* RFMGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BD9C6E19951EAA003F7A1A /* RFMGameViewController.m */; };
 		05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BD9C6F19951EAA003F7A1A /* RFMGameViewController.xib */; };
 		05BD9C7519951F1F003F7A1A /* RFMBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BD9C7419951F1F003F7A1A /* RFMBallView.m */; };
+		05C946C119A7531D0022E298 /* menuSelection.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C946C019A7531D0022E298 /* menuSelection.wav */; };
+		05C946C319A755400022E298 /* slow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C946C219A755400022E298 /* slow.wav */; };
+		05EE96A119ACBD4000F2BE24 /* countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96A019ACBD4000F2BE24 /* countdown.wav */; };
+		05EE96A319ACBE4F00F2BE24 /* go.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96A219ACBE4F00F2BE24 /* go.wav */; };
+		05EE96A719ACD89800F2BE24 /* slow2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96A619ACD89800F2BE24 /* slow2.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,8 +117,8 @@
 		0579E06D19A394710000A640 /* RFMTutorialModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialModel.h; sourceTree = "<group>"; };
 		0579E06E19A394710000A640 /* RFMTutorialModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialModel.m; sourceTree = "<group>"; };
 		0579E07419A3A4E30000A640 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		058D8EAD199E0775006CB9B3 /* RFMPowerupBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPowerupBallView.h; sourceTree = "<group>"; };
-		058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPowerupBallView.m; sourceTree = "<group>"; };
+		058D8EAD199E0775006CB9B3 /* RFMPowerupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMPowerupView.h; sourceTree = "<group>"; };
+		058D8EAE199E0775006CB9B3 /* RFMPowerupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMPowerupView.m; sourceTree = "<group>"; };
 		058D8EB0199E21C5006CB9B3 /* power1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power1.png; sourceTree = "<group>"; };
 		058D8EB1199E21C5006CB9B3 /* power2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power2.png; sourceTree = "<group>"; };
 		058D8EB2199E21C5006CB9B3 /* power3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power3.png; sourceTree = "<group>"; };
@@ -157,6 +162,11 @@
 		05BD9C6F19951EAA003F7A1A /* RFMGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RFMGameViewController.xib; sourceTree = "<group>"; };
 		05BD9C7319951F1F003F7A1A /* RFMBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMBallView.h; sourceTree = "<group>"; };
 		05BD9C7419951F1F003F7A1A /* RFMBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMBallView.m; sourceTree = "<group>"; };
+		05C946C019A7531D0022E298 /* menuSelection.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = menuSelection.wav; sourceTree = "<group>"; };
+		05C946C219A755400022E298 /* slow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slow.wav; sourceTree = "<group>"; };
+		05EE96A019ACBD4000F2BE24 /* countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countdown.wav; sourceTree = "<group>"; };
+		05EE96A219ACBE4F00F2BE24 /* go.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = go.wav; sourceTree = "<group>"; };
+		05EE96A619ACD89800F2BE24 /* slow2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slow2.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,8 +231,7 @@
 		053BCE051999804800E2631E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				053BCE031999663D00E2631E /* rightBall.wav */,
-				053BCE0119995C4700E2631E /* wrongBall.wav */,
+				05C946C419A755480022E298 /* Sounds */,
 				05370118199AAC3E0000B655 /* Artwork */,
 			);
 			name = Resources;
@@ -405,14 +414,28 @@
 				05BD9C7419951F1F003F7A1A /* RFMBallView.m */,
 				05AA5B44199D990F00ACED98 /* RFMAnimatedLabel.h */,
 				05AA5B45199D990F00ACED98 /* RFMAnimatedLabel.m */,
-				058D8EAD199E0775006CB9B3 /* RFMPowerupBallView.h */,
-				058D8EAE199E0775006CB9B3 /* RFMPowerupBallView.m */,
+				058D8EAD199E0775006CB9B3 /* RFMPowerupView.h */,
+				058D8EAE199E0775006CB9B3 /* RFMPowerupView.m */,
 				053BCDFB199937A800E2631E /* Time Bars */,
 				05B605D419A50FE9008F6706 /* RFMRankingTableViewCell.h */,
 				05B605D519A50FE9008F6706 /* RFMRankingTableViewCell.m */,
 				05B605D619A50FE9008F6706 /* RFMRankingTableViewCell.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		05C946C419A755480022E298 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				05EE96A219ACBE4F00F2BE24 /* go.wav */,
+				05EE96A019ACBD4000F2BE24 /* countdown.wav */,
+				05C946C219A755400022E298 /* slow.wav */,
+				05EE96A619ACD89800F2BE24 /* slow2.wav */,
+				05C946C019A7531D0022E298 /* menuSelection.wav */,
+				053BCE031999663D00E2631E /* rightBall.wav */,
+				053BCE0119995C4700E2631E /* wrongBall.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,9 +524,11 @@
 				0579E06719A392620000A640 /* tutorial1.png in Resources */,
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
 				053BCE0219995C4700E2631E /* wrongBall.wav in Resources */,
+				05EE96A719ACD89800F2BE24 /* slow2.wav in Resources */,
 				053BCE041999663D00E2631E /* rightBall.wav in Resources */,
 				05BD9C4819951E7F003F7A1A /* InfoPlist.strings in Resources */,
 				05BD9C5019951E7F003F7A1A /* Images.xcassets in Resources */,
+				05EE96A319ACBE4F00F2BE24 /* go.wav in Resources */,
 				0579E07519A3A4E30000A640 /* Localizable.strings in Resources */,
 				056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */,
 				05B605D819A50FE9008F6706 /* RFMRankingTableViewCell.xib in Resources */,
@@ -511,10 +536,13 @@
 				0579E06B19A392620000A640 /* tutorial5.png in Resources */,
 				0579E06819A392620000A640 /* tutorial2.png in Resources */,
 				058D8EB4199E21C5006CB9B3 /* power2.png in Resources */,
+				05C946C119A7531D0022E298 /* menuSelection.wav in Resources */,
 				0537011A199AAC730000B655 /* Ballwelt.png in Resources */,
 				0579E06919A392620000A640 /* tutorial3.png in Resources */,
 				053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */,
+				05C946C319A755400022E298 /* slow.wav in Resources */,
 				05B605CA19A3FD9E008F6706 /* RFMRankingViewController.xib in Resources */,
+				05EE96A119ACBD4000F2BE24 /* countdown.wav in Resources */,
 				058D8EB3199E21C5006CB9B3 /* power1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,7 +583,7 @@
 				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
 				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,
 				054B94F619A0213A00741887 /* RFMTutorialScreenViewController.m in Sources */,
-				058D8EAF199E0775006CB9B3 /* RFMPowerupBallView.m in Sources */,
+				058D8EAF199E0775006CB9B3 /* RFMPowerupView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

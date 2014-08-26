@@ -52,7 +52,7 @@
     [self.activityIndicator stopAnimating];
 }
 
-#pragma mark - Get Online Ranking
+#pragma mark - Online Ranking
 -(void)connectToServer
 {
     // Get queue

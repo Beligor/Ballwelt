@@ -22,6 +22,7 @@
         _minSpeed = 70;
         _maxSpeed = 100;
         _reduceRadiusRatio = 1.05;
+        _countdownSeconds = 3;
     }
     return self;
 }

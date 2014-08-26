@@ -37,10 +37,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-   // [self customizeAppearance];    
+    // [self customizeAppearance];
     
-   RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
-//    RFMRankingViewController *rankVC = [[RFMRankingViewController alloc] init];
+    RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:menuVC];
     navVC.navigationBar.hidden = YES;
     

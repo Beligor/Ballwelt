@@ -23,7 +23,6 @@
 @implementation RFMGameViewController
 
 #pragma mark - init
-
 -(id)initWithUserDataModel:(RFMUserModel *) anUserDataModel
 {
     if (self = [super init]) {
@@ -34,40 +33,32 @@
 }
 
 #pragma mark - View Lifecycle
-
-#warning add a count down
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     self.playGroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGroundPlayScreen"]];
     if (!self.paused) {
         
-        [self configureGame];
+        [self configureControlPanel];
         
-        // Set Delegates
-        self.gameTimeBar.delegate = self;
-        self.ballTimeBar.delegate = self;
-        self.powerUpView.delegate = self;
-        
-        // Add N balls at the beginin
-        for (int i =0; i<5; i++) {
-            [self addBallToView];
-        }
-        
-        // Alta en notificaciones
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(appDelegateNotifies:)
-                                                     name:@"pauseGame"
-                                                   object:nil];
+        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                          target:self
+                                                        selector:@selector(countdown)
+                                                        userInfo: nil
+                                                         repeats:YES];
     }else{
         self.paused = NO;
+        [self startGameTimer];
     }
-    // Start game timer
-    [self setUpTimer];
+    
+
 }
 
 -(void)dealloc
 {
+    NSLog(@"dealloc");
+    // Unsubscribe from notifications
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -79,17 +70,43 @@
     }
 }
 
-
 #pragma mark - Game utils
--(void)configureGame
+-(void)countdown
+{
+    if (self.model.countdownSeconds == 1) {
+        [self.gameTimer invalidate];
+
+        // Show balls
+        for (RFMBallView *each in self.playGroundView.subviews) {
+            each.hidden = NO;
+        }
+        [self configureGame];
+        
+        // start game
+        [[RFMSystemSounds shareSystemSounds] go];
+        self.countdownSquare.hidden = YES;
+        [self startGameTimer];
+        
+    }else{
+        self.model.countdownSeconds--;
+        [[RFMSystemSounds shareSystemSounds] countdown];
+        self.countDownLabel.text = [NSString stringWithFormat:@"%li", (long)self.model.countdownSeconds];
+    }
+}
+
+-(void)configureControlPanel
 {
     self.currentScore = 0;
     
     self.model = [[RFMGameModel alloc] init];
-
+    
+    self.countDownLabel.text = [NSString stringWithFormat:@"%li", (long)self.model.countdownSeconds];
+    
+    self.countdownSquare.hidden = NO;
+    
     [self.powerUpView setupPowerup];
     
-    [self.gameTimeBar setupBarWithTotalTime:10
+    [self.gameTimeBar  setupBarWithTotalTime:10
                                       color:Rgb2UIColor(113, 172, 55)];
     [self.ballTimeBar setupBarWithTotalTime:0
                                       color:Rgb2UIColor(244, 109, 35)];
@@ -97,7 +114,26 @@
     self.scoreAnimatedLabel.text = [NSString stringWithFormat:@"0"];
 }
 
--(void)setUpTimer
+-(void)configureGame
+{
+    // Set Delegates
+    self.gameTimeBar.delegate = self;
+    self.ballTimeBar.delegate = self;
+    self.powerUpView.delegate = self;
+    
+    // Add N balls at the beginin
+    for (int i =0; i<5; i++) {
+        [self addBallToView];
+    }
+    
+    // Subscribe to notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appDelegateNotifies:)
+                                                 name:@"pauseGame"
+                                               object:nil];
+}
+
+-(void)startGameTimer
 {
     self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/RATE_PER_SECOND
                                                       target:self
@@ -124,24 +160,24 @@
 -(void)addBallToView
 {
 #warning put a limit of Balls in each level
-//    if ([self.model.arrayOfBalls count] <= self.model.level * 10) {
-    RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
-                                                                            Height:self.playGroundView.frame.size.height
-                                                                          MinSpeed:self.model.minSpeed
-                                                                          maxSpeed:self.model.maxSpeed
-                                                                         minRadius:self.model.minRadius
-                                                                         maxRadius:self.model.maxRadius];
-    // add gesture recognizer
-    UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                             action:@selector(didBallTouch:)];
-    [oneTap setNumberOfTapsRequired:1];
-    [ball addGestureRecognizer:oneTap];
+//    if ([self.model.arrayOfBalls count] <= self.model.level * 5 && [self.model.arrayOfBalls count ] <= 30 && [self.gameTimer isValid])  {
+        RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
+                                                                                Height:self.playGroundView.frame.size.height
+                                                                              MinSpeed:self.model.minSpeed
+                                                                              maxSpeed:self.model.maxSpeed
+                                                                             minRadius:self.model.minRadius
+                                                                             maxRadius:self.model.maxRadius];
+        // add gesture recognizer
+        UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(didBallTouch:)];
+        [oneTap setNumberOfTapsRequired:1];
+        [ball addGestureRecognizer:oneTap];
+        
+        [self.model.arrayOfBalls addObject:ball];
+        [self.playGroundView addSubview:ball];
+    }
     
-    [self.model.arrayOfBalls addObject:ball];
-    [self.playGroundView addSubview:ball];
-//    }
-    
-}
+//}
 
 -(void)sumPoints:(NSInteger) points
 {
@@ -166,8 +202,8 @@
     [self.gameTimer invalidate];
     
     RFMPauseMenuViewController *pauseVC = [[RFMPauseMenuViewController alloc] initWithBackGround: [self screenCapture]
-                                                                              isGameOver:isGameOver
-                                                                                   score:self.model.score];
+                                                                                      isGameOver:isGameOver
+                                                                                           score:self.model.score];
     pauseVC.delegate = self;
     self.paused = YES;
 
@@ -195,48 +231,15 @@
     }else{
         [self.gameTimer invalidate];
         numberOfGameOverBalls = 0;
-#warning guardar puntuacion
+#warning mostrar label de nuevo record
         if (self.currentScore > self.userDataModel.highScore) {
             // avisar al menu pausa que muestre label "nuevo record"
-            self.userDataModel.date = [self transformDateIntoString];
             self.userDataModel.highScore = self.currentScore;
             self.userDataModel.recordSended = NO;
             [self.userDataModel saveData];
         }
         [self showMenuNoForPauseYesForGameOver:YES];
     }
-}
-
-- (NSString *)transformDateIntoString
-{
-    // Return a string with date in format yyyymmdd
-    NSDate *today = [NSDate date];
-    
-    // Separate date in components
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components: NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
-                                                                       fromDate:today];
-    
-    NSInteger year = [dateComponents year];
-    NSInteger month = [dateComponents month];
-    NSInteger day = [dateComponents day];
-    
-    NSString *monthString;
-    NSString *dayString;
-    
-    // Ensure that day and month have 2 digits
-    if (month < 10) {
-        monthString = [NSString stringWithFormat:@"0%i", (int)month];
-    }else{
-        monthString = [NSString stringWithFormat:@"%i", (int)month];
-    }
-    
-    if (day < 10) {
-        dayString = [NSString stringWithFormat:@"0%i", (int)day];
-    }else{
-        dayString = [NSString stringWithFormat:@"%i", (int)day];
-    }
-
-    return [NSString stringWithFormat:@"%i%@%@", (int)year,monthString, dayString] ;
 }
 
 #pragma mark - Operations with balls
@@ -318,7 +321,7 @@
                 [self.powerUpView increaseFillsCircle];
             }else{
                 [[RFMSystemSounds shareSystemSounds] wrongBall];
-                [self.powerUpView restartPowerUp];
+                [self.powerUpView breakStreak];
             }
         }
     }
@@ -403,6 +406,10 @@
 // RFMPauseViewControllerDelegate
 -(void)pauseMenuWillRestartGame
 {
+    self.gameTimeBar.delegate = nil;
+    self.ballTimeBar.delegate = nil;
+    self.powerUpView.delegate = nil;
+    
     [self destroyAllBallsAnimated:NO];
     self.model.arrayOfBalls = nil;
     self.paused = NO;
@@ -411,10 +418,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-// RFMPowerupBallViewDelegate
+// RFMPowerupViewDelegate
 -(void)powerUpDidUsed{
     switch (self.powerUpView.powerupNumber) {
         case 1:
+            [[RFMSystemSounds shareSystemSounds] slowDown];
             [self slowDownBalls];
             break;
         case 2:

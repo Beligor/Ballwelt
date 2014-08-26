@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Rafa Ferrero. All rights reserved.
 //
 
-#import "RFMPowerupBallView.h"
+#import "RFMPowerupView.h"
 #define NUMBER_OF_LEVELS_NEEDED 10
 
-@interface RFMPowerupBallView()
+@interface RFMPowerupView()
 
 @property (nonatomic, strong) NSArray *icons;
 @property (nonatomic, strong) UIView *fillsCircleView;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation RFMPowerupBallView
+@implementation RFMPowerupView
 
 #pragma mark - Init
 -(id) initWithRadius:(NSInteger)aRadius
@@ -51,7 +51,7 @@
     [self.currentPowerIcon removeFromSuperview];
     self.currentPowerIcon = nil;
     
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = self.superview.backgroundColor;
     self.layer.cornerRadius = self.frame.size.height / 2;
     [self.layer setBorderColor:[[UIColor blackColor] CGColor]];
     [self.layer setBorderWidth:2.0];
@@ -99,12 +99,25 @@
     }
 }
 
+
+
 #pragma mark - Utils
--(void) redrawFillsCircle
+-(void)redrawFillsCircle
 {
     [self.fillsCircleView setFrame:CGRectMake(0, 0, self.currentLevel * self.incrementFraction, self.currentLevel * self.incrementFraction)];
     self.fillsCircleView.layer.cornerRadius = self.fillsCircleView.frame.size.height / 2;
-    self.fillsCircleView.center = self.center;
+//    self.fillsCircleView.center = self.center;
+}
+
+-(void)breakStreak
+{
+    self.layer.borderColor = [[UIColor redColor]CGColor];
+    self.backgroundColor = [UIColor redColor];
+    [UIView animateWithDuration:0.7 animations:^{
+        self.backgroundColor = self.superview.backgroundColor;
+        self.layer.borderColor = [[UIColor blackColor]CGColor];
+    }];
+    [self restartPowerUp];
 }
 
 -(void)restartPowerUp

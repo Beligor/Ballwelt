@@ -8,6 +8,8 @@
             <connections>
                 <outlet property="ballTimeBar" destination="WHa-vW-UnD" id="N7X-QR-dO8"/>
                 <outlet property="controlPanelView" destination="t1d-s0-njG" id="eaR-4b-ZM1"/>
+                <outlet property="countDownLabel" destination="jyP-S4-5is" id="ebn-BG-wy0"/>
+                <outlet property="countdownSquare" destination="xai-bt-c8o" id="rvr-c7-609"/>
                 <outlet property="gameTimeBar" destination="dWO-Kr-Sb7" id="KjM-f1-ILJ"/>
                 <outlet property="playGroundView" destination="ZAJ-0T-uTd" id="3zL-LP-IdF"/>
                 <outlet property="powerUpView" destination="7oG-Ce-Wmg" id="QnU-La-Ivm"/>
@@ -21,16 +23,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="ZAJ-0T-uTd" userLabel="View - Play Ground">
-                    <rect key="frame" x="0.0" y="137" width="320" height="431"/>
+                    <rect key="frame" x="0.0" y="116" width="320" height="452"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="t1d-s0-njG" userLabel="View - Control Panel">
-                    <rect key="frame" x="0.0" y="20" width="320" height="117"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="dWO-Kr-Sb7" customClass="RFMGameTimeBarView">
-                            <rect key="frame" x="29" y="0.0" width="283" height="29"/>
+                            <rect key="frame" x="50" y="0.0" width="261" height="22"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.0038814999630000001" green="1" blue="0.083202936860000007" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
@@ -45,16 +47,29 @@
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" id="7oG-Ce-Wmg" customClass="RFMPowerupBallView">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                        <view contentMode="scaleToFill" id="7oG-Ce-Wmg" customClass="RFMPowerupView">
+                            <rect key="frame" x="-28" y="-24" width="70" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.36862745098039218" green="0.31372549019607843" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" id="xai-bt-c8o" userLabel="View - Countdown Cquare">
+                    <rect key="frame" x="85" y="209" width="150" height="150"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jyP-S4-5is" userLabel="Label - Countdown">
+                            <rect key="frame" x="54" y="65" width="42" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

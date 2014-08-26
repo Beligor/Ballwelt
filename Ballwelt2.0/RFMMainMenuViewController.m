@@ -12,6 +12,8 @@
 #import "RFMTutorialViewController.h"
 #import "RFMRankingViewController.h"
 #import "RFMUserModel.h"
+#import "RFMSystemSounds.h"
+
 @import Social;
 
 @interface RFMMainMenuViewController ()
@@ -134,6 +136,7 @@
 #pragma mark - Actions
 -(void)chooseAnOption:(id)sender
 {
+    [[RFMSystemSounds shareSystemSounds] menuSelect];
     UIButton *btn = sender;
     UIViewController *VC = nil;
     switch (btn.tag) {
@@ -155,7 +158,7 @@
             break;
         default:
             break;
-    }
+    }   
 }
 
 - (IBAction)socialNetworksBtn:(id)sender {

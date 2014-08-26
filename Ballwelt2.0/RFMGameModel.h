@@ -19,6 +19,7 @@
 @property (nonatomic) CGFloat maxSpeed;
 @property (nonatomic) CGFloat minSpeed;
 @property (nonatomic) CGFloat reduceRadiusRatio;
+@property (nonatomic) NSInteger countdownSeconds;
 
 -(void)levelUpChangesRadiusAndSpeed;
 @end

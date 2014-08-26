@@ -16,6 +16,6 @@
 @property (strong, nonatomic) NSString *date;
 @property (nonatomic) BOOL recordSended;
 
-
-- (void)saveData;
+-(void)saveData;
+//-(NSString *)transformDateIntoString;
 @end

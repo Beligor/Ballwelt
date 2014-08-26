@@ -14,6 +14,10 @@
 
 -(void)correctBall;
 -(void)wrongBall;
+-(void)menuSelect;
+-(void)slowDown;
+-(void)countdown;
+-(void)go;
 /*
 -(void) startMachineGun;
 -(void) stopMachineGun;

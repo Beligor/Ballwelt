@@ -67,11 +67,45 @@
     NSDictionary *dataToWriteInPlistFile = @{@"ID" : self.ID,
                                              @"nickname" : self.nickname,
                                              @"highScore" : [NSNumber numberWithInteger:self.highScore],
-                                             @"date" : self.date,
+                                             @"date" : [self transformDateIntoString],
                                              @"recordSended" : [NSNumber numberWithBool:self.recordSended]};
                                              
     [dataToWriteInPlistFile writeToFile:path
                              atomically:YES];
     
 }
+
+#pragma mark - Utils
+- (NSString *)transformDateIntoString
+{
+    // Return a string with date in format yyyymmdd
+    NSDate *today = [NSDate date];
+    
+    // Separate date in components
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components: NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
+                                                                       fromDate:today];
+    
+    NSInteger year = [dateComponents year];
+    NSInteger month = [dateComponents month];
+    NSInteger day = [dateComponents day];
+    
+    NSString *monthString;
+    NSString *dayString;
+    
+    // Ensure that day and month have 2 digits
+    if (month < 10) {
+        monthString = [NSString stringWithFormat:@"0%i", (int)month];
+    }else{
+        monthString = [NSString stringWithFormat:@"%i", (int)month];
+    }
+    
+    if (day < 10) {
+        dayString = [NSString stringWithFormat:@"0%i", (int)day];
+    }else{
+        dayString = [NSString stringWithFormat:@"%i", (int)day];
+    }
+    
+    return [NSString stringWithFormat:@"%i%@%@", (int)year,monthString, dayString] ;
+}
+
 @end
