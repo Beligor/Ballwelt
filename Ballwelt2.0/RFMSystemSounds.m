@@ -27,6 +27,12 @@
     return shared;
 }
 
++(NSString *)popBallSound
+{
+    NSArray *sounds = @[@"pop1", @"pop2", @"pop3", @"pop4", @"pop5", @"pop6", @"pop7", @"pop8", @"pop9"];
+    return [sounds objectAtIndex:arc4random()% [sounds count]];
+}
+
 -(void)menuSelect
 {
     [self playFileNamed:@"menuSelection"
@@ -36,7 +42,7 @@
 
 -(void)countdown
 {
-    [self playFileNamed:@"countdown"
+    [self playFileNamed:@"countdown2"
               extension:@"wav"
           numberOfLoops:0];
 }
@@ -50,7 +56,7 @@
 
 -(void)correctBall
 {
-    [self playFileNamed:@"rightBall"
+    [self playFileNamed: [RFMSystemSounds popBallSound]
               extension:@"wav"
           numberOfLoops:0];
 }
@@ -64,9 +70,42 @@
 
 -(void)slowDown
 {
-    [self playFileNamed:@"slow2"
+    [self playFileNamed:@"slow"
               extension:@"wav"
           numberOfLoops:0];
+}
+
+-(void)freeze
+{
+    [self playFileNamed:@"freeze"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
+-(void)destroyAll
+{
+    [self playFileNamed:@"destroyAllBalls"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
+-(void)pause
+{
+    [self playFileNamed:@"pause"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
+-(void)startGameOver
+{
+    [self playFileNamed:@"gameover"
+              extension:@"mp3"
+          numberOfLoops:FOREVER];
+}
+
+-(void)stopGameOver
+{
+    [self.player stop];
 }
 /*
 -(void) startMachineGun
@@ -113,7 +152,7 @@
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url
                                                          error:&error];
     if (self.player) {
-        // no hubo error
+        // No error
         self.player.numberOfLoops = loops;
         [self.player play];
     }else{

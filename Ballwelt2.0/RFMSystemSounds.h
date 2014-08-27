@@ -16,8 +16,13 @@
 -(void)wrongBall;
 -(void)menuSelect;
 -(void)slowDown;
+-(void)freeze;
+-(void)destroyAll;
 -(void)countdown;
 -(void)go;
+-(void)startGameOver;
+-(void)stopGameOver;
+-(void)pause;
 /*
 -(void) startMachineGun;
 -(void) stopMachineGun;

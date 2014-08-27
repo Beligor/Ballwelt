@@ -7,7 +7,7 @@
 //
 
 #import "RFMPowerupView.h"
-#define NUMBER_OF_LEVELS_NEEDED 10
+#define TAPS_NEEDED_FOR_POWERUP 10
 
 @interface RFMPowerupView()
 
@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UIImageView *currentPowerIcon;
 @property (nonatomic, strong) UIColor *filledColor;
 @property (nonatomic) CGFloat incrementFraction;
-@property (nonatomic) NSInteger currentLevel;
+@property (nonatomic) NSInteger currentTap;
 @property (nonatomic) BOOL canBlink;
 @property (nonatomic) BOOL isBlinking;
 
@@ -40,8 +40,8 @@
     _filledColor = Rgb2UIColor(113, 172, 55);
     _powerupNumber = 0;
     _icons = @[@"power1", @"power2", @"power3"];
-    _incrementFraction = self.frame.size.width / NUMBER_OF_LEVELS_NEEDED;
-    _currentLevel = 0;
+    _incrementFraction = self.frame.size.width / TAPS_NEEDED_FOR_POWERUP;
+    _currentTap = 0;
     _isBlinking = NO;
     _canBlink = NO;
     
@@ -59,16 +59,18 @@
     self.fillsCircleView = [[UIView alloc]init];
     self.fillsCircleView.backgroundColor = self.filledColor;
     [self redrawFillsCircle];
-    [self addSubview: self.fillsCircleView];
     
-    _currentPowerIcon = [[UIImageView alloc] initWithFrame:self.frame];
+    [self addSubview: self.fillsCircleView];
+
+    _currentPowerIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width / 2, self.frame.size.height / 2)];
+    _currentPowerIcon.center = CGPointMake(self.frame.size.width / 2 + _currentPowerIcon.frame.size.width / 4, self.frame.size.height / 2 + _currentPowerIcon.frame.size.height / 4);
     [self addSubview:_currentPowerIcon];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(touched:)];
     tap.numberOfTapsRequired = 1;
     [self addGestureRecognizer:tap];
-    
+
 }
 
 #pragma mark - Actions
@@ -84,14 +86,14 @@
 
 -(void)increaseFillsCircle
 {
-    if (self.currentLevel < NUMBER_OF_LEVELS_NEEDED) {
-        self.currentLevel = self.currentLevel + 1;
-        if (self.currentLevel == NUMBER_OF_LEVELS_NEEDED && self.powerupNumber < 3) {
+    if (self.currentTap < TAPS_NEEDED_FOR_POWERUP) {
+        self.currentTap = self.currentTap + 1;
+        if (self.currentTap == TAPS_NEEDED_FOR_POWERUP && self.powerupNumber < 3) {
             self.canBlink = YES;
             [self changeIcon];
             
             if (self.powerupNumber < 2) { // prevents empty circle in last power
-                self.currentLevel = 0;
+                self.currentTap = 0;
             }
             self.powerupNumber = self.powerupNumber +1;
         }
@@ -104,9 +106,9 @@
 #pragma mark - Utils
 -(void)redrawFillsCircle
 {
-    [self.fillsCircleView setFrame:CGRectMake(0, 0, self.currentLevel * self.incrementFraction, self.currentLevel * self.incrementFraction)];
+    [self.fillsCircleView setFrame:CGRectMake(0, 0, self.currentTap * self.incrementFraction, self.currentTap * self.incrementFraction)];
     self.fillsCircleView.layer.cornerRadius = self.fillsCircleView.frame.size.height / 2;
-//    self.fillsCircleView.center = self.center;
+    self.fillsCircleView.center = CGPointMake(self.frame.size.width / 2 , self.frame.size.height / 2);
 }
 
 -(void)breakStreak
@@ -122,7 +124,7 @@
 
 -(void)restartPowerUp
 {
-    self.currentLevel = 0;
+    self.currentTap = 0;
     self.powerupNumber = 0;
     self.currentPowerIcon.image = nil;
     self.canBlink = NO;

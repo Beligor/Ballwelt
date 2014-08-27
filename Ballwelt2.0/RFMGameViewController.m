@@ -33,6 +33,20 @@
 }
 
 #pragma mark - View Lifecycle
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Set countdown square appearance
+    self.countdownSquare.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGroundPlayScreen"]];
+    [self.countdownSquare.layer setCornerRadius:self.countdownSquare.frame.size.height/4];
+    [self.countdownSquare.layer setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.countdownSquare.layer setBorderWidth:1.0];
+    [self.countdownSquare.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.countdownSquare.layer setShadowOffset:CGSizeMake(5.0f, 5.0f)];
+    [self.countdownSquare.layer setShadowOpacity:1.0f];
+    [self.countdownSquare.layer setShadowRadius:5.0f];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -51,8 +65,6 @@
         self.paused = NO;
         [self startGameTimer];
     }
-    
-
 }
 
 -(void)dealloc
@@ -66,7 +78,8 @@
 -(void)appDelegateNotifies:(NSNotification *)aNotification
 {
     if (!self.paused) {
-        [self showMenuNoForPauseYesForGameOver:NO];
+        [self showMenuNoForPauseYesForGameOver:NO
+                            showNewRecordLabel:NO];
     }
 }
 
@@ -198,12 +211,14 @@
 
 #pragma mark - Pause & Game Over Menu
 -(void)showMenuNoForPauseYesForGameOver:(BOOL)isGameOver
+                     showNewRecordLabel:(BOOL)newRecord
 {
     [self.gameTimer invalidate];
     
     RFMPauseMenuViewController *pauseVC = [[RFMPauseMenuViewController alloc] initWithBackGround: [self screenCapture]
                                                                                       isGameOver:isGameOver
-                                                                                           score:self.model.score];
+                                                                                           score:self.model.score
+                                                                                       newRecord:newRecord];
     pauseVC.delegate = self;
     self.paused = YES;
 
@@ -224,21 +239,26 @@
 -(void)gameOver
 {
     static NSInteger numberOfGameOverBalls = 0;
+    BOOL newRecord = NO;
+    
     numberOfGameOverBalls = numberOfGameOverBalls + 1;
 
     if (numberOfGameOverBalls < 150) {
         [self addBallToView];
     }else{
         [self.gameTimer invalidate];
+        [[RFMSystemSounds shareSystemSounds] stopGameOver];
         numberOfGameOverBalls = 0;
-#warning mostrar label de nuevo record
+        newRecord = NO;
+        
         if (self.currentScore > self.userDataModel.highScore) {
-            // avisar al menu pausa que muestre label "nuevo record"
+            newRecord = YES;
             self.userDataModel.highScore = self.currentScore;
             self.userDataModel.recordSended = NO;
             [self.userDataModel saveData];
         }
-        [self showMenuNoForPauseYesForGameOver:YES];
+        [self showMenuNoForPauseYesForGameOver:YES
+                            showNewRecordLabel:newRecord];
     }
 }
 
@@ -381,6 +401,8 @@
 -(void)timerBarWillEndGame
 {
     [self.gameTimer invalidate];
+    [[RFMSystemSounds shareSystemSounds] startGameOver];
+    
     self.model.minRadius = 20;
     self.model.maxRadius = 70;
 
@@ -400,7 +422,9 @@
 
 -(void)timeBarDidTouched
 {
-    [self showMenuNoForPauseYesForGameOver:NO];
+    [[RFMSystemSounds shareSystemSounds] pause];
+    [self showMenuNoForPauseYesForGameOver:NO
+                        showNewRecordLabel:NO];
 }
 
 // RFMPauseViewControllerDelegate
@@ -426,9 +450,11 @@
             [self slowDownBalls];
             break;
         case 2:
+            [[RFMSystemSounds shareSystemSounds] freeze];
             [self freezeBalls];
             break;
         case 3:
+            [[RFMSystemSounds shareSystemSounds] destroyAll];
             [self destroyAllBallsAnimated:YES];
             break;
         default:

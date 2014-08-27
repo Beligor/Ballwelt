@@ -22,11 +22,13 @@
 @property (weak, nonatomic) IBOutlet UIView *menuSquare;
 @property (weak, nonatomic) IBOutlet UIView *scoreSquare;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLbl;
+@property (weak, nonatomic) IBOutlet UILabel *record;
 @property (nonatomic, weak) id<RFMPauseMenuViewControllerDelegate> delegate;
 
 -(id)initWithBackGround:(UIImage *) aScreenCapture
              isGameOver:(BOOL) isAGameOver
-                  score:(NSInteger) aScore;
+                  score:(NSInteger) aScore
+              newRecord:(BOOL) isANewRecord;
 
 -(IBAction)selectedOption:(id)sender;
 

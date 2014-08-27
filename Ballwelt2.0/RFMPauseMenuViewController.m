@@ -7,11 +7,12 @@
 //
 
 #import "RFMPauseMenuViewController.h"
-
+#import "RFMSystemSounds.h"
 
 @interface RFMPauseMenuViewController ()
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic) BOOL isGameOver;
+@property (nonatomic) BOOL newRecord;
 @property (nonatomic) NSInteger score;
 @end
 
@@ -21,12 +22,14 @@
 -(id)initWithBackGround:(UIImage *) aScreenCapture
              isGameOver:(BOOL) isAGameOver
                   score:(NSInteger) aScore
+              newRecord:(BOOL) isANewRecord
 {
     if (self = [self initWithNibName:nil
                               bundle:nil]) {
         _image = aScreenCapture;
         _isGameOver = isAGameOver;
         _score = aScore;
+        _newRecord = isANewRecord;
     }
     return self;
 }
@@ -44,6 +47,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     // Create Queue
     dispatch_queue_t processImage = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     // block to process in background
@@ -82,16 +86,18 @@
     [self.scoreSquare.layer setShadowRadius:5.0f];
     
     self.scoreLbl.text = [NSString stringWithFormat:@"%ld",(long)self.score];
+    self.record.layer.cornerRadius = self.record.frame.size.height / 2;
     
     if (self.isGameOver) {
-#warning complete this method
         // Hide "Resume" button
         self.continueBtn.hidden = YES;
         // Show Score
+        self.scoreSquare.hidden = NO;
         
-        // If score is a new record show the label
-    }else{
-        
+        if (self.newRecord) {// If score is a new record show the label
+            self.record.text = NSLocalizedString(@"PAUSE_Record", nil);
+            self.record.hidden = NO;
+        }
     }
 }
 
@@ -137,7 +143,7 @@
 -(void)selectedOption:(id)sender
 {
     UIButton *btn = sender;
-    
+    [[RFMSystemSounds shareSystemSounds] menuSelect];
     switch (btn.tag) {
         case 0: // Resume
             [self.navigationController popViewControllerAnimated:NO];
