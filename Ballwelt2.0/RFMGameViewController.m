@@ -172,25 +172,21 @@
 #pragma mark - Actions
 -(void)addBallToView
 {
-#warning put a limit of Balls in each level
-//    if ([self.model.arrayOfBalls count] <= self.model.level * 5 && [self.model.arrayOfBalls count ] <= 30 && [self.gameTimer isValid])  {
-        RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
-                                                                                Height:self.playGroundView.frame.size.height
-                                                                              MinSpeed:self.model.minSpeed
-                                                                              maxSpeed:self.model.maxSpeed
-                                                                             minRadius:self.model.minRadius
-                                                                             maxRadius:self.model.maxRadius];
-        // add gesture recognizer
-        UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                 action:@selector(didBallTouch:)];
-        [oneTap setNumberOfTapsRequired:1];
-        [ball addGestureRecognizer:oneTap];
-        
-        [self.model.arrayOfBalls addObject:ball];
-        [self.playGroundView addSubview:ball];
-    }
+    RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.playGroundView.frame.size.width
+                                                                            Height:self.playGroundView.frame.size.height
+                                                                          MinSpeed:self.model.minSpeed
+                                                                          maxSpeed:self.model.maxSpeed
+                                                                         minRadius:self.model.minRadius
+                                                                         maxRadius:self.model.maxRadius];
+    // add gesture recognizer
+    UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                             action:@selector(didBallTouch:)];
+    [oneTap setNumberOfTapsRequired:1];
+    [ball addGestureRecognizer:oneTap];
     
-//}
+    [self.model.arrayOfBalls addObject:ball];
+    [self.playGroundView addSubview:ball];
+}
 
 -(void)sumPoints:(NSInteger) points
 {
@@ -378,15 +374,20 @@
 -(void)timerBarWilladdNewBall
 {
     if (self.ballTimeBar.canCreateNewBalls) {
-        for (int i = 0; i<self.model.level; i++) {
-            [self addBallToView];
-        }
+        // Limit the number of balls depending on the current level
+        if ([self.model.arrayOfBalls count] < self.model.level * 5){
+            // Add as many balls as level
+            for (int i = 0; i<self.model.level; i++) {
+                [self addBallToView];
+            }
+        }            
     }else{
         self.ballTimeBar.canCreateNewBalls = YES;
         self.gameTimeBar.paused = NO;
         [self timerBarWilladdNewBall];
     }
     
+    // Decrease 0.1 seconds until reach 1 second
     self.ballTimeBar.totalTime = (float)self.ballTimeBar.totalTime - 0.1;
 
     if (self.ballTimeBar.totalTime <= 1) {
