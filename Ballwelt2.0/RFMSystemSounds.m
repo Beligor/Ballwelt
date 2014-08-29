@@ -17,6 +17,7 @@
 
 @implementation RFMSystemSounds
 
+#pragma mark - Class Methods
 +(instancetype) shareSystemSounds
 {
     static RFMSystemSounds *shared;
@@ -29,8 +30,23 @@
 
 +(NSString *)popBallSound
 {
-    NSArray *sounds = @[@"pop1", @"pop2", @"pop3", @"pop4", @"pop5", @"pop6", @"pop7", @"pop8", @"pop9"];
+    NSArray *sounds = @[@"pop1", @"pop2", @"pop3", @"pop4", @"pop5", @"pop6", @"pop7", @"pop8", @"pop9", @"pop10", @"pop11", @"pop12", @"pop13"];
     return [sounds objectAtIndex:arc4random()% [sounds count]];
+}
+
+#pragma mark - Sounds
+-(void)nameForm
+{
+    [self playFileNamed:@"alertPop"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
+-(void)tutorialPage
+{
+    [self playFileNamed:@"tutorialPage"
+              extension:@"wav"
+          numberOfLoops:0];
 }
 
 -(void)menuSelect
@@ -40,9 +56,16 @@
           numberOfLoops:0];
 }
 
+-(void)closeView
+{
+    [self playFileNamed:@"closeView"
+              extension:@"wav"
+          numberOfLoops:0];
+}
+
 -(void)countdown
 {
-    [self playFileNamed:@"countdown2"
+    [self playFileNamed:@"countdown"
               extension:@"wav"
           numberOfLoops:0];
 }
@@ -107,40 +130,7 @@
 {
     [self.player stop];
 }
-/*
--(void) startMachineGun
-{
-    [self playFileNamed:@"machineGunLoop"
-              extension:@"wav"
-          numberOfLoops:FOREVER];
-}
 
--(void) stopMachineGun
-{
-    [self.player stop];
-}
-
--(void) binLaden
-{
-    [self playFileNamed:@"niQueFueraYoBinLaden"
-              extension:@"m4a"
-          numberOfLoops:0];
-}
-
--(void) tape
-{
-    [self playFileNamed:@"tape"
-              extension:@"caf"
-          numberOfLoops:0];
-}
-
--(void) untape
-{
-    [self playFileNamed:@"untape"
-              extension:@"caf"
-          numberOfLoops:0];
-}
-*/
 #pragma mark - Utils
 -(void) playFileNamed:(NSString *) name
             extension:(NSString *) extension

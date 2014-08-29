@@ -38,9 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.continueBtn.titleLabel.text = NSLocalizedString(@"PAUSE_Continue", nil);
-    self.restartBtn.titleLabel.text = NSLocalizedString(@"PAUSE_Restart", nil);
-    self.extiBtn.titleLabel.text = NSLocalizedString(@"PAUSE_Exit", nil);
+    [self.continueBtn setTitle: NSLocalizedString(@"PAUSE_Continue", nil)
+                     forState: UIControlStateNormal];
+    [self.restartBtn setTitle: NSLocalizedString(@"PAUSE_Restart", nil)
+                     forState: UIControlStateNormal];
+    [self.extiBtn setTitle: NSLocalizedString(@"PAUSE_Exit", nil)
+                     forState: UIControlStateNormal];
     [self composeMenu];
 }
 
@@ -143,7 +146,7 @@
 -(void)selectedOption:(id)sender
 {
     UIButton *btn = sender;
-    [[RFMSystemSounds shareSystemSounds] menuSelect];
+    [[RFMSystemSounds shareSystemSounds] closeView];
     switch (btn.tag) {
         case 0: // Resume
             [self.navigationController popViewControllerAnimated:NO];

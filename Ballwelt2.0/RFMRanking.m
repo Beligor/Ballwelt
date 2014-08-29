@@ -29,22 +29,47 @@
 -(id) init
 {
     if (self = [super init]) {
-        [self downloadRanking];
+        _db = @"Ballwelt";
+        _tbl = @"ranking";
+        [self downloadTop10];
     }
     return self;
 }
 
 #pragma mark - XML Parser
--(void) downloadRanking
+-(id)showOutOfTop10PositionForPlayerWithID:(NSString *) ID
 {
-    self.db = @"Ballwelt";
-    self.tbl = @"ranking";
-    NSURL *URL = [NSURL URLWithString: [NSString stringWithFormat:@"http://macuversium.mooo.com/www/connect.php?usr=BallweltSQL&pass=optHKUZwe2RqD7bJNaTM&db=%@&tbl=%@", self.db, self.tbl]];
+    NSURL *URL = [NSURL URLWithString: [NSString stringWithFormat:@"http://macuversium.mooo.com/www/Ballwelt_fueraTop10.php?usr=BallweltSQL&pass=optHKUZwe2RqD7bJNaTM&db=%@&tbl=%@&id=%@", self.db, self.tbl, ID]];
+    [self executeParserWithURL:URL];
     
-    NSXMLParser *XMLParser = [[NSXMLParser alloc] initWithContentsOfURL:URL];
+    if ([self.playersList count] >10) { //Check if player has a score in server
+        RFMPlayerModel *player = [self.playersList objectAtIndex:10];
+        [self.playersList removeLastObject];
+        return player;
+    }
+    return nil;
+}
 
+-(void)downloadTop10
+{
+    NSURL *URL = [NSURL URLWithString: [NSString stringWithFormat:@"http://macuversium.mooo.com/www/connect.php?usr=BallweltSQL&pass=optHKUZwe2RqD7bJNaTM&db=%@&tbl=%@", self.db, self.tbl]];
+    [self executeParserWithURL:URL];    
+}
+
+-(BOOL)checkIfPlayerWithIDIsInTop10:(NSString *) ID
+{
+    for (RFMPlayerModel *each in self.playersList) {
+        if ([each.ID isEqualToString: ID]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(void)executeParserWithURL:(NSURL *) URL
+{
+    NSXMLParser *XMLParser = [[NSXMLParser alloc] initWithContentsOfURL:URL];
     XMLParser.delegate = self;
-    
     [XMLParser parse];
 }
 

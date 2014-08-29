@@ -21,15 +21,6 @@
                    position:[aDict objectForKey:@"rank"]];
 }
 
-//-(NSDictionary *)proxyForXML{
-//    
-//    return @{@"UDID"        : self.ID,
-//             @"Nombre"      : self.name,
-//             @"Puntuacion"  : self.score,
-//             @"Fecha"       : self.date,
-//             @"rank"        : self.position};
-//}
-
 #pragma mark - Init
 -(id)initWithID:(NSString *) anID
            name:(NSString *) aName

@@ -23,6 +23,7 @@
 		053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053BCE081999807D00E2631E /* RFMPauseMenuViewController.xib */; };
 		054B94F619A0213A00741887 /* RFMTutorialScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B94F419A0213A00741887 /* RFMTutorialScreenViewController.m */; };
 		054B94FB19A0228900741887 /* RFMTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B94FA19A0228900741887 /* RFMTutorialViewController.m */; };
+		054F712019AF2FFE0040F043 /* RFMButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054F711F19AF2FFE0040F043 /* RFMButtonView.m */; };
 		056623A0199BCDD80020B35C /* backGroundPlayScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566239F199BCDD80020B35C /* backGroundPlayScreen.png */; };
 		0579E05F19A3887E0000A640 /* RFMTutorialScreenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0579E05E19A3887E0000A640 /* RFMTutorialScreenModel.m */; };
 		0579E06719A392620000A640 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0579E06119A392620000A640 /* tutorial1.png */; };
@@ -74,11 +75,18 @@
 		05C515A219ADF61400EA1E35 /* pop3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C5159A19ADF61400EA1E35 /* pop3.wav */; };
 		05C515A419ADF8B200EA1E35 /* pause.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515A319ADF8B200EA1E35 /* pause.wav */; };
 		05C515A619ADF9EE00EA1E35 /* destroyAllBalls.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515A519ADF9EE00EA1E35 /* destroyAllBalls.wav */; };
+		05C515A819AE2E1200EA1E35 /* alertPop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515A719AE2E1200EA1E35 /* alertPop.wav */; };
+		05C515AA19AE2F9E00EA1E35 /* tutorialPage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515A919AE2F9E00EA1E35 /* tutorialPage.wav */; };
+		05C515AC19AE310D00EA1E35 /* closeView.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515AB19AE310D00EA1E35 /* closeView.wav */; };
+		05C515AE19AE347E00EA1E35 /* backGroundMainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C515AD19AE347E00EA1E35 /* backGroundMainMenu.png */; };
+		05C515B319AE369900EA1E35 /* pop13.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515AF19AE369900EA1E35 /* pop13.wav */; };
+		05C515B419AE369900EA1E35 /* pop12.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515B019AE369900EA1E35 /* pop12.wav */; };
+		05C515B519AE369900EA1E35 /* pop11.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515B119AE369900EA1E35 /* pop11.wav */; };
+		05C515B619AE369900EA1E35 /* pop10.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C515B219AE369900EA1E35 /* pop10.wav */; };
 		05C946C119A7531D0022E298 /* menuSelection.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05C946C019A7531D0022E298 /* menuSelection.wav */; };
-		05EE96A119ACBD4000F2BE24 /* countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96A019ACBD4000F2BE24 /* countdown.wav */; };
 		05EE96A319ACBE4F00F2BE24 /* go.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96A219ACBE4F00F2BE24 /* go.wav */; };
 		05EE96A719ACD89800F2BE24 /* slow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96A619ACD89800F2BE24 /* slow.wav */; };
-		05EE96AB19ADCEA400F2BE24 /* countdown2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96A919ADCEA400F2BE24 /* countdown2.wav */; };
+		05EE96AB19ADCEA400F2BE24 /* countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96A919ADCEA400F2BE24 /* countdown.wav */; };
 		05EE96AD19ADD16800F2BE24 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05EE96AC19ADD16800F2BE24 /* gameover.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +125,8 @@
 		054B94F419A0213A00741887 /* RFMTutorialScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialScreenViewController.m; sourceTree = "<group>"; };
 		054B94F919A0228900741887 /* RFMTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialViewController.h; sourceTree = "<group>"; };
 		054B94FA19A0228900741887 /* RFMTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialViewController.m; sourceTree = "<group>"; };
+		054F711E19AF2FFE0040F043 /* RFMButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMButtonView.h; sourceTree = "<group>"; };
+		054F711F19AF2FFE0040F043 /* RFMButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMButtonView.m; sourceTree = "<group>"; };
 		0566239F199BCDD80020B35C /* backGroundPlayScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundPlayScreen.png; sourceTree = "<group>"; };
 		0579E05D19A3887E0000A640 /* RFMTutorialScreenModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFMTutorialScreenModel.h; sourceTree = "<group>"; };
 		0579E05E19A3887E0000A640 /* RFMTutorialScreenModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFMTutorialScreenModel.m; sourceTree = "<group>"; };
@@ -185,11 +195,18 @@
 		05C5159A19ADF61400EA1E35 /* pop3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop3.wav; sourceTree = "<group>"; };
 		05C515A319ADF8B200EA1E35 /* pause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pause.wav; sourceTree = "<group>"; };
 		05C515A519ADF9EE00EA1E35 /* destroyAllBalls.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = destroyAllBalls.wav; sourceTree = "<group>"; };
+		05C515A719AE2E1200EA1E35 /* alertPop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alertPop.wav; sourceTree = "<group>"; };
+		05C515A919AE2F9E00EA1E35 /* tutorialPage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tutorialPage.wav; sourceTree = "<group>"; };
+		05C515AB19AE310D00EA1E35 /* closeView.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = closeView.wav; sourceTree = "<group>"; };
+		05C515AD19AE347E00EA1E35 /* backGroundMainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backGroundMainMenu.png; sourceTree = "<group>"; };
+		05C515AF19AE369900EA1E35 /* pop13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop13.wav; sourceTree = "<group>"; };
+		05C515B019AE369900EA1E35 /* pop12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop12.wav; sourceTree = "<group>"; };
+		05C515B119AE369900EA1E35 /* pop11.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop11.wav; sourceTree = "<group>"; };
+		05C515B219AE369900EA1E35 /* pop10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop10.wav; sourceTree = "<group>"; };
 		05C946C019A7531D0022E298 /* menuSelection.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = menuSelection.wav; sourceTree = "<group>"; };
-		05EE96A019ACBD4000F2BE24 /* countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countdown.wav; sourceTree = "<group>"; };
 		05EE96A219ACBE4F00F2BE24 /* go.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = go.wav; sourceTree = "<group>"; };
 		05EE96A619ACD89800F2BE24 /* slow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slow.wav; sourceTree = "<group>"; };
-		05EE96A919ADCEA400F2BE24 /* countdown2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countdown2.wav; sourceTree = "<group>"; };
+		05EE96A919ADCEA400F2BE24 /* countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = countdown.wav; sourceTree = "<group>"; };
 		05EE96AC19ADD16800F2BE24 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +242,7 @@
 				058D8EB6199E21D5006CB9B3 /* Power ups */,
 				0537011B199ADEC00000B655 /* Social Networks Icons */,
 				05370119199AAC730000B655 /* Ballwelt.png */,
+				05C515AD19AE347E00EA1E35 /* backGroundMainMenu.png */,
 				0566239F199BCDD80020B35C /* backGroundPlayScreen.png */,
 			);
 			path = Artwork;
@@ -444,6 +462,8 @@
 				05B605D419A50FE9008F6706 /* RFMRankingTableViewCell.h */,
 				05B605D519A50FE9008F6706 /* RFMRankingTableViewCell.m */,
 				05B605D619A50FE9008F6706 /* RFMRankingTableViewCell.xib */,
+				054F711E19AF2FFE0040F043 /* RFMButtonView.h */,
+				054F711F19AF2FFE0040F043 /* RFMButtonView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -461,6 +481,10 @@
 		05C5159219ADF57200EA1E35 /* right Ball */ = {
 			isa = PBXGroup;
 			children = (
+				05C515AF19AE369900EA1E35 /* pop13.wav */,
+				05C515B019AE369900EA1E35 /* pop12.wav */,
+				05C515B119AE369900EA1E35 /* pop11.wav */,
+				05C515B219AE369900EA1E35 /* pop10.wav */,
 				05C5159319ADF61400EA1E35 /* pop9.wav */,
 				05C5159419ADF61400EA1E35 /* pop8.wav */,
 				05C5159519ADF61400EA1E35 /* pop7.wav */,
@@ -477,13 +501,15 @@
 		05C946C419A755480022E298 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				05C515A919AE2F9E00EA1E35 /* tutorialPage.wav */,
+				05C515A719AE2E1200EA1E35 /* alertPop.wav */,
 				05C515A319ADF8B200EA1E35 /* pause.wav */,
 				05EE96AC19ADD16800F2BE24 /* gameover.mp3 */,
 				05EE96A219ACBE4F00F2BE24 /* go.wav */,
-				05EE96A019ACBD4000F2BE24 /* countdown.wav */,
-				05EE96A919ADCEA400F2BE24 /* countdown2.wav */,
-				05C5159119ADF4A800EA1E35 /* powerups */,
+				05EE96A919ADCEA400F2BE24 /* countdown.wav */,
+				05C515AB19AE310D00EA1E35 /* closeView.wav */,
 				05C946C019A7531D0022E298 /* menuSelection.wav */,
+				05C5159119ADF4A800EA1E35 /* powerups */,
 				05C5159219ADF57200EA1E35 /* right Ball */,
 				053BCE0119995C4700E2631E /* wrongBall.wav */,
 			);
@@ -571,13 +597,16 @@
 				0579E06A19A392620000A640 /* tutorial4.png in Resources */,
 				05C5159B19ADF61400EA1E35 /* pop9.wav in Resources */,
 				05C515A119ADF61400EA1E35 /* pop2.wav in Resources */,
+				05C515AA19AE2F9E00EA1E35 /* tutorialPage.wav in Resources */,
 				0537011E199ADEDA0000B655 /* facebook_logo.png in Resources */,
 				05C5159D19ADF61400EA1E35 /* pop7.wav in Resources */,
 				05C5159E19ADF61400EA1E35 /* pop6.wav in Resources */,
 				05EE96AD19ADD16800F2BE24 /* gameover.mp3 in Resources */,
+				05C515AC19AE310D00EA1E35 /* closeView.wav in Resources */,
 				0537011F199ADEDA0000B655 /* twitter_logo.png in Resources */,
 				05C5159F19ADF61400EA1E35 /* pop5.wav in Resources */,
 				05AAA07219A635FA00018A4D /* userData.plist in Resources */,
+				05C515A819AE2E1200EA1E35 /* alertPop.wav in Resources */,
 				058D8EB5199E21C5006CB9B3 /* power3.png in Resources */,
 				0579E06719A392620000A640 /* tutorial1.png in Resources */,
 				05BD9C7119951EAA003F7A1A /* RFMGameViewController.xib in Resources */,
@@ -596,18 +625,22 @@
 				05B605D819A50FE9008F6706 /* RFMRankingTableViewCell.xib in Resources */,
 				05B605C519A3F6E9008F6706 /* RFMTutorialScreenViewController.xib in Resources */,
 				05C515A419ADF8B200EA1E35 /* pause.wav in Resources */,
+				05C515AE19AE347E00EA1E35 /* backGroundMainMenu.png in Resources */,
 				0579E06B19A392620000A640 /* tutorial5.png in Resources */,
 				0579E06819A392620000A640 /* tutorial2.png in Resources */,
+				05C515B319AE369900EA1E35 /* pop13.wav in Resources */,
 				058D8EB4199E21C5006CB9B3 /* power2.png in Resources */,
+				05C515B519AE369900EA1E35 /* pop11.wav in Resources */,
 				05C946C119A7531D0022E298 /* menuSelection.wav in Resources */,
 				0537011A199AAC730000B655 /* Ballwelt.png in Resources */,
+				05C515B419AE369900EA1E35 /* pop12.wav in Resources */,
 				05C515A219ADF61400EA1E35 /* pop3.wav in Resources */,
 				0579E06919A392620000A640 /* tutorial3.png in Resources */,
 				053BCE0A1999807D00E2631E /* RFMPauseMenuViewController.xib in Resources */,
 				05B605CA19A3FD9E008F6706 /* RFMRankingViewController.xib in Resources */,
-				05EE96AB19ADCEA400F2BE24 /* countdown2.wav in Resources */,
-				05EE96A119ACBD4000F2BE24 /* countdown.wav in Resources */,
+				05EE96AB19ADCEA400F2BE24 /* countdown.wav in Resources */,
 				058D8EB3199E21C5006CB9B3 /* power1.png in Resources */,
+				05C515B619AE369900EA1E35 /* pop10.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +676,7 @@
 				05370116199A993C0000B655 /* RFMMainMenuViewController.m in Sources */,
 				05AA5B43199CC45700ACED98 /* RFMGameModel.m in Sources */,
 				05B605D719A50FE9008F6706 /* RFMRankingTableViewCell.m in Sources */,
+				054F712019AF2FFE0040F043 /* RFMButtonView.m in Sources */,
 				05BD9C4A19951E7F003F7A1A /* main.m in Sources */,
 				053BCDF71999305500E2631E /* RFMGameTimeBarView.m in Sources */,
 				053BCDFA199930F000E2631E /* RFMNewBallTimeBarView.m in Sources */,

@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class RFMButtonView;
 
 @interface RFMMainMenuViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *ballsBackgroundView;
+@property (weak, nonatomic) IBOutlet RFMButtonView *startGameBtn;
+@property (weak, nonatomic) IBOutlet RFMButtonView *tutorialBtn;
+@property (weak, nonatomic) IBOutlet RFMButtonView *rankingBtn;
 
 - (IBAction)chooseAnOption:(id)sender;
 - (IBAction)socialNetworksBtn:(id)sender;

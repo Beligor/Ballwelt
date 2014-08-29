@@ -15,6 +15,7 @@
 -(void)correctBall;
 -(void)wrongBall;
 -(void)menuSelect;
+-(void)tutorialPage;
 -(void)slowDown;
 -(void)freeze;
 -(void)destroyAll;
@@ -23,12 +24,7 @@
 -(void)startGameOver;
 -(void)stopGameOver;
 -(void)pause;
-/*
--(void) startMachineGun;
--(void) stopMachineGun;
--(void) binLaden;
--(void) tape;
--(void) untape;
-*/
+-(void)nameForm;
+-(void)closeView;
 
 @end

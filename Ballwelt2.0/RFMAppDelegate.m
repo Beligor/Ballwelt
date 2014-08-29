@@ -8,20 +8,9 @@
 
 #import "RFMAppDelegate.h"
 #import "RFMMainMenuViewController.h"
+#import "RFMRankingViewController.h"
+
 @implementation RFMAppDelegate
-
-#pragma mark - Appearance
--(void)customizeAppearance
-{
-
-    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil] setBackgroundColor:Rgb2UIColor(69, 24, 46)];
-    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil] setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil].titleLabel setFont:[UIFont systemFontOfSize:35]];
-    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil].layer setBorderColor:[UIColor blackColor].CGColor];
-    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil].layer setBorderWidth:4.0];
-    [[UIButton appearanceWhenContainedIn:[RFMMainMenuViewController class],  nil].layer setCornerRadius:10];
-    
-}
 
 #pragma mark - Notifications
 -(void)sendNotification
@@ -36,8 +25,6 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    
-    // [self customizeAppearance];
     
     RFMMainMenuViewController *menuVC = [[RFMMainMenuViewController alloc] init];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:menuVC];

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 @class RFMTutorialScreenModel;
+@class RFMButtonView;
+
 @protocol RFMContentTutorialViewControllerDelegate <NSObject>
 -(void) willCloseTutorial;
 @end
@@ -18,7 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property (weak, nonatomic) IBOutlet RFMButtonView *closeButton;
+
 @property (nonatomic) BOOL showButton;
 
 @property (weak, nonatomic) id<RFMContentTutorialViewControllerDelegate> delegate;

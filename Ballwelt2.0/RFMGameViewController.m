@@ -36,6 +36,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Set countdown square appearance
     self.countdownSquare.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backGroundPlayScreen"]];
     [self.countdownSquare.layer setCornerRadius:self.countdownSquare.frame.size.height/4];
@@ -69,7 +70,6 @@
 
 -(void)dealloc
 {
-    NSLog(@"dealloc");
     // Unsubscribe from notifications
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -164,8 +164,8 @@
                                                               toReach:self.model.score
                                                        withMultiplier:self.model.level];
     self.scoreAnimatedLabel.text = [NSString stringWithFormat:@"%ld", (long)self.currentScore];
-    [self.powerUpView blink];
     
+    [self.powerUpView blink];
     [self moveBall];
 }
 
@@ -197,10 +197,9 @@
 {
     self.gameTimeBar.paused = YES;
 
-    self.ballTimeBar.totalTime = 1 + self.model.level;
+    self.ballTimeBar.totalTime = 1 + self.model.level; // Increase total time for create balls
     self.ballTimeBar.timeLeft = self.ballTimeBar.totalTime;
-    self.ballTimeBar.canCreateNewBalls = NO;
-    
+    self.ballTimeBar.canCreateNewBalls = NO; // do a pause creating balls (blue bar)
     
     [self.model levelUpChangesRadiusAndSpeed];
 }
@@ -247,6 +246,7 @@
         numberOfGameOverBalls = 0;
         newRecord = NO;
         
+        // Check score for new record
         if (self.currentScore > self.userDataModel.highScore) {
             newRecord = YES;
             self.userDataModel.highScore = self.currentScore;
@@ -374,7 +374,7 @@
 -(void)timerBarWilladdNewBall
 {
     if (self.ballTimeBar.canCreateNewBalls) {
-        // Limit the number of balls depending on the current level
+        // Limit of balls per level depending number of level, high level = more balls in screen at same time
         if ([self.model.arrayOfBalls count] < self.model.level * 5){
             // Add as many balls as level
             for (int i = 0; i<self.model.level; i++) {
@@ -382,6 +382,7 @@
             }
         }            
     }else{
+        // Level up do a break that don't generate more balls
         self.ballTimeBar.canCreateNewBalls = YES;
         self.gameTimeBar.paused = NO;
         [self timerBarWilladdNewBall];
@@ -423,6 +424,7 @@
 
 -(void)timeBarDidTouched
 {
+    // Make a pause
     [[RFMSystemSounds shareSystemSounds] pause];
     [self showMenuNoForPauseYesForGameOver:NO
                         showNewRecordLabel:NO];

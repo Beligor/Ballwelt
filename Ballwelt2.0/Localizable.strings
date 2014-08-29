@@ -19,8 +19,8 @@
 
 //RANKING
 "RANKING_Back" = "Main Menu";
-"RANKING_Title"="Top 10";
-"RANKING_Notice"="Unable to connect to Ballwelt's Server.\n Please check your Internet connection to see the Online Ranking";
+"RANKING_Title"= "Top 10";
+"RANKING_Notice"= "Unable to connect to Ballwelt's Server.\n Please check your Internet connection to see the Online Ranking";
 
 // ALERTVIEW NAME
 "ALERT_title" = "Enter your Name";

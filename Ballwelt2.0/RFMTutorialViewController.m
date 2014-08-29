@@ -9,7 +9,7 @@
 #import "RFMTutorialViewController.h"
 #import "RFMTutorialScreenViewController.h"
 #import "RFMTutorialModel.h"
-
+#import "RFMSystemSounds.h"
 @interface RFMTutorialViewController ()
 @property (nonatomic, strong) RFMTutorialModel *model;
 @property (nonatomic, strong) UIPageControl *pageControl;
@@ -72,6 +72,7 @@
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
      viewControllerBeforeViewController:(UIViewController *)viewController
 {
+    [[RFMSystemSounds shareSystemSounds] tutorialPage];
     NSUInteger index = [self indexOfViewController:(RFMTutorialScreenViewController *)viewController];
     
     self.pageControl.CurrentPage = index;
@@ -87,6 +88,7 @@
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerAfterViewController:(UIViewController *)viewController
 {
+    [[RFMSystemSounds shareSystemSounds] tutorialPage];
     NSUInteger index = [self indexOfViewController: (RFMTutorialScreenViewController *)viewController];
     
     self.pageControl.CurrentPage= index;
@@ -127,6 +129,7 @@
 // RFMContentTutorialViewController.h
 -(void)willCloseTutorial
 {
+    [[RFMSystemSounds shareSystemSounds] closeView];
     [self dismissViewControllerAnimated:YES
                              completion:nil];
 }

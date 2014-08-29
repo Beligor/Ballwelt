@@ -8,6 +8,7 @@
 
 #import "RFMTutorialScreenViewController.h"
 #import "RFMTutorialScreenModel.h"
+#import "RFMButtonView.h"
 
 @implementation RFMTutorialScreenViewController
 
@@ -32,7 +33,9 @@
     [self.contentLabel setText: self.model.content];
     self.image.image = self.model.image;
     
-    self.closeButton.titleLabel.text = NSLocalizedString(@"TUTORIAL_Close", nil);
+    [self.closeButton setTitle: NSLocalizedString(@"TUTORIAL_Close", nil)
+                      forState: UIControlStateNormal];
+    [self.closeButton customizeAppearance];
     
     self.closeButton.hidden = !self.showButton;
     

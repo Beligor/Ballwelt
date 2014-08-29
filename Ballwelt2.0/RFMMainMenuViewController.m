@@ -13,6 +13,7 @@
 #import "RFMRankingViewController.h"
 #import "RFMUserModel.h"
 #import "RFMSystemSounds.h"
+#import "RFMButtonView.h"
 
 @import Social;
 
@@ -27,7 +28,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed: @"backGroundMainMenu.png"]]];
+    
     self.userDataModel = [[RFMUserModel alloc] init];
+    
+    // Set Buttons text
+    [self.startGameBtn setTitle: NSLocalizedString(@"MAIN_NewGame", nil)
+                       forState: UIControlStateNormal];
+    [self.tutorialBtn setTitle: NSLocalizedString(@"MAIN_Tutorial", nil)
+                       forState: UIControlStateNormal];
+    [self.rankingBtn setTitle: NSLocalizedString(@"MAIN_Ranking", nil)
+                       forState: UIControlStateNormal];
+    
+    [self.startGameBtn customizeAppearance];
+    [self.tutorialBtn customizeAppearance];
+    [self.rankingBtn customizeAppearance];
     
     // First time request for a nickname and show tutorial
     if ([self.userDataModel.nickname isEqualToString:@""]) {
@@ -38,10 +53,9 @@
                                     otherButtonTitles:NSLocalizedString(@"ALERT_OkBtn", nil), nil];
         
         [nickInput setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [[RFMSystemSounds shareSystemSounds] nameForm];
         [nickInput show];
     }
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -75,9 +89,8 @@
 {
     [super viewWillDisappear:animated];
     [self stopTimer];
-//    self.view = nil;
+    
     for (RFMBallView *each in self.ballsBackgroundView.subviews) {
-        
         [each removeFromSuperview];
     }
     // Unsubscribe of notifications
@@ -93,7 +106,6 @@
         [self startTimer];
     }
 }
-
 
 #pragma mark - Timer Utils
 -(void)startTimer
@@ -114,7 +126,6 @@
 #pragma mark - Balls Control
 -(void)addBallToView
 {
-    
     RFMBallView *ball = [[RFMBallView alloc] initWithRandomPositioninViewWithWidth:self.ballsBackgroundView.frame.size.width
                                                                             Height:self.ballsBackgroundView.frame.size.height
                                                                           MinSpeed:50
@@ -200,6 +211,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [[RFMSystemSounds shareSystemSounds] pause];
     int numberID =  arc4random() % 999999999999999999; // Random number and name makes unique ID
     
     NSString *ID = [NSString stringWithFormat:@"%@%i", [[alertView textFieldAtIndex:0] text], numberID];

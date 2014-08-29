@@ -22,17 +22,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-G7-4eQ" userLabel="Image View - blur background">
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-G7-4eQ" userLabel="Image View - blur background">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
-                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="AlM-eX-Xla">
+                <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AlM-eX-Xla">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="Fuq-Oa-RPM"/>
-                    </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Mrj-P6-jek"/>
                     </connections>
@@ -41,10 +38,10 @@
                     <rect key="frame" x="55" y="142" width="210" height="284"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-sU-blR">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-sU-blR">
                             <rect key="frame" x="69" y="20" width="73" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Resume">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,10 +50,10 @@
                                 <action selector="selectedOption:" destination="-1" eventType="touchUpInside" id="GD1-lW-PY0"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="5yh-t6-HcL">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="5yh-t6-HcL">
                             <rect key="frame" x="89" y="228" width="33" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Exit">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,10 +62,10 @@
                                 <action selector="selectedOption:" destination="-1" eventType="touchUpInside" id="ZXd-Yj-Tci"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="hod-OP-HsP">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="hod-OP-HsP">
                             <rect key="frame" x="73" y="124" width="64" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Restart">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,15 +77,16 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.02169921121" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="centerX" secondItem="nBF-sU-blR" secondAttribute="centerX" id="5h5-nl-xKm"/>
-                        <constraint firstAttribute="centerX" secondItem="hod-OP-HsP" secondAttribute="centerX" id="WtC-DY-usR"/>
-                        <constraint firstAttribute="centerY" secondItem="hod-OP-HsP" secondAttribute="centerY" id="dke-KE-bQ0"/>
-                        <constraint firstItem="nBF-sU-blR" firstAttribute="top" secondItem="DjJ-DJ-ZD8" secondAttribute="top" constant="20" id="oFd-Ty-k7J"/>
-                        <constraint firstAttribute="centerX" secondItem="5yh-t6-HcL" secondAttribute="centerX" id="sCt-ph-G1a"/>
-                        <constraint firstAttribute="bottom" secondItem="5yh-t6-HcL" secondAttribute="bottom" constant="20" id="xDY-9T-lg5"/>
+                        <constraint firstAttribute="centerX" secondItem="hod-OP-HsP" secondAttribute="centerX" id="5h7-ZB-ChI"/>
+                        <constraint firstAttribute="bottom" secondItem="5yh-t6-HcL" secondAttribute="bottom" constant="20" id="Li0-ct-J6I"/>
+                        <constraint firstAttribute="width" constant="210" id="ccm-D2-7T3"/>
+                        <constraint firstAttribute="centerX" secondItem="nBF-sU-blR" secondAttribute="centerX" id="dBE-Vy-Wji"/>
+                        <constraint firstAttribute="centerX" secondItem="5yh-t6-HcL" secondAttribute="centerX" id="hGH-HY-k8P"/>
+                        <constraint firstAttribute="centerY" secondItem="hod-OP-HsP" secondAttribute="centerY" id="wF9-1s-fEf"/>
+                        <constraint firstItem="nBF-sU-blR" firstAttribute="top" secondItem="DjJ-DJ-ZD8" secondAttribute="top" constant="20" id="xrO-X6-g56"/>
                     </constraints>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="At8-mR-LU9" userLabel="View - Score Square">
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="At8-mR-LU9" userLabel="View - Score Square">
                     <rect key="frame" x="55" y="86" width="210" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -113,23 +111,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="top" secondItem="AlM-eX-Xla" secondAttribute="bottom" constant="92" id="4Os-Sg-7d5"/>
-                <constraint firstItem="At8-mR-LU9" firstAttribute="top" secondItem="AlM-eX-Xla" secondAttribute="bottom" constant="36" id="7ET-Uk-lll"/>
-                <constraint firstItem="AlM-eX-Xla" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="B5g-Gm-n8z"/>
-                <constraint firstAttribute="trailing" secondItem="AlM-eX-Xla" secondAttribute="trailing" id="Dpa-6m-OnS"/>
-                <constraint firstItem="AlM-eX-Xla" firstAttribute="leading" secondItem="Lxk-G7-4eQ" secondAttribute="leading" id="I9p-rH-tAz"/>
-                <constraint firstItem="Lxk-G7-4eQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Kmp-yB-rh4"/>
-                <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="TIz-Ix-2HE"/>
-                <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="top" secondItem="At8-mR-LU9" secondAttribute="bottom" constant="18" id="UPJ-vM-JDc"/>
-                <constraint firstItem="AlM-eX-Xla" firstAttribute="top" secondItem="Lxk-G7-4eQ" secondAttribute="top" id="Wvu-qa-SoI"/>
-                <constraint firstItem="At8-mR-LU9" firstAttribute="width" secondItem="DjJ-DJ-ZD8" secondAttribute="width" id="Wvv-3X-2DZ"/>
-                <constraint firstItem="Lxk-G7-4eQ" firstAttribute="centerY" secondItem="DjJ-DJ-ZD8" secondAttribute="centerY" id="ZLC-pm-O00"/>
-                <constraint firstAttribute="bottom" secondItem="Lxk-G7-4eQ" secondAttribute="bottom" id="lKm-QI-7Pq"/>
-                <constraint firstItem="AlM-eX-Xla" firstAttribute="trailing" secondItem="Lxk-G7-4eQ" secondAttribute="trailing" id="oAS-DQ-q0J"/>
-                <constraint firstItem="At8-mR-LU9" firstAttribute="centerX" secondItem="DjJ-DJ-ZD8" secondAttribute="centerX" id="pVl-kb-ucu"/>
-                <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="centerX" secondItem="AlM-eX-Xla" secondAttribute="centerX" id="taz-1a-IUt"/>
+                <constraint firstAttribute="centerX" secondItem="DjJ-DJ-ZD8" secondAttribute="centerX" id="RR4-zC-K1t"/>
+                <constraint firstAttribute="bottom" secondItem="DjJ-DJ-ZD8" secondAttribute="bottom" constant="142" id="Zwo-XN-CCx"/>
+                <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="142" id="uGx-T6-YOo"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

@@ -27,7 +27,5 @@
 @property (weak, nonatomic) IBOutlet UIView *countdownSquare;
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 
-
 -(id)initWithUserDataModel:(RFMUserModel *) anUserDataModel;
-//-(void)startGameTimer;
 @end

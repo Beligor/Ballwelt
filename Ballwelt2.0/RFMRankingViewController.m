@@ -11,6 +11,8 @@
 #import "RFMPlayerModel.h"
 #import "RFMRankingTableViewCell.h"
 #import "RFMUserModel.h"
+#import "RFMSystemSounds.h"
+#import "RFMButtonView.h"
 
 @interface RFMRankingViewController ()
 @property (strong, nonatomic) RFMRanking *model;
@@ -33,6 +35,10 @@
     [super viewDidLoad];
     
     self.rankingTitle.text = NSLocalizedString(@"RANKING_Title", nil);
+    [self.backButton setTitle: NSLocalizedString(@"RANKING_Back", nil)
+                     forState: UIControlStateNormal];
+    
+    [self.backButton customizeAppearance];
     [self.table setBackgroundColor: [UIColor clearColor]];
     [self registerPlayerCell];
 }
@@ -43,18 +49,19 @@
 
     [self.activityIndicator startAnimating];
     [self connectToServer];
-    
 }
 
--(void)viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
-    
     [self.activityIndicator stopAnimating];
 }
 
 #pragma mark - Online Ranking
 -(void)connectToServer
 {
+    __block BOOL playerIsInTopTen;
+    
     // Get queue
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
@@ -66,19 +73,24 @@
         if (connect) {
             [self sendHighScoreToServer];
             [self getDataFromServer];
+            playerIsInTopTen = [self.model checkIfPlayerWithIDIsInTop10:self.userDataModel.ID];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (connect) {
                 [self.table reloadData];
+                if (!playerIsInTopTen) {
+                    [self showPositionOutOfTop10];
+                }
             }else{
                 self.table.hidden = YES;
                 [self showErrorMessage];
-                [self showLocalRecord];
+                [self showLocalScore];
             }
             [self.activityIndicator stopAnimating];
         });
+        
     });
 }
 
@@ -108,19 +120,6 @@
 -(void)getDataFromServer
 {
     self.model = [[RFMRanking alloc] init];
-    if (![self checkIfPlayerIsInTop10]){
-        [self showLocalRecord];
-    }
-}
-
--(BOOL)checkIfPlayerIsInTop10
-{
-    for (RFMPlayerModel *each in self.model.playersList) {
-        if ([each.ID isEqualToString: self.userDataModel.ID]) {
-            return YES;
-        }
-    }
-    return NO;
 }
 
 #pragma mark - Utils
@@ -134,10 +133,28 @@
          forCellReuseIdentifier: [RFMRankingTableViewCell playerCellID]];
 }
 
--(void)showLocalRecord
+-(void)showPositionOutOfTop10
 {
-    self.outOfRankingLabel.hidden = NO;
-    self.outOfRankingLabel.text = [NSString stringWithFormat:@"%@ - %li", self.userDataModel.nickname, (long)self.userDataModel.highScore];
+    RFMPlayerModel *player = [self.model showOutOfTop10PositionForPlayerWithID: self.userDataModel.ID];
+    
+    if (player) {
+        self.outOfRankingView.hidden = NO;
+        self.name.text = player.name;
+        self.score.text = player.score;
+        self.position.text = player.position;
+    }else{
+        // If player is nil, then show local score because he hasn't a punctuation in the server
+        [self showLocalScore];
+    }
+    
+}
+
+-(void)showLocalScore
+{
+    self.outOfRankingView.hidden = NO;
+    self.name.text = self.userDataModel.nickname;
+    self.score.text =[NSString stringWithFormat:@"%i", self.userDataModel.highScore];
+    self.position.hidden = YES;
 }
 
 -(void)showErrorMessage
@@ -172,7 +189,6 @@ numberOfRowsInSection:(NSInteger)section
     
     if ([player.ID isEqualToString:self.userDataModel.ID]) {
         playerCell.backgroundColor = Rgb2UIColor(94, 80, 87);
-
     }else{
         playerCell.backgroundColor = [UIColor clearColor];
     }
@@ -183,6 +199,7 @@ numberOfRowsInSection:(NSInteger)section
 #pragma mark - Actions
 - (IBAction)closeRanking:(id)sender
 {
+    [[RFMSystemSounds shareSystemSounds] closeView];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

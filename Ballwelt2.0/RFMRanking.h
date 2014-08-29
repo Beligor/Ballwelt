@@ -13,5 +13,7 @@
 @property (nonatomic, readonly) NSUInteger playersCount;
 @property (strong, nonatomic) NSMutableArray *playersList;
 
-- (id)playerInPosition:(NSUInteger)aPosition;
+-(id)playerInPosition:(NSUInteger)aPosition;
+-(id)showOutOfTop10PositionForPlayerWithID:(NSString *) ID;
+-(BOOL)checkIfPlayerWithIDIsInTop10:(NSString *) ID;
 @end
