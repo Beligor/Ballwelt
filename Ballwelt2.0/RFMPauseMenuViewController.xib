@@ -19,27 +19,30 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-G7-4eQ" userLabel="Image View - blur background">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-G7-4eQ" userLabel="Image View - blur background">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="O3x-zi-jYs"/>
+                    </constraints>
                 </imageView>
                 <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AlM-eX-Xla">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Mrj-P6-jek"/>
                     </connections>
                 </adBannerView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjJ-DJ-ZD8" userLabel="View -  Menu Square">
-                    <rect key="frame" x="55" y="142" width="210" height="284"/>
+                    <rect key="frame" x="55" y="142" width="210" height="196"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-sU-blR">
-                            <rect key="frame" x="69" y="20" width="73" height="36"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-sU-blR">
+                            <rect key="frame" x="75" y="20" width="60" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Resume">
@@ -50,8 +53,8 @@
                                 <action selector="selectedOption:" destination="-1" eventType="touchUpInside" id="GD1-lW-PY0"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="5yh-t6-HcL">
-                            <rect key="frame" x="89" y="228" width="33" height="36"/>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="5yh-t6-HcL">
+                            <rect key="frame" x="90" y="144" width="30" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Exit">
@@ -62,8 +65,8 @@
                                 <action selector="selectedOption:" destination="-1" eventType="touchUpInside" id="ZXd-Yj-Tci"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="hod-OP-HsP">
-                            <rect key="frame" x="73" y="124" width="64" height="36"/>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="hod-OP-HsP">
+                            <rect key="frame" x="79" y="82" width="53" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Restart">
@@ -111,11 +114,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="Lxk-G7-4eQ" secondAttribute="bottom" id="6B1-Pf-yHE"/>
                 <constraint firstAttribute="centerX" secondItem="DjJ-DJ-ZD8" secondAttribute="centerX" id="RR4-zC-K1t"/>
+                <constraint firstAttribute="centerX" secondItem="Lxk-G7-4eQ" secondAttribute="centerX" id="Tek-FW-AA7"/>
+                <constraint firstItem="Lxk-G7-4eQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WKd-Oz-fTS"/>
                 <constraint firstAttribute="bottom" secondItem="DjJ-DJ-ZD8" secondAttribute="bottom" constant="142" id="Zwo-XN-CCx"/>
                 <constraint firstItem="DjJ-DJ-ZD8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="142" id="uGx-T6-YOo"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>

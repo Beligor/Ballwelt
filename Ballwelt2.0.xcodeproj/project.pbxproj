@@ -315,6 +315,16 @@
 			name = Tutorial;
 			sourceTree = "<group>";
 		};
+		05845DD219B0702E00919CEE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
+				053BCDFC1999586B00E2631E /* RFMSystemSounds.h */,
+				053BCDFD1999586B00E2631E /* RFMSystemSounds.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		058D8EB6199E21D5006CB9B3 /* Power ups */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,11 +394,9 @@
 			isa = PBXGroup;
 			children = (
 				053BCE051999804800E2631E /* Resources */,
-				05AAE6FB1996212C00E9ABE5 /* Settings.h */,
 				05BD9C4C19951E7F003F7A1A /* RFMAppDelegate.h */,
 				05BD9C4D19951E7F003F7A1A /* RFMAppDelegate.m */,
-				053BCDFC1999586B00E2631E /* RFMSystemSounds.h */,
-				053BCDFD1999586B00E2631E /* RFMSystemSounds.m */,
+				05845DD219B0702E00919CEE /* Utils */,
 				05AA5B40199CC44200ACED98 /* Models */,
 				05BD9C7219951F10003F7A1A /* Views */,
 				05BD9C6C19951E88003F7A1A /* Controllers */,

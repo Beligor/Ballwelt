@@ -65,6 +65,13 @@
     });
 }
 
+-(void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    _image = nil;
+    _blurredImage = nil;
+}
+
 #pragma mark - Utils
 -(void)composeMenu
 {

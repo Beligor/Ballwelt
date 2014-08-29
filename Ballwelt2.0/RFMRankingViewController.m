@@ -71,6 +71,7 @@
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];
         if (connect) {
+            self.table.hidden = NO;
             [self sendHighScoreToServer];
             [self getDataFromServer];
             playerIsInTopTen = [self.model checkIfPlayerWithIDIsInTop10:self.userDataModel.ID];
