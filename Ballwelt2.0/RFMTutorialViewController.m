@@ -58,8 +58,8 @@
     
     // Configure page control dots aspect
     self.pageControl = [[UIPageControl alloc]init];
-    self.pageControl.Center = CGPointMake(self.view.center.x, initialVC.view.frame.size.height - 10);
-    self.pageControl.NumberOfPages = self.model.tutorialScreensCount;
+    self.pageControl.center = CGPointMake(self.view.center.x, initialVC.view.frame.size.height - 10);
+    self.pageControl.numberOfPages = self.model.tutorialScreensCount;
     [self.pageControl setPageIndicatorTintColor:[UIColor whiteColor]];
     [self.pageControl setCurrentPageIndicatorTintColor:Rgb2UIColor(69, 24, 46)];
 
@@ -75,7 +75,7 @@
     [[RFMSystemSounds shareSystemSounds] tutorialPage];
     NSUInteger index = [self indexOfViewController:(RFMTutorialScreenViewController *)viewController];
     
-    self.pageControl.CurrentPage = index;
+    self.pageControl.currentPage = index;
     
     if (index == 0 || index == NSNotFound) {
         return nil;
@@ -91,7 +91,7 @@
     [[RFMSystemSounds shareSystemSounds] tutorialPage];
     NSUInteger index = [self indexOfViewController: (RFMTutorialScreenViewController *)viewController];
     
-    self.pageControl.CurrentPage= index;
+    self.pageControl.currentPage= index;
     
     if (index == NSNotFound) {
         return nil;
